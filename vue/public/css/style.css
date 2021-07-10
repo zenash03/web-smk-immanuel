@@ -116,7 +116,7 @@ nav.nav {
 
 
 /* Home Header Style */
-.hide-text {
+.hide-content {
     overflow: hidden;
 }
 
@@ -146,8 +146,8 @@ nav.nav {
     color: white;
     background-color: var(--primary-blue);
     transition: .2s;
-    transform: translateX(-100%);
-    animation: text 1s 1.3s forwards;
+    transform: translateX(-110%);
+    animation: text 1s 1.1s forwards;
 }
 
 .button-primary:hover {
@@ -155,11 +155,18 @@ nav.nav {
     transform: translateX(-10%);
 }
 
-.rect {
-    width: 300px;
+.carousel-item {
     height: 300px;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.carousel-caption {
     background-color: gray;
-    transform: rotate(90deg);
 }
 /* Home Header Style End */
 
