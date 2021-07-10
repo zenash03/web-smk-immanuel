@@ -1,0 +1,178 @@
+:root {
+    --background: #fcfcfc;
+    --primary-blue: #00a0e3;
+    --primary-blue-hover: #008eca;
+    --primary-yellow: #ffc600;
+}
+
+body {
+    font-family: 'Khula', sans-serif;
+    background-color: var(--background);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    transition: .3s;
+}
+
+/* Nav Style */
+nav {
+    margin-top: 2rem;
+}
+
+nav .logo {
+    width: 100px;
+    height: 120px;
+}
+
+nav .logo img {
+    object-fit: contain;
+}
+
+nav.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-right {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-right: 25px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+}
+
+.nav-links li:last-child {
+    margin-right: 0;
+}
+
+.nav-links li button {
+    border: 2px solid gray;
+    padding: 5px 10px;
+    background-color: white;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.social {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+}
+
+.social-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ececec;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.social-button:hover {
+    transform: scale(1.5);
+}
+
+.social .instagram {
+    color: deeppink;
+}
+
+.social .youtube {
+    color: #f72050;
+}
+
+.social .whatsapp {
+    color: #00b649;
+}
+/* Nav Style End */
+
+
+/* Home Header Style */
+.hide-text {
+    overflow: hidden;
+}
+
+.header-title {
+    position: relative;
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 50px;
+    transform: translateX(-100%);
+    animation: text 1s forwards;
+}
+
+.header-title::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 5px;
+    background-color: var(--primary-yellow);
+    animation: underline 1s 1s forwards;
+}
+
+.button-primary {
+    padding: 10px 25px;
+    border: none;
+    color: white;
+    background-color: var(--primary-blue);
+    transition: .2s;
+    transform: translateX(-100%);
+    animation: text 1s 1.3s forwards;
+}
+
+.button-primary:hover {
+    background-color: var(--primary-blue-hover);
+    transform: translateX(-10%);
+}
+
+.rect {
+    width: 300px;
+    height: 300px;
+    background-color: gray;
+    transform: rotate(90deg);
+}
+/* Home Header Style End */
+
+/* Animations */
+
+@keyframes underline {
+    100% {
+        width: 20%;
+    }
+}
+
+@keyframes text {
+    100% {
+        transform: translateX(0);
+    }
+}
