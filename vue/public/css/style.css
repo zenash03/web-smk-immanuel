@@ -109,7 +109,6 @@ img {
 .headline-title {
     font-weight: 800;
     font-size: 2.2rem;
-    opacity: 0;
 }
 
 .image-main {
@@ -117,7 +116,6 @@ img {
     right: 0;
     width: 70%;
     max-height: 350px;
-    opacity: 0;
 }
 
 .image-second {
@@ -126,19 +124,10 @@ img {
     left: 10%;
     width: 30%;
     max-height: 150px;
-    opacity: 0;
 }
 
 .image-second img {
     border: 10px solid white;
-}
-
-.fade-out {
-    transform: translateY(10px);
-}
-
-.fade {
-    animation: fade .5s 1s forwards;
 }
 /* Headline Style End */
 
@@ -196,15 +185,6 @@ img {
     font-size: 2rem;
     color: var(--primary-blue);
 }
-
-.pop-out {
-    transform: translateY(-70px);
-    opacity: 0;
-}
-
-.pop-up {
-    animation: pop-up .5s .5s forwards;
-}
 /* News Style End */
 
 
@@ -258,9 +238,56 @@ img {
 }
 /* Jurusan Style End*/
 
+/* Prestasi Style */
+.prestasi {
+    background-color: #ececec;
+}
+
+.prestasi svg {
+    margin-top: -50px;
+}
+/* Prestasi Style ENd */
+
+
+/* Animation Class */
+
+.fade-out {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.fade {
+    animation: fade .5s forwards;
+}
+
+.pop-out {
+    transform: translateY(-70px);
+    opacity: 0;
+}
+
+.pop-up {
+    animation: pop-up .5s forwards;
+}
+
+.zoom-out {
+    opacity: 0;
+    transform: scale(1.2);
+}
+
+.zoom-in {
+    animation: zoom-in .5s forwards;
+}
+
+.fly-up {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.fly-down {
+    animation: fly-down .5s forwards;
+}
 
 /* Animations */
-
 @keyframes underline {
     100% {
         width: 20%;
@@ -281,6 +308,20 @@ img {
 }
 
 @keyframes pop-up {
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoom-in {
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fly-down {
     100% {
         opacity: 1;
         transform: translateY(0);

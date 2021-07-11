@@ -2,37 +2,23 @@
 	<div>
 		<div class="slider">
 			<div class="slide active">
-				<img src="images/slideshow/1.jpg" alt="">
+				<img src="images/slideshow/1.jpeg" alt="">
 				<div class="info">
-					<h2>Winter Mountains</h2>
+					<h2>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
 			</div>
 			<div class="slide">
-				<img src="images/slideshow/2.jpg" alt="">
+				<img src="images/slideshow/2.jpeg" alt="">
 				<div class="info">
-					<h2>Tropical Desert</h2>
+					<h2>Lorem ipsum dolor sit.</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
 			</div>
 			<div class="slide">
-				<img src="images/slideshow/3.jpg" alt="">
+				<img src="images/slideshow/3.jpeg" alt="">
 				<div class="info">
-					<h2>Steaming Volcanoes</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-				</div>
-			</div>
-			<div class="slide">
-				<img src="images/slideshow/4.jpg" alt="">
-				<div class="info">
-					<h2>Mountain River</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-				</div>
-			</div>
-			<div class="slide">
-				<img src="images/slideshow/5.jpg" alt="">
-				<div class="info">
-					<h2>Egypt Pyramids</h2>
+					<h2>Lorem ipsum dolor sit amet consectetur.</h2>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
 			</div>
@@ -42,8 +28,6 @@
 			</div>
 			<div class="navigation-visibility">
 				<div class="slide-icon active"></div>
-				<div class="slide-icon"></div>
-				<div class="slide-icon"></div>
 				<div class="slide-icon"></div>
 				<div class="slide-icon"></div>
 			</div>
@@ -190,7 +174,7 @@
 
 </style>
 
-<script>
+<script scoped>
 export default {
 	mounted() {
 		const slider = document.querySelector(".slider");
