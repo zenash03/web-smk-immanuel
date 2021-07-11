@@ -24,7 +24,7 @@
                             <i class="fab fa-youtube"></i>
                         </a>
 
-                        <a href="https://api.whatsapp.com/send?phone=6120390129301" target="_blank" class="social-button whatsapp">
+                        <a href="https://api.whatsapp.com/send?phone=6289524435865" target="_blank" class="social-button whatsapp">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -33,3 +33,94 @@
         </nav>
     </div>
 </template>
+<style>
+nav {
+    margin-top: 2rem;
+}
+
+nav .logo {
+    width: 100px;
+    height: 120px;
+}
+
+nav .logo img {
+    object-fit: contain;
+}
+
+nav.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-right {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-right: 25px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+}
+
+.nav-links li:last-child {
+    margin-right: 0;
+}
+
+.nav-links li button {
+    border: 2px solid gray;
+    padding: 5px 10px;
+    background-color: white;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.social {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+}
+
+.social-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ececec;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.social-button:hover {
+    transform: scale(1.5);
+}
+
+.social .instagram {
+    color: deeppink;
+}
+
+.social .youtube {
+    color: #f72050;
+}
+
+.social .whatsapp {
+    color: #00b649;
+}
+</style>

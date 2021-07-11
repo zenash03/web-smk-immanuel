@@ -2,54 +2,23 @@
 	<div>
 		<Nav></Nav>
 
+		<div id="transition"></div>
 		<header>
 			<div class="container">
 				<div class="row">
-					<div class="hide-content col-lg-4 pt-5">
+					<div class="hide-content position-relative col-lg-4 pt-5 pb-5">
 						<h4 class="header-title">SMK Kristen Immanuel</h4>
 
 						<button type="button" class="button-primary">Explore More</button>
+
+						<div class="information mb-5">
+							<p>Jl. Letnan Jendral Sutoyo, Parit Tokaya, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78113</p>
+							<p>+62 8952-4435-865</p>
+						</div>
 					</div>
 
 					<div class="hide-content col-lg-8 pt-3 pl-5 pt-5 pb-5">
-						<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-							<ol class="carousel-indicators">
-								<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-								<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-							</ol>
-							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img class="carousel-image" src="images/gedung.jpg" alt="First slide">
-									<div class="carousel-caption d-none d-md-block">
-										<h5>Lorem 1</h5>
-										<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-									</div>
-								</div>
-								<div class="carousel-item">
-									<img class="carousel-image" src="images/banner1.jpg" alt="Second slide">
-									<div class="carousel-caption d-none d-md-block">
-										<h5>Lorem 2</h5>
-										<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-									</div>
-								</div>
-								<div class="carousel-item">
-									<img class="carousel-image" src="images/coworking.jpeg" alt="Third slide">
-									<div class="carousel-caption d-none d-md-block">
-										<h5>Lorem 3</h5>
-										<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-									</div>
-								</div>
-							</div>
-							<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a>
-						</div>
+						<Slideshow></Slideshow>
 					</div>
 				</div>
 			</div>
@@ -59,10 +28,22 @@
 
 <script>
 import Nav from '@/components/Nav.vue'
+import Slideshow from '@/components/Slideshow.vue'
 
 export default {
 	components: {
-		Nav
-	}
+		Nav,
+		Slideshow
+	},
+	methods: {
+		removeTransition() {
+			const transition = document.getElementById('transition');
+
+			transition.classList.add('out');
+		}
+	},
+	mounted() {
+		this.removeTransition();
+	},
 }
 </script>
