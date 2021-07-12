@@ -6,12 +6,12 @@
 		<header class="mb-5">
 			<div class="container">
 				<div class="row">
-					<div class="hide-content position-relative col-lg-4 pt-5 pb-5">
+					<div class="hide-content d-flex flex-column col-lg-4 pt-5 pb-5">
 						<h4 class="header-title">SMK Kristen Immanuel</h4>
 
 						<button type="button" class="button-primary">Explore More</button>
 
-						<div class="information mb-5">
+						<div class="information">
 							<p>Jl. Letnan Jendral Sutoyo, Parit Tokaya, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78113</p>
 							<p>+62 8952-4435-865</p>
 						</div>
@@ -39,10 +39,6 @@
 							<div class="image-main fade-out">
 								<img src="images/dummy/headline.png" alt="">
 							</div>
-
-							<div class="image-second fade-out">
-								<img src="images/gedung.jpg" alt="">
-							</div>
 						</div>
 					</div>
 				</div>
@@ -58,7 +54,7 @@
 								<div class="col-lg-6 mb-2">
 									<div class="news-card zoom-out">
 										<div class="img">
-											<img src="images/slideshow/1.jpg" alt="">	
+											<img src="images/slideshow/1.jpeg" alt="">	
 										</div>	
 
 										<div class="content">
@@ -84,7 +80,7 @@
 								<div class="col-lg-6 mb-2">
 									<div class="news-card zoom-out">
 										<div class="img">
-											<img src="images/slideshow/1.jpg" alt="">	
+											<img src="images/slideshow/1.jpeg" alt="">	
 										</div>	
 
 										<div class="content">
@@ -110,7 +106,7 @@
 								<div class="col-lg-6 mb-2">
 									<div class="news-card zoom-out">
 										<div class="img">
-											<img src="images/slideshow/1.jpg" alt="">	
+											<img src="images/slideshow/1.jpeg" alt="">	
 										</div>	
 
 										<div class="content">
@@ -136,7 +132,7 @@
 								<div class="col-lg-6 mb-2">
 									<div class="news-card zoom-out">
 										<div class="img">
-											<img src="images/slideshow/1.jpg" alt="">	
+											<img src="images/slideshow/1.jpeg" alt="">	
 										</div>	
 
 										<div class="content">
@@ -268,7 +264,7 @@
 						<div class="col-lg-6 mb-2">
 							<div class="news-card zoom-out">
 								<div class="img">
-									<img src="images/slideshow/1.jpg" alt="">	
+									<img src="images/slideshow/1.jpeg" alt="">	
 								</div>	
 
 								<div class="content">
@@ -293,7 +289,7 @@
 						<div class="col-lg-6 mb-2">
 							<div class="news-card zoom-out">
 								<div class="img">
-									<img src="images/slideshow/1.jpg" alt="">	
+									<img src="images/slideshow/1.jpeg" alt="">	
 								</div>	
 
 								<div class="content">
@@ -316,9 +312,8 @@
 						</div>
 					</div>
 				</div>
-
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ececec" fill-opacity="1" d="M0,256L48,240C96,224,192,192,288,192C384,192,480,224,576,202.7C672,181,768,107,864,106.7C960,107,1056,181,1152,208C1248,235,1344,213,1392,202.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
 			</section>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ececec" fill-opacity="1" d="M0,256L48,240C96,224,192,192,288,192C384,192,480,224,576,202.7C672,181,768,107,864,106.7C960,107,1056,181,1152,208C1248,235,1344,213,1392,202.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
 
 			<section class="ekskul pt-5 pb-5 mb-5">
 				<div class="container">
