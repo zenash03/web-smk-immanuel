@@ -29,15 +29,15 @@
 				<div class="container">
 					<div class="row">
 						<div class="hide-content col-lg-4">
-							<h2 class="headline-title fade-out">{{ headline[0].title }}</h2>
-							<p class="fade-out mb-5">{{ headline[0].excerpt }}</p>
+							<h2 class="headline-title fade-out">{{ headline.title }}</h2>
+							<p class="fade-out mb-5">{{ headline.excerpt }}</p>
 
 							<button type="button" onclick="location.href = '#news'" class="fade-out button-primary">Explore More</button>
 						</div>
 
 						<div class="position-relative col-lg-8">
 							<div class="image-main fade-out">
-								<img :src="headline[0].image_url" alt="">
+								<img :src="headline.image_url" alt="">
 							</div>
 						</div>
 					</div>

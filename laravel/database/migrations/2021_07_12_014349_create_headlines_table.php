@@ -19,6 +19,7 @@ class CreateHeadlinesTable extends Migration
             $table->text('content');
             $table->string('author');
             $table->text('image_url');
+            $table->enum('active', ['y', 'n']);
             $table->timestamps();
         });
     }

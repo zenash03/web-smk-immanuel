@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Headline;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class HeadlineController extends Controller
 {
@@ -14,7 +16,7 @@ class HeadlineController extends Controller
      */
     public function index()
     {
-        return response()->json(Headline::all(), 200);
+        return response()->json(Headline::where('active', 'y')->first(), 200);
     }
 
     /**
@@ -25,7 +27,33 @@ class HeadlineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'content' => 'required',
+            'file' => 'required',
+            'active' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['message' => 'invalid field'], 422);
+        }
+
+        $file = $request->file;
+        $name = uniqid() . date('His') . '.' . $file->getClientOriginalExtension();
+        $date = date('l, F Y');
+        $url = url('upload') . '/' . $name;
+        $author = User::where('token', $request->token)->first()->name;
+
+        $file->move(public_path() . '\upload', $name);
+
+        Headline::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'author' => $author,
+            'image_url' => $url,
+            'active' => $request->active
+        ]);
+
+        return response()->json(['message' => 'success'], 200);
     }
 
     /**
@@ -36,9 +64,9 @@ class HeadlineController extends Controller
      */
     public function show($id)
     {
-        $headline = Headline::where('id', $id)->first();
+        $news = Headline::where('id', $id)->first();
 
-        return response()->json($headline, 200);
+        return response()->json($news, 200);
     }
     
     /**
@@ -50,7 +78,24 @@ class HeadlineController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $file = $request->file;
+        $name = uniqid() . date('His') . '.' . $file->getClientOriginalExtension();
+        $date = date('l, F Y');
+        $url = url('upload') . '/' . $name;
+        $author = User::where('token', $request->token)->first()->name;
+
+        $file->move(public_path() . '\upload', $name);
+
+        $news = Headline::findOrFail($id);
+        $news->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'author' => $author,
+            'image_url' => $url,
+            'active' => $request->active
+        ]);
+
+        return response()->json(['message' => 'success'], 200);
     }
 
     /**
@@ -61,6 +106,8 @@ class HeadlineController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Headline::findOrFail($id)->delete();
+
+        return response()->json(['message' => 'success'], 200);
     }
 }
