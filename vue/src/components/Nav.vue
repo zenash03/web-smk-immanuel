@@ -9,12 +9,12 @@
 
                 <div class="nav-right">
                     <ul class="nav-links">
-                        <li><a href="">Berita</a></li>
-                        <li><a href="">Jurusan</a></li>
-                        <li><a href="">Prestasi</a></li>
-                        <li><a href="">Ekskul</a></li>
-                        <li><a href="">Visi</a></li>
-                        <li><a href="">Misi</a></li>
+                        <li><a href="#news">Berita</a></li>
+                        <li><a href="#jurusan">Jurusan</a></li>
+                        <li><a href="#prestasi">Prestasi</a></li>
+                        <li><a href="#ekskul">Ekskul</a></li>
+                        <li><a href="">Semua Berita</a></li>
+                        <li><a href=""></a></li>
                     </ul>
 
                     <div class="social">
