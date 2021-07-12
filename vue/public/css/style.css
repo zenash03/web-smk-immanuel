@@ -6,9 +6,11 @@
 }
 
 body {
+    width: 100vw;
     font-family: 'Khula', sans-serif;
     background-color: var(--background);
-    overflow-x: hidden;
+    overflow-x: hidden !important;
+    overflow-y: scroll;
 }
 
 img {
@@ -146,7 +148,7 @@ img {
     border-radius: 5px;
 }
 
-.news-card .tag {
+.tag {
     font-size: 14px;
     margin: 10px 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -158,7 +160,7 @@ img {
     background-color: var(--primary-blue);
 }
 
-.news-card .details {
+.details {
     display: flex;
     color: gray;
 }
@@ -250,6 +252,10 @@ img {
 
 .prestasi svg {
     margin-top: -50px;
+}
+
+.prestasi img {
+    height: 250px;
 }
 /* Prestasi Style ENd */
 

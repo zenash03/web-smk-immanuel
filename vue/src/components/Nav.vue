@@ -4,15 +4,15 @@
         <nav>
             <div class="container d-flex justify-content-between">
                 <div class="logo">
-                    <img src="images/logo.png" alt="">
+                    <img src="/images/logo.png" alt="">
                 </div>
 
                 <div class="nav-right">
                     <ul class="nav-links">
-                        <li><a href="#news">Berita</a></li>
-                        <li><a href="#jurusan">Jurusan</a></li>
-                        <li><a href="#prestasi">Prestasi</a></li>
-                        <li><a href="#ekskul">Ekskul</a></li>
+                        <li><a href="/#news">Berita</a></li>
+                        <li><a href="/#jurusan">Jurusan</a></li>
+                        <li><a href="/#prestasi">Prestasi</a></li>
+                        <li><a href="/#ekskul">Ekskul</a></li>
                         <li><a href="">Semua Berita</a></li>
                         <li><a href=""></a></li>
                     </ul>
@@ -162,10 +162,6 @@ nav.nav {
 
     .social {
         align-self: flex-start;
-    }
-
-    .main-wave {
-        height: 40%;
     }
 }
 </style>

@@ -9,7 +9,7 @@
 					<div class="hide-content d-flex flex-column col-lg-4 pt-5 pb-5">
 						<h4 class="header-title">SMK Kristen Immanuel</h4>
 
-						<button type="button" class="button-primary">Explore More</button>
+						<button type="button" onclick="location.href = '#headline'" class="button-primary">Explore More</button>
 
 						<div class="information">
 							<p>Jl. Letnan Jendral Sutoyo, Parit Tokaya, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78113</p>
@@ -32,7 +32,7 @@
 							<h2 class="headline-title fade-out">{{ headline[0].title }}</h2>
 							<p class="fade-out mb-5">{{ headline[0].excerpt }}</p>
 
-							<button type="button" class="fade-out button-primary">Explore More</button>
+							<button type="button" onclick="location.href = '#news'" class="fade-out button-primary">Explore More</button>
 						</div>
 
 						<div class="position-relative col-lg-8">
@@ -50,16 +50,16 @@
 						<div class="col-lg-8">
 						<h2 class="title pop-out">Berita Terbaru</h2>
 							<div class="row">
-								<div v-for="n in news" :key="n.id" class="col-lg-6 mb-2">
+								<div v-for="n in news.slice(0, 4)" :key="n.id" class="col-lg-6 mb-2">
 									<div class="news-card zoom-out">
 										<div class="img">
 											<img :src="n.image_url" alt="">	
 										</div>	
 
 										<div class="content">
-											<div class="tag">Lomba</div>
+											<div class="tag">{{ n.tag }}</div>
 
-											<h5 class="title"><a href="">{{ n.title }}</a></h5>
+											<h5 class="title"><router-link :to="`/news/${n.id}`">{{ n.title }}</router-link></h5>
 
 											<div class="details">
 												<div class="author">
@@ -69,7 +69,7 @@
 
 												<div class="date">
 													<i class="far fa-clock"></i>
-													<p>{{ n.created_at }}</p>
+													<p>{{ n.date }}</p>
 												</div>
 											</div>
 										</div>
@@ -82,9 +82,9 @@
 							<h2 class="title pop-out text-center">More</h2>
 
 							<div class="container">
-								<div v-for="n in news" :key="n.id" class="news-list mb-2 fly-up">
+								<div v-for="n in news.slice(0, 15)" :key="n.id" class="news-list mb-2 fly-up">
 									<i class="fas fa-hashtag"></i>
-									<p>{{ n.title }}</p>
+									<p><router-link :to="`/news/${n.id}`">{{ n.title }}</router-link></p>
 								</div>
 							</div>
 						</div>
@@ -101,7 +101,7 @@
 							<div class="row">
 								<div class="col-lg-4">
 									<img src="images/coworking.jpeg" class="img-jurusan fade-out">
-									<h5 class="fade-out">Akutansi dan Lembaga</h5>
+									<h5 class="fade-out">Akutansi dan Keuangan Lembaga</h5>
 									<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit alias eaque ratione voluptatum quis libero fuga mollitia totam deleniti sint dolorem modi aliquid rem, accusamus fugit eius nesciunt vero quibusdam.</p>
 								</div>
 
@@ -113,7 +113,7 @@
 								
 								<div class="col-lg-4">
 									<img src="images/coworking.jpeg" class="img-jurusan fade-out">
-									<h5 class="fade-out">Bisnis dan Pemasaran</h5>
+									<h5 class="fade-out">Bisnis Daring dan Pemasaran</h5>
 									<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit alias eaque ratione voluptatum quis libero fuga mollitia totam deleniti sint dolorem modi aliquid rem, accusamus fugit eius nesciunt vero quibusdam.</p>
 								</div>
 							</div>
@@ -130,11 +130,11 @@
 						<div v-for="p in prestasi" :key="p.id" class="col-lg-6 mb-2">
 							<div class="news-card zoom-out">
 								<div class="img">
-									<img src="images/slideshow/1.jpeg" alt="">	
+									<img :src="p.image_url" alt="">	
 								</div>	
 
 								<div class="content">
-									<h5 class="title mt-2"><a href="">{{ p.title }}</a></h5>
+									<h5 class="title mt-2"><router-link :to="`/prestasi/${p.id}`">{{ p.title }}</router-link></h5>
 									<p>{{ p.excerpt }}</p>
 
 									<div class="details">
@@ -145,7 +145,7 @@
 
 										<div class="date">
 											<i class="far fa-clock"></i>
-											<p>{{ p.created_at }}</p>
+											<p>{{ p.date }}</p>
 										</div>
 									</div>
 								</div>
@@ -313,7 +313,7 @@ export default {
 					});
 				}
 			});
-		}, 1000);
+		}, 1200);
 	},
 }
 </script>

@@ -41,7 +41,7 @@
                     </div>
                     <div class="footer-col">
                         <div class="footer-logo">
-                            <img src="images/logo.png" alt="Logo">
+                            <img src="/images/logo.png" alt="Logo">
                         </div>
                     </div>
                 </div>
@@ -58,11 +58,11 @@ ul {
 
 .footer {
 	background-color: #0099ff;
-    padding: 70px 0;
+    padding: 50px 0;
 }
 
 .footer svg {
-    transform: translateY(-300px);
+    transform: translateY(-290px);
 }
 
 .footer-col {
@@ -128,7 +128,7 @@ ul {
     }
 
     .footer svg {
-        transform: translateY(-160px);
+        transform: translateY(110px) !important;
     }
 }
 </style>

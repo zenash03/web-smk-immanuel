@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prestasi;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PrestasiController extends Controller
 {
@@ -25,7 +27,34 @@ class PrestasiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'content' => 'required',
+            'file' => 'required',
+            'tag' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['message' => 'invalid field'], 422);
+        }
+
+        $file = $request->file;
+        $name = uniqid() . date('His') . '.' . $file->getClientOriginalExtension();
+        $date = date('l, F Y');
+        $url = url('upload') . '/' . $name;
+        $author = User::where('token', $request->token)->first()->name;
+        
+        $file->move(public_path() . '\upload', $name);
+
+        Prestasi::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'author' => $author,
+            'image_url' => $url,
+            'tag' => $request->tag,
+            'date' => $date
+        ]);
+
+        return response()->json(['message' => 'success'], 200);
     }
 
     /**
@@ -50,7 +79,25 @@ class PrestasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $file = $request->file;
+        $name = uniqid() . date('His') . '.' . $file->getClientOriginalExtension();
+        $date = date('l, F Y');
+        $url = url('upload') . '/' . $name;
+        $author = User::where('token', $request->token)->first()->name;
+
+        $file->move(public_path() . '\upload', $name);
+
+        $news = Prestasi::findOrFail($id);
+        $news->update([
+            'title' => $request->title,
+            'content' => $request->content,
+            'author' => $author,
+            'image_url' => $url,
+            'tag' => $request->tag,
+            'date' => $date
+        ]);
+
+        return response()->json(['message' => 'success'], 200);
     }
 
     /**
@@ -61,6 +108,8 @@ class PrestasiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Prestasi::findOrFail($id)->delete();
+
+        return response()->json(['message' => 'success'], 200);
     }
 }
