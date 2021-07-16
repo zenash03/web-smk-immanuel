@@ -13,6 +13,10 @@ const routes = [
 	{
 		path: '/:type/:id',
 		component: () => import('@/views/Single.vue')
+	},
+	{
+		path: '/admin',
+		component: () => import('@/views/admin/Admin.vue')
 	}
 ]
 

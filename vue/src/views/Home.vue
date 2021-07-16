@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="home">
 		<Nav></Nav>
 
 		<div id="transition"></div>
@@ -7,7 +7,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="hide-content d-flex flex-column col-lg-4 pt-5 pb-5">
-						<h4 class="header-title">SMK Kristen Immanuel</h4>
+						<h2 class="header-title">SMK Kristen Immanuel</h2>
 
 						<button type="button" onclick="location.href = '#headline'" class="button-primary">Explore More</button>
 

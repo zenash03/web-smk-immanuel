@@ -51,6 +51,10 @@
 </template>
 
 <style scoped>
+.footer-col h4 {
+    color: white !important;
+}
+
 ul {
     padding: 0;
 	list-style: none;
