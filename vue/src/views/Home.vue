@@ -100,19 +100,19 @@
 						<div class="majors">
 							<div class="row">
 								<div class="col-lg-4">
-									<img src="images/coworking.jpeg" class="img-jurusan fade-out">
+									<img src="images/slideshow/1.jpeg" class="img-jurusan fade-out">
 									<h5 class="fade-out">Akutansi dan Keuangan Lembaga</h5>
 									<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit alias eaque ratione voluptatum quis libero fuga mollitia totam deleniti sint dolorem modi aliquid rem, accusamus fugit eius nesciunt vero quibusdam.</p>
 								</div>
 
 								<div class="col-lg-4">
-									<img src="images/coworking.jpeg" class="img-jurusan fade-out">
+									<img src="images/slideshow/1.jpeg" class="img-jurusan fade-out">
 									<h5 class="fade-out">Teknik Komputer dan Jaringan</h5>
 									<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit alias eaque ratione voluptatum quis libero fuga mollitia totam deleniti sint dolorem modi aliquid rem, accusamus fugit eius nesciunt vero quibusdam.</p>
 								</div>
 								
 								<div class="col-lg-4">
-									<img src="images/coworking.jpeg" class="img-jurusan fade-out">
+									<img src="images/slideshow/1.jpeg" class="img-jurusan fade-out">
 									<h5 class="fade-out">Bisnis Daring dan Pemasaran</h5>
 									<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit alias eaque ratione voluptatum quis libero fuga mollitia totam deleniti sint dolorem modi aliquid rem, accusamus fugit eius nesciunt vero quibusdam.</p>
 								</div>
