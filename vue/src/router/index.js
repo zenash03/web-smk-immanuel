@@ -11,12 +11,36 @@ const routes = [
 		component: Home
 	},
 	{
-		path: '/:type/:id',
+		path: '/read/:type/:id',
 		component: () => import('@/views/Single.vue')
 	},
 	{
 		path: '/admin',
 		component: () => import('@/views/admin/Admin.vue')
+	},
+	{
+		path: '/news',
+		component: () => import('@/views/admin/News.vue')
+	},
+	{
+		path: '/add-news',
+		component: () => import('@/views/admin/AddNews.vue')
+	},
+	{
+		path: '/edit-news/:id',
+		component: () => import('@/views/admin/EditNews.vue')
+	},
+	{
+		path: '/prestasi',
+		component: () => import('@/views/admin/Prestasi.vue')
+	},
+	{
+		path: '/add-prestasi',
+		component: () => import('@/views/admin/AddPrestasi.vue')
+	},
+	{
+		path: '/edit-prestasi/:id',
+		component: () => import('@/views/admin/EditPrestasi.vue')
 	}
 ]
 

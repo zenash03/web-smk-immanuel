@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="home">
         <div id="transition"></div>
 
         <div>
@@ -46,7 +46,7 @@
 
                             <div class="col-lg-8">
                                 <article>
-                                    <p class="content">{{ data.content }}</p>
+                                    <pre class="content">{{ data.content }}</pre>
                                 </article>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                             <h2 class="title text-center fly-down fly-up">More</h2>
                             <div v-for="a in all.slice(0, 25)" :key="a.id" class="news-list mb-2 fly-down fly-up">
                                 <i class="fas fa-hashtag"></i>
-                                <p><router-link :to="`/${$route.params.type}/${a.id}`">{{ a.title }}</router-link></p>
+                                <p><router-link :to="`/read/${$route.params.type}/${a.id}`">{{ a.title }}</router-link></p>
                             </div>
                         </div>
                     </div>

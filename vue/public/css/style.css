@@ -19,6 +19,15 @@ img {
     object-fit: fill;
 }
 
+pre {
+    font-family: 'Khula', sans-serif !important;
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
 #home a {
     text-decoration: none;
     color: black !important;
@@ -69,7 +78,7 @@ img {
     font-weight: bold;
     margin-bottom: 50px;
     transform: translateX(-100%);
-    animation: text 1s forwards;
+    animation: text 2s forwards;
 }
 
 .header-title::before {
@@ -80,7 +89,7 @@ img {
     width: 0;
     height: 5px;
     background-color: var(--primary-yellow);
-    animation: underline 1s 1s forwards;
+    animation: underline 1s 2s forwards;
 }
 
 .button-primary {
@@ -91,7 +100,7 @@ img {
     background-color: var(--primary-blue);
     transition: .2s;
     transform: translateX(-110%);
-    animation: text 1s 1.1s forwards;
+    animation: text 1s 2.2s forwards;
 }
 
 .button-primary:hover {
@@ -107,7 +116,7 @@ img {
     font-size: 1rem;
     margin: 0;
     transform: translateX(-100%);
-    animation: text 1s .5s forwards;
+    animation: text 1s 1s forwards;
 }
 /* Home Header Style End */
 

@@ -123,7 +123,7 @@ export default {
 			slider.addEventListener("mouseout", () => {
 				repeater();
 			});
-		}, 1400);
+		}, 2000);
 	}
 }
 </script>

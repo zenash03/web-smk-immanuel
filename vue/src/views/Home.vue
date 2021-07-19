@@ -59,7 +59,7 @@
 										<div class="content">
 											<div class="tag">{{ n.tag }}</div>
 
-											<h5 class="title"><router-link :to="`/news/${n.id}`">{{ n.title }}</router-link></h5>
+											<h5 class="title"><router-link :to="`/read/news/${n.id}`">{{ n.title }}</router-link></h5>
 
 											<div class="details">
 												<div class="author">
@@ -84,7 +84,7 @@
 							<div class="container">
 								<div v-for="n in news.slice(0, 15)" :key="n.id" class="news-list mb-2 fly-up">
 									<i class="fas fa-hashtag"></i>
-									<p><router-link :to="`/news/${n.id}`">{{ n.title }}</router-link></p>
+									<p><router-link :to="`/read/news/${n.id}`">{{ n.title }}</router-link></p>
 								</div>
 							</div>
 						</div>
@@ -134,7 +134,7 @@
 								</div>	
 
 								<div class="content">
-									<h5 class="title mt-2"><router-link :to="`/prestasi/${p.id}`">{{ p.title }}</router-link></h5>
+									<h5 class="title mt-2"><router-link :to="`/read/prestasi/${p.id}`">{{ p.title }}</router-link></h5>
 									<p>{{ p.excerpt }}</p>
 
 									<div class="details">

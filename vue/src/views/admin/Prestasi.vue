@@ -130,72 +130,28 @@
 
                         <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                            <h1 class="h3 mb-0 text-gray-800">Prestasi</h1>
                         </div>
 
-                        <!-- Content Row -->
-                        <div class="row">
+                        <router-link to="add-prestasi">Add Prestasi</router-link>
 
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Banner Active</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                            </div>
+                        <ul class="list list-inline">
+                            <li class="d-flex justify-content-between" v-for="n in prestasi" :key="n.id">
+                                <div class="d-flex flex-row align-items-center"><i class="fa fa-check-circle checkicon"></i>
+                                    <div class="ml-2">
+                                        <h6 class="mb-0">{{ n.title }}</h6>
+                                        <div class="d-flex flex-row mt-1 text-black-50 date-time">
+                                            <div><i class="fa fa-calendar-o"></i><span>{{ n.date }}</span></div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-success shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    Total News</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="button">
+                                    <button type="button" class="btn btn-danger" @click="del(n.id)">Delete</button>
+                                    <router-link :to="`edit-prestasi/${n.id}`" class="btn btn-warning ml-1">Edit</router-link>
                                 </div>
-                            </div>
-
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Prestasi
-                                                </div>
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col-auto">
-                                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
+                            </li>
+                        </ul>
                     <!-- /.container-fluid -->
 
                 </div>
@@ -211,25 +167,88 @@
         <a class="scroll-to-top rounded" href="#page-top">
             <i class="fas fa-angle-up"></i>
         </a>
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="../">Logout</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </template>
+
+<script>
+import axios from 'axios'
+
+export default {
+    data() {
+        return {
+            token: 'a261a422927d7b454547428b609ab9f421e1af8230dadacd47d5b6165860bdfa',
+            prestasi: ''
+        }
+    },
+    methods: {
+        getPrestasi() {
+			axios.get(`prestasi`)
+				.then(res => {
+					this.prestasi = res.data;
+				})
+				.catch(err => {
+					console.log(err.response.data);
+				})
+		},
+        del(id) {
+            axios.delete(`prestasi/${id}?token=${this.token}`)
+                .then(res => {
+                    console.log(res.data);
+                    this.getPrestasi();
+                })
+                .catch(err => {
+                    console.log(err.response.data);
+                });
+        }
+    },
+    created() {
+        this.getPrestasi();
+    },
+}
+</script>
+
+<style scoped>
+body {
+    background: #eee
+}
+
+.icons i {
+    color: #b5b3b3;
+    border: 1px solid #b5b3b3;
+    padding: 6px;
+    margin-left: 4px;
+    border-radius: 5px;
+    cursor: pointer
+}
+
+.activity-done {
+    font-weight: 600
+}
+
+.list-group li {
+    margin-bottom: 12px
+}
+
+.list li {
+    list-style: none;
+    padding: 10px;
+    border: 1px solid #e3dada;
+    margin-top: 12px;
+    border-radius: 5px;
+    background: #fff
+}
+
+.checkicon {
+    color: green;
+    font-size: 19px
+}
+
+.date-time {
+    font-size: 12px
+}
+
+.profile-image img {
+    margin-left: 3px
+}
+</style>

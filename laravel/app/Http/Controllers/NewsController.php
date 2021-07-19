@@ -79,14 +79,18 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $file = $request->file;
-        $name = uniqid() . date('His') . '.' . $file->getClientOriginalExtension();
+        $url = News::findOrFail($id)->image_url;
         $date = date('l, F Y');
-        $url = url('upload') . '/' . $name;
         $author = User::where('token', $request->token)->first()->name;
 
-        $file->move(public_path() . '\upload', $name);
-
+        if ($request->file) {
+            $file = $request->file;
+            $name = uniqid() . date('His') . '.' . $file->getClientOriginalExtension();
+            $url = url('upload') . '/' . $name;
+            
+            $file->move(public_path() . '\upload', $name);
+        }
+        
         $news = News::findOrFail($id);
         $news->update([
             'title' => $request->title,
