@@ -65,9 +65,9 @@ class PrestasiController extends Controller
      */
     public function show($id)
     {
-        $news = Prestasi::where('id', $id)->first();
+        $prestasi = Prestasi::where('id', $id)->first();
 
-        return response()->json($news, 200);
+        return response()->json($prestasi, 200);
     }
     
     /**
@@ -79,16 +79,20 @@ class PrestasiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $file = $request->file;
-        $name = uniqid() . date('His') . '.' . $file->getClientOriginalExtension();
+        $url = Prestasi::findOrFail($id)->image_url;
         $date = date('l, F Y');
-        $url = url('upload') . '/' . $name;
         $author = User::where('token', $request->token)->first()->name;
 
-        $file->move(public_path() . '\upload', $name);
+        if ($request->file) {
+            $file = $request->file;
+            $name = uniqid() . date('His') . '.' . $file->getClientOriginalExtension();
+            $url = url('upload') . '/' . $name;
+            
+            $file->move(public_path() . '\upload', $name);
+        }
 
-        $news = Prestasi::findOrFail($id);
-        $news->update([
+        $prestasi = Prestasi::findOrFail($id);
+        $prestasi->update([
             'title' => $request->title,
             'content' => $request->content,
             'author' => $author,

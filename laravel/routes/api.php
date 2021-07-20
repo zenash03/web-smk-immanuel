@@ -27,6 +27,8 @@ Route::group(['middleware' => 'token'], function() {
     Route::resource('prestasi', PrestasiController::class)->only(['store', 'update', 'destroy']);
     Route::resource('headline', HeadlineController::class)->only(['store', 'update', 'destroy']);
     Route::resource('banner', BannerController::class)->only(['store', 'update', 'destroy']);
+    Route::get('banners', [BannerController::class, 'adminView']);
+    Route::put('toggle/{id}', [BannerController::class, 'toggle']);
 });
 
 Route::get('news', [NewsController::class, 'index']);
@@ -39,3 +41,4 @@ Route::get('headline', [HeadlineController::class, 'index']);
 Route::get('headline/{id}', [HeadlineController::class, 'show']);
 
 Route::get('banner', [BannerController::class, 'index']);
+Route::get('banner/{id}', [BannerController::class, 'show']);

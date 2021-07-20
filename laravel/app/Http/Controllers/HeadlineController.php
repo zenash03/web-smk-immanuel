@@ -64,9 +64,9 @@ class HeadlineController extends Controller
      */
     public function show($id)
     {
-        $news = Headline::where('id', $id)->first();
+        $headline = Headline::where('id', $id)->first();
 
-        return response()->json($news, 200);
+        return response()->json($headline, 200);
     }
     
     /**
@@ -86,8 +86,8 @@ class HeadlineController extends Controller
 
         $file->move(public_path() . '\upload', $name);
 
-        $news = Headline::findOrFail($id);
-        $news->update([
+        $headline = Headline::findOrFail($id);
+        $headline->update([
             'title' => $request->title,
             'content' => $request->content,
             'author' => $author,

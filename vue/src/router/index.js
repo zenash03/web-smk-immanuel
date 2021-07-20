@@ -41,6 +41,18 @@ const routes = [
 	{
 		path: '/edit-prestasi/:id',
 		component: () => import('@/views/admin/EditPrestasi.vue')
+	},
+	{
+		path: '/banner',
+		component: () => import('@/views/admin/Banner.vue')
+	},
+	{
+		path: '/add-banner',
+		component: () => import('@/views/admin/AddBanner.vue')
+	},
+	{
+		path: '/edit-banner/:id',
+		component: () => import('@/views/admin/EditBanner.vue')
 	}
 ]
 
