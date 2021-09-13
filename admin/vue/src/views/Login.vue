@@ -45,7 +45,7 @@ export default {
     },
     methods: {
         login() {
-            axios.post(`auth/login`, this.formData)
+            axios.post(`auth/admin/login`, this.formData)
                 .then(res => {
                     localStorage.setItem('token', res.data);
 

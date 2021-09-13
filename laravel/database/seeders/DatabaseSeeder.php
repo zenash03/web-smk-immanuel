@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\Banner;
-use App\Models\Headline;
 use App\Models\News;
 use App\Models\Prestasi;
 use App\Models\User;
@@ -21,14 +21,14 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         // create admin
-        User::create([
+        Admin::create([
             'name' => 'Admin',
             'username' => 'admin',
-            'password' => 'a261a422927d7b454547428b609ab9f421e1af8230dadacd47d5b6165860bdfa',
-            'role' => 'admin',
-            'token' => md5('admin')
+            'password' => bcrypt('admin'),
+            'role' => 'admin'
         ]);
 
+        // create user
         User::create([
             'name' => 'Erick Chandra',
             'username' => '6700',

@@ -28,7 +28,7 @@ class FormMagangController extends Controller
             'pic' => 'required'
         ]);
 
-        if ($validator->fails()) return response()->json(['message' => 'Data yang kamu masukin ga valid 😜'], 422);
+        if ($validator->fails()) return response()->json(['message' => 'Data yang kamu masukin ga valid 😜. coba cek lagi deh'], 422);
         $user = User::where('token', $request->token)->first();
 
         $magang = FormMagang::create([

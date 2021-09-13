@@ -4,11 +4,7 @@
             <Sidebar></Sidebar>
 
             <main>
-                <header class="header">
-                    <div class="container-fluid">
-                        <p class="profile">Hi, <span>{{ me.name }}</span></p>
-                    </div>
-                </header>
+                <Header></Header>
 
                 <div class="content p-5">
                     <div class="container p-5">
@@ -24,7 +20,7 @@
                             <div class="col-lg-4 mb-4" v-for="perusahaan in dataPerusahaan" :key="perusahaan.id">
                                 <div class="card">
                                     <h5 class="title">{{ perusahaan.nama_perusahaan }}</h5>
-                                    <p class="alamat">{{ String(perusahaan.alamat).slice(0, 80) }}...</p>
+                                    <p class="alamat">{{ perusahaan.alamat }}</p>
 
                                     <p class="tersedia text-success" v-if="perusahaan.slot_tersedia != 0">{{ perusahaan.slot_tersedia }} Slot Tersedia</p>
                                     <p class="tersedia text-danger" v-if="perusahaan.slot_tersedia == 0">Tidak Ada Slot Tersedia</p>
@@ -44,33 +40,25 @@
 
 <script>
 import axios from 'axios'
+import Header from '@/components/pendaftaran-magang/Header.vue'
 import Sidebar from '@/components/pendaftaran-magang/Sidebar.vue'
 import Footer from '@/components/pendaftaran-magang/Footer.vue'
 
 export default {
     components: {
         Sidebar,
+        Header,
         Footer
     },
     data() {
         return {
             token: localStorage.getItem('token'),
-            me: '',
             dataPerusahaan: '',
             alertSuccess: '',
             alertDanger: '',
         }
     },
     methods: {
-        getMe() {
-            axios.get(`auth/me?token=${this.token}`)
-                .then(res => {
-                    this.me = res.data;
-                })
-                .catch(err => {
-                    console.log(err.response.data);
-                }); 
-        },
         getData() {
             axios.get(`magang?token=${this.token}`)
                 .then(res => {
@@ -82,14 +70,7 @@ export default {
         }
     },
     created() {
-        if (!this.token) {
-            this.$router.push('/login');
-
-            return;
-        }
-
         this.getData();
-        this.getMe();
     },
 }
 </script>
@@ -109,35 +90,6 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.profile {
-    margin: 0;
-    padding: 10px;
-    transition: .5s;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.profile:hover {
-    background-color: #f5f7fd;
-}
-
-.profile span {
-    font-weight: 700;
-}
-
-.header {
-    width: 100%;
-    height: 70px;
-    background-color: white;
-}
-
-.header .container-fluid {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100%;
 }
 
 .content {
@@ -161,6 +113,9 @@ img {
 }
 
 .alamat {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 12px;
 }
 
@@ -176,6 +131,7 @@ img {
 }
 
 .title {
+    color: inherit;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

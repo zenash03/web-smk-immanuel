@@ -25,72 +25,42 @@ const routes = [
 		component: () => import('@/views/Single.vue')
 	},
 
+
 	{
 		path: '/pendaftaran-magang',
-		component: () => import('@/views/pendaftaran-magang/Home.vue')
+		component: () => import('@/views/pendaftaran-magang/Home.vue'),
+		meta: {
+			auth: true
+		}
 	},
 	{
 		path: '/pendaftaran-magang/info',
-		component: () => import('@/views/pendaftaran-magang/Info.vue')
+		component: () => import('@/views/pendaftaran-magang/Info.vue'),
+		meta: {
+			auth: true
+		}
 	},
 	{
 		path: '/pendaftaran-magang/daftarkan-perusahaan',
-		component: () => import('@/views/pendaftaran-magang/DaftarkanPerusahaan.vue')
+		component: () => import('@/views/pendaftaran-magang/DaftarkanPerusahaan.vue'),
+		meta: {
+			auth: true
+		}
 	},
 	{
 		path: '/pendaftaran-magang/dafar-perusahaan',
-		component: () => import('@/views/pendaftaran-magang/DaftarPerusahaan.vue')
+		component: () => import('@/views/pendaftaran-magang/DaftarPerusahaan.vue'),
+		meta: {
+			auth: true
+		}
 	},
 	{
 		path: '/pendaftaran-magang/dafar/:id',
-		component: () => import('@/views/pendaftaran-magang/Daftar.vue')
-	},
-
-
-	// {
-	// 	path: '/admin',
-	// 	component: () => import('@/views/admin/Admin.vue')
-	// },
-	// {
-	// 	path: '/admin/news',
-	// 	component: () => import('@/views/admin/News.vue')
-	// },
-	// {
-	// 	path: '/admin/add-news',
-	// 	component: () => import('@/views/admin/AddNews.vue')
-	// },
-	// {
-	// 	path: '/admin/edit-news/:id',
-	// 	component: () => import('@/views/admin/EditNews.vue')
-	// },
-	// {
-	// 	path: '/admin/prestasi',
-	// 	component: () => import('@/views/admin/Prestasi.vue')
-	// },
-	// {
-	// 	path: '/admin/add-prestasi',
-	// 	component: () => import('@/views/admin/AddPrestasi.vue')
-	// },
-	// {
-	// 	path: '/admin/edit-prestasi/:id',
-	// 	component: () => import('@/views/admin/EditPrestasi.vue')
-	// },
-	// {
-	// 	path: '/admin/banner',
-	// 	component: () => import('@/views/admin/Banner.vue')
-	// },
-	// {
-	// 	path: '/admin/add-banner',
-	// 	component: () => import('@/views/admin/AddBanner.vue')
-	// },
-	// {
-	// 	path: '/admin/edit-banner/:id',
-	// 	component: () => import('@/views/admin/EditBanner.vue')
-	// },
-	// {
-	// 	path: '/admin/data-magang',
-	// 	component: () => import('@/views/admin/Magang.vue')
-	// }
+		component: () => import('@/views/pendaftaran-magang/Daftar.vue'),
+		meta: {
+			auth: true
+		}
+	}
 ]
 
 const router = new VueRouter({
@@ -98,5 +68,17 @@ const router = new VueRouter({
 	base: process.env.BASE_URL,
 	routes
 })
+
+router.beforeEach((to, from, next) => {
+	if (to.matched.some(record => record.meta.auth)) {
+		if (!localStorage.getItem('token')) {
+			next('/login');
+		} else {
+			next();
+		}
+	} else {
+	  	next();
+	}
+});
 
 export default router

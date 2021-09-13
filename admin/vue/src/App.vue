@@ -8,6 +8,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+:root {
+    --background: #fcfcfc;
+    --primary-blue: #62b8f4;
+    --primary-blue-hover: #00a0e3;
+    --primary-yellow: #ffc953;
+    --primary-green: #75dfbd;
+    --primary-red: #ff6961;
+}
+
 .app {
 	font-family: 'Poppins', sans-serif;
     height: 100%;
@@ -19,35 +28,6 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.profile {
-    margin: 0;
-    padding: 10px;
-    transition: .5s;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.profile:hover {
-    background-color: #f5f7fd;
-}
-
-.profile span {
-    font-weight: 700;
-}
-
-.header {
-    width: 100%;
-    height: 70px;
-    background-color: white;
-}
-
-.header .container-fluid {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100%;
 }
 
 .content {

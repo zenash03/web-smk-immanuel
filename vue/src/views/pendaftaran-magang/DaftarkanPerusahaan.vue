@@ -4,13 +4,7 @@
             <Sidebar></Sidebar>
 
             <main>
-                <header class="header">
-                    <div class="container-fluid">
-                        <!-- <button type="button" class="button-menu" @click="toggleMenu">☰</button> -->
-
-                        <p class="profile">Hi, <span>{{ me.name }}</span></p>
-                    </div>
-                </header>
+                <Header></Header>
 
                 <div class="content p-5">
                     <div class="container p-5">
@@ -30,7 +24,7 @@
 
                                     <div class="form-group">
                                         <label for="kouta">Kuota</label>
-                                        <input type="number" class="form-control" id="kouta" placeholder="Max 4" v-model="formData.kouta">
+                                        <input type="number" class="form-control" id="kouta" v-model="formData.kouta" min="1" max="4" placeholder="Max 4">
                                     </div>
 
                                     <div class="form-group">
@@ -44,8 +38,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="pic">PIC</label>
-                                        <input type="text" class="form-control" id="pic" v-model="formData.pic">
+                                        <label for="pic">PIC (Person in Charge)</label>
+                                        <input type="text" class="form-control" id="pic" v-model="formData.pic" placeholder="">
                                     </div>
 
                                     <div class="form-group">
@@ -82,18 +76,19 @@
 
 <script>
 import axios from 'axios'
+import Header from '@/components/pendaftaran-magang/Header.vue'
 import Sidebar from '@/components/pendaftaran-magang/Sidebar.vue'
 import Footer from '@/components/pendaftaran-magang/Footer.vue'
 
 export default {
     components: {
         Sidebar,
+        Header,
         Footer
     },
     data() {
         return {
             token: localStorage.getItem('token'),
-            me: '',
             siswas: '',
             formData: {
                 nama_perusahaan: '',
@@ -111,15 +106,6 @@ export default {
         }
     },
     methods: {
-        getMe() {
-            axios.get(`auth/me?token=${this.token}`)
-                .then(res => {
-                    this.me = res.data;
-                })
-                .catch(err => {
-                    console.log(err.response.data);
-                }); 
-        },
         getSiswa() {
             axios.get(`auth/siswa?token=${this.token}`)
                 .then(res => {
@@ -137,18 +123,12 @@ export default {
                     this.$router.push('/pendaftaran-magang/dafar-perusahaan');
                 })
                 .catch(err => {
+                    scrollTo(0, 0);
                     this.alertDanger = err.response.data.message;
                 });
         }
     },
     created() {
-        if (!this.token) {
-            this.$router.push('/login');
-
-            return;
-        }
-
-        this.getMe();
         this.getSiswa();
     },
 }
@@ -169,35 +149,6 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.profile {
-    margin: 0;
-    padding: 10px;
-    transition: .5s;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.profile:hover {
-    background-color: #f5f7fd;
-}
-
-.profile span {
-    font-weight: 700;
-}
-
-.header {
-    width: 100%;
-    height: 70px;
-    background-color: white;
-}
-
-.header .container-fluid {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100%;
 }
 
 .content {

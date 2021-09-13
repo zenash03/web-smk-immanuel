@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Admin;
 use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
@@ -17,11 +18,11 @@ class TokenValidator
      */
     public function handle(Request $request, Closure $next)
     {
-        $token = User::where('token', $request->token)->first();
+        if (!$request->token) return response()->json(['message' => 'Unautorized'], 401);
 
-        if (!$token) {
-            return response()->json(['message' => 'unauthorized'], 401);
-        }
+        $user = Admin::where('token', $request->token)->first();
+
+        if (!$user) return response()->json(['message' => 'Unautorized'], 401);
 
         return $next($request);
     }

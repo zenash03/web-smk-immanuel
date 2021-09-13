@@ -4,11 +4,7 @@
             <Sidebar></Sidebar>
 
             <main>
-                <header class="header">
-                    <div class="container-fluid">
-                        <p class="profile">Hi, <span>{{ me.name }}</span></p>
-                    </div>
-                </header>
+                <Header></Header>
 
                 <div class="content p-5">
                     <div class="container p-5">
@@ -24,12 +20,14 @@
 
 <script>
 import axios from 'axios'
+import Header from '@/components/Header.vue'
 import Sidebar from '@/components/Sidebar.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
     components: {
         Sidebar,
+        Header,
         Footer
     },
     data() {
@@ -40,7 +38,7 @@ export default {
     },
     methods: {
         getMe() {
-            axios.get(`auth/me?token=${this.token}`)
+            axios.get(`auth/admin/me?token=${this.token}`)
                 .then(res => {
                     this.me = res.data;
                 })
@@ -50,20 +48,7 @@ export default {
         }
     },
     created() {
-        if (!this.token) {
-            this.$router.push('/login');
-
-            return;
-        }
-
         this.getMe();
     },
 }
 </script>
-
-<style scoped>
-
-
-
-
-</style>

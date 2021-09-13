@@ -25,7 +25,7 @@ class CreatePendaftarMagangsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('tbuser');
-            $table->foreign('penyetuju_id')->references('id')->on('tbuser');
+            $table->foreign('penyetuju_id')->references('id')->on('tbadmin');
             $table->foreign('magang_id')->references('id')->on('form_magangs');
         });
     }

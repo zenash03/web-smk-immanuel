@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Headline;
 use App\Models\News;
 use App\Models\User;
 use Illuminate\Http\Request;

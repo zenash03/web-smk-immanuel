@@ -41,7 +41,7 @@ class AuthController extends Controller
         
         $user->update(['token' => null]);
         
-        return response()->json(['message' => 'Logged Out'], 401);
+        return response()->json(['message' => 'Logged Out'], 200);
     }
     
     public function me(Request $request) {
@@ -56,7 +56,7 @@ class AuthController extends Controller
     public function siswa(Request $request) {
         $courseUserNames = PendaftarMagang::pluck('user_id')->all();
         $users = User::whereNotIn('id', $courseUserNames)->where('role', 'siswa')->get();
-        $siswa = User::where('role', 'siswa')->join('pendaftar_magangs', 'pendaftar_magangs.user_id', '!=', 'tbsiswa.id')->get();
+        $siswa = User::where('role', 'siswa')->join('pendaftar_magangs', 'pendaftar_magangs.user_id', '!=', 'tbuser.id')->get();
 
         return response()->json($users, 200);
     }

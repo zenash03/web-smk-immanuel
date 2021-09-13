@@ -14,9 +14,9 @@
 
             <main>
                 <ul>
-                    <router-link to="/pendaftaran-magang/info" class="aside-link"><i class="fas fa-info"></i> Info</router-link>
-                    <router-link to="/pendaftaran-magang/daftarkan-perusahaan" class="aside-link"><i class="fas fa-folder-plus"></i> Ajukan Perusahaan Baru</router-link>
-                    <router-link to="/pendaftaran-magang/dafar-perusahaan" class="aside-link"><i class="fas fa-list-ul"></i> List Perusahaan</router-link>
+                    <router-link to="/magang/pendaftar" class="aside-link"><i class="fas fa-user-check"></i> Pendaftar Magang</router-link>
+                    <router-link to="/pendaftaran-magang/daftarkan-perusahaan" class="aside-link"><i class="fas fa-folder-plus"></i> Daftarkan Perusahaan</router-link>
+                    <router-link to="/magang/daftar-perusahaan" class="aside-link"><i class="fas fa-list-ul"></i> List Perusahaan</router-link>
                 </ul>
 
                 <button type="button" class="button-menu" @click="toggleMenu"><span>></span></button>
@@ -54,6 +54,10 @@ header img {
 
 header .detail {
     margin-left: 1rem;    
+}
+
+.title {
+    color: black;
 }
 
 .detail h5 {

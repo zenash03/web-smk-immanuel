@@ -14,6 +14,20 @@ const routes = [
 		meta: {
 			auth: true
 		}
+	},
+	{
+		path: '/magang/pendaftar',
+		component: () => import('@/views/magang/Pendaftar.vue'),
+		meta: {
+			auth: true
+		}
+	},
+	{
+		path: '/magang/daftar-perusahaan',
+		component: () => import('@/views/magang/DaftarPerusahaan.vue'),
+		meta: {
+			auth: true
+		}
 	}
 ]
 

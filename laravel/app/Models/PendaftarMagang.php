@@ -11,6 +11,10 @@ class PendaftarMagang extends Model
 
     protected $guarded = [];
 
+    public function penyetuju() {
+        return $this->belongsTo(Admin::class, 'penyetuju_id');
+    }
+
     public function magang() {
         return $this->belongsTo(FormMagang::class, 'magang_id');
     }

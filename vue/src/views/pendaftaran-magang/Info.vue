@@ -4,11 +4,7 @@
             <Sidebar></Sidebar>
 
             <main>
-                <header class="header">
-                    <div class="container-fluid">
-                        <p class="profile">Hi, <span>{{ me.name }}</span></p>
-                    </div>
-                </header>
+                <Header></Header>
 
                 <div class="content p-5">
                     <div class="container p-5">
@@ -18,7 +14,7 @@
 
                         <div class="row">
                             <div class="col-lg-8" v-if="data != ''">
-                                <p>Kamu Mendaftar magang di, <b class="text-success">{{ data.magang.nama_perusahaan }}</b></p>
+                                <p>Kamu Mendaftar magang di, <router-link :to="`/pendaftaran-magang/dafar/${data.id}`" class="font-weight-bold text-success">{{ data.magang.nama_perusahaan }}</router-link></p>
                             </div>
 
                             <div class="col-lg-8" v-if="data">
@@ -28,7 +24,8 @@
                             </div>
                         </div>
 
-                        <p class="info m-0 mt-3" v-if="data.disetujui == 'y'">Telah disetujui oleh <b>{{ data.creator_name }}</b> pada tanggal {{ data.date_created }}</p>
+                        <p class="info m-0 mt-3" v-if="data.disetujui == 'y'">Telah disetujui oleh <b>{{ data.penyetuju.name }}</b> pada tanggal {{ data.tanggal_disetujui }}</p>
+                        <p class="info m-0 mt-3" v-if="data.disetujui == 'n'"><b>{{ data.penyetuju.name }}</b> tidak menyetujui tempat magang anda :(((</p>
                     </div>
                 </div>
 
@@ -40,12 +37,14 @@
 
 <script>
 import axios from 'axios'
+import Header from '@/components/pendaftaran-magang/Header.vue'
 import Sidebar from '@/components/pendaftaran-magang/Sidebar.vue'
 import Footer from '@/components/pendaftaran-magang/Footer.vue'
 
 export default {
     components: {
         Sidebar,
+        Header,
         Footer
     },
     data() {
@@ -76,12 +75,6 @@ export default {
         }
     },
     created() {
-        if (!this.token) {
-            this.$router.push('/login');
-
-            return;
-        }
-
         this.getData();
         this.getMe();
     },
@@ -103,35 +96,6 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.profile {
-    margin: 0;
-    padding: 10px;
-    transition: .5s;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.profile:hover {
-    background-color: #f5f7fd;
-}
-
-.profile span {
-    font-weight: 700;
-}
-
-.header {
-    width: 100%;
-    height: 70px;
-    background-color: white;
-}
-
-.header .container-fluid {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100%;
 }
 
 .content {

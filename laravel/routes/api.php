@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\auth\AdminAuthController;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\HeadlineController;
@@ -25,27 +26,41 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+
+// Auth Route
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('me', [AuthController::class, 'me']);
     Route::get('siswa', [AuthController::class, 'siswa']);
+
+    Route::post('admin/login', [AdminAuthController::class, 'login']);
+    Route::post('admin/logout', [AdminAuthController::class, 'logout']);
+    Route::get('admin/me', [AdminAuthController::class, 'me']);
 });
 
-Route::group(['middleware' => 'admin'], function () {
+// Authenticated Administrator Route
+Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
     Route::resource('news', NewsController::class)->only(['store', 'update', 'destroy']);
     Route::resource('prestasi', PrestasiController::class)->only(['store', 'update', 'destroy']);
     Route::resource('headline', HeadlineController::class)->only(['store', 'update', 'destroy']);
     Route::resource('banner', BannerController::class)->only(['store', 'update', 'destroy']);
+
     Route::get('banners', [BannerController::class, 'adminView']);
     Route::put('toggle/{id}', [BannerController::class, 'toggle']);
-});
 
-Route::group(['middleware' => 'siswa'], function () {
     Route::resource('magang', FormMagangController::class);
     Route::resource('pendaftaran', PendaftaranController::class);
 });
 
+// Authenticated Student Route
+Route::group(['middleware' => 'siswa'], function () {
+    Route::resource('magang', FormMagangController::class)->except(['destroy']);
+    Route::resource('pendaftaran', PendaftaranController::class)->only(['index', 'show']);
+});
+
+
+// Public Route
 Route::get('news', [NewsController::class, 'index']);
 Route::get('news/{id}', [NewsController::class, 'show']);
 

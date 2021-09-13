@@ -4,11 +4,7 @@
             <Sidebar></Sidebar>
 
             <main>
-                <header class="header">
-                    <div class="container-fluid">
-                        <p class="profile">Hi, <span>{{ me.name }}</span></p>
-                    </div>
-                </header>
+                <Header></Header>
 
                 <div class="content p-5">
                     <div class="container p-5">
@@ -59,23 +55,23 @@
                                     <button v-if="data.slot_tersedia == 0" type="button" class="form-control btn-primary" disabled>Daftar</button>
                                     <button @click="openModal = true" v-if="data.slot_tersedia != 0" type="button" class="form-control btn-primary">Daftar</button>
                                 </div>
-
-                                <transition name="fade">
-                                    <div class="daftar-modal" v-if="openModal">
-                                        <div class="modal-inner">
-                                            <h6 class="mb-4">Apakah Kamu yakin untuk mendaftar di <b>{{ data.nama_perusahaan }}?</b></h6>
-                                            
-                                            <p class="text-danger modal-info">Setelah menekan yakin, anda tidak dapat menbatalkan pendaftaran anda</p>
-                                            <div class="button-group">
-                                                <button type="submit" class="form-control btn-primary">Yakin Dong 😎</button>
-                                                <button @click="openModal = false" type="button" class="form-control btn-danger">Engga Yakin 😖</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </transition>
                             </div>
 
-                            <p class="info m-0">Tempat ini didaftarkan Oleh <b>{{ data.creator_name }}</b> pada tanggal {{ data.tanggal_didaftarkan }}</p>
+                            <p class="info m-0">Didaftarkan Oleh <b>{{ data.creator_name }}</b> pada tanggal {{ data.tanggal_didaftarkan }}</p>
+
+                            <transition name="fade">
+                                <div class="daftar-modal" v-if="openModal">
+                                    <div class="modal-inner">
+                                        <h6 class="mb-4">Apakah Kamu yakin untuk mendaftar di <b>{{ data.nama_perusahaan }}?</b></h6>
+                                        
+                                        <p class="text-danger modal-info">Setelah menekan yakin, anda tidak dapat menbatalkan pendaftaran anda</p>
+                                        <div class="button-group">
+                                            <button type="submit" class="form-control btn-primary">Yakin Dong 😎</button>
+                                            <button @click="openModal = false" type="button" class="form-control btn-danger">Engga Yakin 😖</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </transition>
                         </form>
                     </div>
                 </div>
@@ -88,12 +84,14 @@
 
 <script>
 import axios from 'axios'
+import Header from '@/components/pendaftaran-magang/Header.vue'
 import Sidebar from '@/components/pendaftaran-magang/Sidebar.vue'
 import Footer from '@/components/pendaftaran-magang/Footer.vue'
 
 export default {
     components: {
         Sidebar,
+        Header,
         Footer
     },
     data() {
@@ -144,12 +142,16 @@ export default {
         daftar() {
             axios.put(`magang/${this.id}?token=${this.token}`, this.formData)
                 .then(res => {
+                    scrollTo(0, 0);
+                    
                     this.alertSuccess = res.data.message;
                     this.openModal = false;
 
                     this.getData();
                 })
                 .catch(err => {
+                    scrollTo(0, 0);
+
                     this.alertSuccess = '';
                     this.openModal = false;
                     this.alertDanger = err.response.data.message;
@@ -157,12 +159,6 @@ export default {
         }
     },
     created() {
-        if (!this.token) {
-            this.$router.push('/login');
-
-            return;
-        }
-
         this.getSiswa();
         this.getData();
         this.getMe();
@@ -185,35 +181,6 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.profile {
-    margin: 0;
-    padding: 10px;
-    transition: .5s;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.profile:hover {
-    background-color: #f5f7fd;
-}
-
-.profile span {
-    font-weight: 700;
-}
-
-.header {
-    width: 100%;
-    height: 70px;
-    background-color: white;
-}
-
-.header .container-fluid {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100%;
 }
 
 .content {
