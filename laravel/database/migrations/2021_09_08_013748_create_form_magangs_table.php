@@ -15,6 +15,7 @@ class CreateFormMagangsTable extends Migration
     {
         Schema::create('form_magangs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('created_by');
             $table->string('nama_perusahaan');
             $table->integer('kouta');
             $table->integer('slot_tersedia');
@@ -22,7 +23,10 @@ class CreateFormMagangsTable extends Migration
             $table->string('telp');
             $table->string('pic');
             $table->text('keterangan')->nullable();
+            $table->string('tanggal_didaftarkan');
             $table->timestamps();
+
+            $table->foreign('created_by')->references('id')->on('tbuser');
         });
     }
 

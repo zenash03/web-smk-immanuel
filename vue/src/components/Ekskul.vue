@@ -133,4 +133,39 @@
     }
 }
 
+@media only screen and (max-width: 995px) {
+	.card {
+		justify-content: flex-start;
+		flex-direction: row;
+		width: 100%;
+		height: 100px;
+		margin: 0;
+		border-radius: 0;
+	}
+
+	.card .icon {
+		width: 15%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.card p {
+		margin: 0;
+		margin-left: 2rem;
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	.card p {
+		font-size: 1rem;
+	}
+
+	.container {
+		padding: 0;
+		width: 100%;
+	}
+}
+
 </style>

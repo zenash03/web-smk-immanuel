@@ -17,9 +17,9 @@
                     <div class="navbar">
                         <ul class="nav-links">
                             <li><router-link to="/" class="bold">Home</router-link></li>
-                            <li><a href="/#news">Berita</a></li>
+                            <li><a href="/news">Berita</a></li>
                             <li><a href="/#jurusan">Jurusan</a></li>
-                            <li><a href="/#prestasi">Prestasi</a></li>
+                            <li><a href="/prestasi">Prestasi</a></li>
                             <li><a href="/#ekskul">Ekskul</a></li>
                             <li><router-link to="/login" class="align-self-end">Login</router-link></li>
                         </ul>
@@ -38,9 +38,9 @@
             <div class="navbar navbar-mobile">
                 <ul class="nav-links">
                     <li><router-link to="/" class="bold">Home</router-link></li>
-                    <li><a href="/#news">Berita</a></li>
+                    <li><a href="/news">Berita</a></li>
                     <li><a href="/#jurusan">Jurusan</a></li>
-                    <li><a href="/#prestasi">Prestasi</a></li>
+                    <li><a href="/prestasi">Prestasi</a></li>
                     <li><a href="/#ekskul">Ekskul</a></li>
                     <li><router-link to="/login" class="align-self-end">Login</router-link></li>
                 </ul>

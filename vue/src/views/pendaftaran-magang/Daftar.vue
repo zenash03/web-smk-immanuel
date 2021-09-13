@@ -16,60 +16,66 @@
                         <div class="alert alert-success" role="alert" v-if="alertSuccess">{{ alertSuccess }}</div>
                         <div class="alert alert-danger" role="alert" v-if="alertDanger">{{ alertDanger }}</div>
 
-                        <h3 class="mb-5">Daftar</h3>
+                        <h3 class="mb-5">Daftarkan Dirimu</h3>
 
                         <form @submit.prevent="daftar">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="form-group">
+                                    <div class="form-group mb-4">
                                         <label for="nama_perusahaan">Nama Perusahaan</label>
-                                        <input type="text" class="form-control" id="nama_perusahaan" v-model="data.nama_perusahaan" disabled>
+                                        <p class="font-weight-bold">{{ data.nama_perusahaan }}</p>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group mb-4">
                                         <label for="tersedia">Slot Tersedia</label>
-                                        <input type="number" class="form-control" id="tersedia" placeholder="Max 4" v-model="data.slot_tersedia" disabled>
+                                        <p :class="['font-weight-bold', data.slot_tersedia > 0 ? 'text-success' : 'text-danger' ]">{{ data.slot_tersedia }}</p>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="alamat">Alamat</label>
-                                        <input type="text" class="form-control" id="alamat" v-model="data.alamat" disabled>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="telp">No Telp</label>
-                                        <input type="text" class="form-control" id="telp" v-model="data.telp" disabled>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="pic">PIC</label>
-                                        <input type="text" class="form-control" id="pic" v-model="data.pic" disabled>
-                                    </div>
-
-                                    <div class="form-group">
+                                    <div class="form-group mb-4">
                                         <label for="keterangan">Keterangan</label>
-                                        <textarea id="keterangan" class="form-control" v-model="data.keterangan" disabled></textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="">&nbsp;</label>
-                                        <button v-if="data.slot_tersedia == 0" type="submit" class="desktop form-control btn-primary" disabled>Submit</button>
-                                        <button v-if="data.slot_tersedia != 0" type="submit" class="desktop form-control btn-primary">Submit</button>
+                                        <p class="font-weight-bold">{{ data.keterangan }}</p>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
-                                    <div class="form-group" v-for="i in data.slot_tersedia" :key="i">
-                                        <label for="">Pilih Siswa {{ i }}</label>
-                                        <select class="form-select" v-model="formData.pendaftar[i]">
-                                            <option :value="siswa.username" v-for="siswa in siswas" :key="siswa.username">{{ siswa.name }}</option>
-                                        </select>
+                                    <div class="form-group mb-4">
+                                        <label for="telp">No Telp</label>
+                                        <p class="font-weight-bold">{{ data.telp }}</p>
                                     </div>
 
-                                    <button v-if="data.slot_tersedia == 0" type="submit" class="mobile form-control btn-primary" disabled>Submit</button>
-                                    <button v-if="data.slot_tersedia != 0" type="submit" class="mobile form-control btn-primary">Submit</button>
+                                    <div class="form-group mb-4">
+                                        <label for="pic">PIC</label>
+                                        <p class="font-weight-bold">{{ data.pic }}</p>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="alamat">Alamat</label>
+                                        <p class="font-weight-bold">{{ data.alamat }}</p>
+                                    </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="">&nbsp;</label>
+                                    <button v-if="data.slot_tersedia == 0" type="button" class="form-control btn-primary" disabled>Daftar</button>
+                                    <button @click="openModal = true" v-if="data.slot_tersedia != 0" type="button" class="form-control btn-primary">Daftar</button>
+                                </div>
+
+                                <transition name="fade">
+                                    <div class="daftar-modal" v-if="openModal">
+                                        <div class="modal-inner">
+                                            <h6 class="mb-4">Apakah Kamu yakin untuk mendaftar di <b>{{ data.nama_perusahaan }}?</b></h6>
+                                            
+                                            <p class="text-danger modal-info">Setelah menekan yakin, anda tidak dapat menbatalkan pendaftaran anda</p>
+                                            <div class="button-group">
+                                                <button type="submit" class="form-control btn-primary">Yakin Dong 😎</button>
+                                                <button @click="openModal = false" type="button" class="form-control btn-danger">Engga Yakin 😖</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </transition>
                             </div>
+
+                            <p class="info m-0">Tempat ini didaftarkan Oleh <b>{{ data.creator_name }}</b> pada tanggal {{ data.tanggal_didaftarkan }}</p>
                         </form>
                     </div>
                 </div>
@@ -98,12 +104,11 @@ export default {
             siswas: '',
             data: '',
             formData: {
-                pendaftar: {
-
-                }
+                pendaftar: ''
             },
             alertSuccess: '',
-            alertDanger: ''
+            alertDanger: '',
+            openModal: false
         }
     },
     methods: {
@@ -111,6 +116,8 @@ export default {
             axios.get(`auth/me?token=${this.token}`)
                 .then(res => {
                     this.me = res.data;
+
+                    this.formData.pendaftar = res.data.username;
                 })
                 .catch(err => {
                     console.log(err.response.data);
@@ -129,8 +136,6 @@ export default {
             axios.get(`magang/${this.id}?token=${this.token}`)
                 .then(res => {
                     this.data = res.data;
-
-                    this.formData.pendaftar = {};
                 })
                 .catch(err => {
                     console.log(err.response.data);
@@ -140,10 +145,13 @@ export default {
             axios.put(`magang/${this.id}?token=${this.token}`, this.formData)
                 .then(res => {
                     this.alertSuccess = res.data.message;
+                    this.openModal = false;
 
                     this.getData();
                 })
                 .catch(err => {
+                    this.alertSuccess = '';
+                    this.openModal = false;
                     this.alertDanger = err.response.data.message;
                 }); 
         }
@@ -229,12 +237,58 @@ button[type=submit]:disabled {
     border-color: lightgray;
 }
 
+.info {
+    font-style: italic;
+    font-size: 14px;
+}
+
 .mobile {
     display: none;
 }
 
 .desktop {
     display: block;
+}
+
+.daftar-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 10000;
+    background-color: rgba(0, 0, 0, .6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-inner {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.modal-inner .button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-inner .button-group button {
+    width: 45%;
+}
+
+.modal-inner .modal-info {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 @media screen and (max-width: 991px) {
@@ -281,6 +335,11 @@ button[type=submit]:disabled {
     h3 {
         font-size: 1.4rem !important;
         margin-bottom: 1.5rem !important;
+    }
+
+    .modal-inner .button-group button {
+        width: 48%;
+        font-size: 14px;
     }
 }
 

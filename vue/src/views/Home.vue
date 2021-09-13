@@ -8,7 +8,7 @@
 			<Slideshow></Slideshow>
 		</header>
 
-		<main class="mb-5">
+		<main>
 			<section class="headline padding" id="headline">
 				<div class="container">
 					<div class="row align-items-center">
@@ -20,9 +20,9 @@
 
 						<div class="hide-content col-lg-6 text-left">
 							<h2 class="title fade-out mb-4">{{ headline.title }}</h2>
-							<p class="fade-out mb-5">{{ headline.excerpt }}</p>
+							<p class="fade-out mb-5">{{ String(headline.content).slice(0, 300) }} ...</p>
 
-							<router-link :to="`/read/prestasi/`" class="read-more-btn fade-out">
+							<router-link :to="`/read/news/${headline.id}`" class="read-more-btn fade-out">
 								<span>Read More</span>
 							</router-link>
 						</div>
@@ -82,7 +82,7 @@
 									</div>
 
 									<div class="card-content">
-										<h5 class="mb-4 pop-out">Teknik Komputer dan Jaringan</h5>
+										<h5 class="mb-4 pop-out" style="color: #396C8F">Teknik Komputer dan Jaringan</h5>
 										<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nisi ipsam dolorum consequatur magnam aut.</p>
 									</div>
 								</div>
@@ -94,7 +94,7 @@
 									</div>
 
 									<div class="card-content">
-										<h5 class="mb-4 pop-out">Akutansi dan Keuangan Lembaga</h5>
+										<h5 class="mb-4 pop-out" style="color: #4F967F">Akutansi dan Keuangan Lembaga</h5>
 										<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nisi ipsam dolorum consequatur magnam aut.</p>
 									</div>
 								</div>
@@ -106,7 +106,7 @@
 									</div>
 
 									<div class="card-content">
-										<h5 class="mb-4 pop-out">Bisnis Daring dan Pemasaran</h5>
+										<h5 class="mb-4 pop-out" style="color: #C39A40">Bisnis Daring dan Pemasaran</h5>
 										<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nisi ipsam dolorum consequatur magnam aut.</p>
 									</div>
 								</div>
@@ -121,7 +121,7 @@
 					<h2 class="title font-weight-bold text-center mb-5 fly-up">Prestasi Terbaru</h2>
 
 					<div class="row justify-content-center" v-for="(p, i) in prestasi.slice(0, 2)" :key="p.id">
-						<div v-if="i % 2 == 0" class="prestasi-post fly-up">
+						<div v-if="i % 2 == 0" class="prestasi-post post-left fly-up">
 							<div class="news-card left">
 								<div class="content">
 									<h4 class="title mb-4 fly-up"><router-link :to="`/read/prestasi/${p.id}`">{{ p.title }}</router-link></h4>
@@ -138,7 +138,7 @@
 							</div>
 						</div>
 
-						<div v-if="i % 2 != 0" class="prestasi-post fly-up">
+						<div v-if="i % 2 != 0" class="prestasi-post post-right fly-up">
 							<div class="news-image fly-up">
 								<img :src="p.image_url" alt="">
 							</div>
@@ -390,6 +390,20 @@ header.fade {
     width: 100%;
 }
 
+@media only screen and (max-width: 768px) {
+	.news .col-lg-6 {
+		width: 50%;
+		flex: 0 0 50%;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	.news .col-lg-6 {
+		width: 100%;
+		flex: 0 0 100%;
+	}
+}
+
 /* Headline Style End */
 
 
@@ -444,9 +458,16 @@ header.fade {
 }
 
 @media only screen and (max-width: 768px) {
-	.news .col-lg-6 {
-		width: 50%;
-		flex: 0 0 50%;
+	.headline .title {
+		font-size: 2rem;
+		margin-top: 2rem;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	.headline .title {
+		font-size: 1.5rem;
+		margin-top: 2rem;
 	}
 }
 
@@ -514,7 +535,7 @@ header.fade {
     margin-bottom: 1rem;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 995px) {
 	.jurusan .row {
 		justify-content: center;
 	}
@@ -522,6 +543,13 @@ header.fade {
 	.jurusan .col-lg-4 {
 		width: 50%;
 		flex: 0 0 50%;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	.jurusan .col-lg-4 {
+		width: 100%;
+		flex: 0 0 100%;
 	}
 }
 
@@ -648,18 +676,45 @@ header.fade {
 }
 
 @media only screen and (max-width: 768px) {
-    .prestasi .light::before {
+	.prestasi-post {
+		flex-direction: column;
+	}
+
+	.prestasi-post.post-left {
+		flex-direction: column-reverse;
+	}
+
+	.prestasi .news-image {
+		height: 100%;
+		width: 100%;
+	}
+
+	.prestasi .news-card {
+		height: 100%;
+		width: 100%;
+		padding: 4rem 1.7rem;
+		color: white;
+		display: flex;
+		align-items: center;
+		position: relative;
+	}
+
+    .prestasi .right::before, .prestasi .left::before {
         content: '';
         position: absolute;
         width: 0;
         height: 0;
         left: 50%;
-        top: 0;
+        top: -40px;
         transform: translateX(-50%);
-        border-right: 18px solid transparent;
-        border-left: 18px solid transparent;
-        border-top: 25px solid var(--primary-blue);
+        border-right: 25px solid transparent;
+        border-left: 25px solid transparent;
+        border-bottom: 25px solid var(--primary-yellow);
     }
+
+	.prestasi .left::before {
+        border-bottom: 25px solid var(--primary-blue);
+	}
 
     .prestasi .row {
         flex-direction: column;
@@ -672,18 +727,9 @@ header.fade {
 }
 
 @media only screen and (max-width: 375px) {
-    .prestasi .light::before {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%);
-        border-right: 18px solid transparent;
-        border-left: 18px solid transparent;
-        border-top: 25px solid var(--primary-blue);
-    }
+    .prestasi .news-card {
+		padding: 2rem 1.7rem;
+	}
 
     .prestasi .row {
         flex-direction: column;
@@ -694,41 +740,6 @@ header.fade {
     }
 }
 
-@media only screen and (max-width: 768px) {
-	.jurusan .row {
-		justify-content: center;
-	}
-
-	.jurusan .col-lg-4 {
-		width: 50%;
-		flex: 0 0 50%;
-	}
-}
-
 /* Prestasi Style ENd */
-
-
-/* Responsive */
-@media only screen and (max-width: 768px) {
-    .headline .image-main {
-        float: none;
-        width: 100%;
-        max-height: 350px;
-        margin-bottom: 3rem;
-    }
-
-	.headline-title {
-		font-size: 1.5rem;
-	}
-}
-
-@media only screen and (max-width: 375px) {
-    .headline .image-main {
-        float: none;
-        width: 100%;
-        max-height: 350px;
-        margin-bottom: 2rem;
-    }
-}
 
 </style>

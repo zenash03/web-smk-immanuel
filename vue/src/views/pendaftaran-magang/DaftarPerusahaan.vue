@@ -24,7 +24,7 @@
                             <div class="col-lg-4 mb-4" v-for="perusahaan in dataPerusahaan" :key="perusahaan.id">
                                 <div class="card">
                                     <h5 class="title">{{ perusahaan.nama_perusahaan }}</h5>
-                                    <p class="alamat">{{ perusahaan.alamat }}</p>
+                                    <p class="alamat">{{ String(perusahaan.alamat).slice(0, 80) }}...</p>
 
                                     <p class="tersedia text-success" v-if="perusahaan.slot_tersedia != 0">{{ perusahaan.slot_tersedia }} Slot Tersedia</p>
                                     <p class="tersedia text-danger" v-if="perusahaan.slot_tersedia == 0">Tidak Ada Slot Tersedia</p>

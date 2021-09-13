@@ -20,9 +20,12 @@ class CreatePendaftarMagangsTable extends Migration
             $table->string('nama');
             $table->string('username');
             $table->enum('disetujui', ['y', 'n'])->nullable();
+            $table->foreignId('penyetuju_id')->nullable();
+            $table->string('tanggal_disetujui')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('tbuser');
+            $table->foreign('penyetuju_id')->references('id')->on('tbuser');
             $table->foreign('magang_id')->references('id')->on('form_magangs');
         });
     }

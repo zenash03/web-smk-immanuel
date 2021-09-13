@@ -12,9 +12,9 @@
 
                 <div class="content p-5">
                     <div class="container p-5">
-                        <h3 class="mb-5">Welcome, <b>{{ me.name }}</b></h3>
+                        <h3 class="mb-5">Halo, <b>{{ me.name }}</b>!</h3>
 
-                        <h6 v-if="!data">Kamu Belum Mendaftar Magang</h6>
+                        <h6 v-if="!data">Kamu Belum Mendaftar Magang 😑</h6>
 
                         <div class="row">
                             <div class="col-lg-8" v-if="data != ''">
@@ -22,11 +22,13 @@
                             </div>
 
                             <div class="col-lg-8" v-if="data">
-                                <p v-if="data.disetujui == 'y'">Status Dizinkan, <b class="text-success">Disetujui</b></p>
-                                <p v-if="data.disetujui == 'n'">Status Dizinkan, <b class="text-danger">Tidak Di Setujui</b></p>
-                                <p v-if="!data.disetujui">Status Dizinkan, <b class="text-danger">Belum di Tinjau</b></p>
+                                <p v-if="data.disetujui == 'y'">Status Dizinkan, <b class="text-success">Disetujui 😊</b></p>
+                                <p v-if="data.disetujui == 'n'">Status Dizinkan, <b class="text-danger">Tidak Di Setujui 😥</b></p>
+                                <p v-if="!data.disetujui">Status Dizinkan, <b class="text-danger">Menunggu Persetujuan 😱</b></p>
                             </div>
                         </div>
+
+                        <p class="info m-0 mt-3" v-if="data.disetujui == 'y'">Telah disetujui oleh <b>{{ data.creator_name }}</b> pada tanggal {{ data.date_created }}</p>
                     </div>
                 </div>
 
@@ -146,6 +148,11 @@ img {
     background-color: white;
     box-shadow: 0px 0px 28px 0px rgb(82 63 105 / 8%);
     border-radius: 10px;
+}
+
+.info {
+    font-style: italic;
+    font-size: 14px;
 }
 
 @media screen and (max-width: 768px) {

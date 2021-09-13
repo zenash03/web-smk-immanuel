@@ -2,27 +2,16 @@
     <div id="home">
         <div id="transition"></div>
 
-        <div>
-            <svg class="main-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,128L40,149.3C80,171,160,213,240,208C320,203,400,149,480,117.3C560,85,640,75,720,90.7C800,107,880,149,960,165.3C1040,181,1120,171,1200,170.7C1280,171,1360,181,1400,186.7L1440,192L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
-            <nav>
-                <div class="container d-flex justify-content-between">
-                    <ul class="nav-links">
-                        <li><router-link to="/" class="back">Kembali ke Home</router-link></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+        <Nav></Nav>
 
         <main class="mb-5">
             <div class="container pt-5">
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-8 mb-4">
                         <div class="thumbnail mb-5">
                             <h2 class="title mb-4">{{ data.title }}</h2>
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <!-- <div class="tag">{{ data.tag }}</div> -->
-
                                 <div class="details mb-3">
                                     <p>{{ data.author }} - {{ data.date }}</p>
                                 </div>
@@ -34,23 +23,18 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-lg-4"></div>
-
-                            <div class="col-lg-8">
-                                <article>
-                                    <pre class="content">{{ data.content }}</pre>
-                                </article>
-                            </div>
+                            <article>
+                                <pre class="content">{{ data.content }}</pre>
+                            </article>
                         </div>
                     </div>
 
                     <div class="col-lg-4">
-                        <div class="container">
-                            <h2 class="title text-center fly-down fly-up">More</h2>
-                            <div v-for="a in all.slice(0, 25)" :key="a.id" class="news-list mb-2 fly-down fly-up">
-                                <i class="fas fa-hashtag"></i>
-                                <p><router-link :to="`/read/${$route.params.type}/${a.id}`">{{ a.title }}</router-link></p>
-                            </div>
+                        <h5 class="title text-center fly-down fly-up">Lainnya</h5>
+
+                        <div v-for="a in all.slice(0, 25)" :key="a.id" class="news-list mb-2 fly-down fly-up">
+                            <i class="fas fa-hashtag"></i>
+                            <p><router-link :to="`/read/${$route.params.type}/${a.id}`">{{ a.title }}</router-link></p>
                         </div>
                     </div>
                 </div>
@@ -62,11 +46,13 @@
 </template>
 
 <script>
+import Nav from '@/components/Nav.vue'
 import Footer from '@/components/Footer.vue'
 import axios from 'axios'
 
 export default {
     components: {
+        Nav,
         Footer
     },
     data() {
@@ -138,12 +124,6 @@ export default {
 </script>
 
 <style scoped>
-svg {
-    position: absolute;
-    z-index: -100;
-    transition: 1s;
-    transform: translateY(-100px);
-}
 
 nav {
     padding-top: 2rem;
@@ -200,8 +180,36 @@ nav.nav {
     font-size: 1rem;
 }
 
-.back {
-    color: white;
+.thumbnail img {
+    border-radius: 5px;
+}
+
+.details p {
+    margin-bottom: 0;
+    height: fit-content;
+}
+
+.details, .author, .date {
+    height: fit-content;
+}
+
+.news-list {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    padding: 5px 0;
+}
+
+.news-list p {
+    font-weight: 600;
+    margin: 0;
+    font-size: .8rem;
+}
+
+.news-list i {
+    margin-right: 1rem;
+    font-size: 2rem;
+    color: var(--primary-blue);
 }
 
 /* Responsive */
@@ -233,38 +241,6 @@ nav.nav {
     svg {
         transform: translateY(0);
     }
-}
-
-.thumbnail img {
-    border-radius: 5px;
-}
-
-.details p {
-    margin-bottom: 0;
-    height: fit-content;
-}
-
-.details, .author, .date {
-    height: fit-content;
-}
-
-.news-list {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid lightgray;
-    padding: 5px 0;
-}
-
-.news-list p {
-    font-weight: 600;
-    margin: 0;
-    font-size: .8rem;
-}
-
-.news-list i {
-    margin-right: 1rem;
-    font-size: 2rem;
-    color: var(--primary-blue);
 }
 
 </style>

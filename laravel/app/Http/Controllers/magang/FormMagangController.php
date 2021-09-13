@@ -14,6 +14,7 @@ class FormMagangController extends Controller
     public function index()
     {
         $data = FormMagang::orderByDesc ('slot_tersedia')->get();
+
         return response()->json($data, 200);
     }
 
@@ -21,13 +22,14 @@ class FormMagangController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama_perusahaan' => 'required',
-            'kouta' => 'required||numeric|min:1|max:4',
+            'kouta' => 'required|numeric|min:1|max:4',
             'alamat' => 'required',
             'telp' => 'required',
             'pic' => 'required'
         ]);
 
-        if ($validator->fails()) return response()->json(['message' => 'Invalid Field'], 422);
+        if ($validator->fails()) return response()->json(['message' => 'Data yang kamu masukin ga valid 😜'], 422);
+        $user = User::where('token', $request->token)->first();
 
         $magang = FormMagang::create([
             'nama_perusahaan' => $request->nama_perusahaan,
@@ -36,7 +38,9 @@ class FormMagangController extends Controller
             'alamat' => $request->alamat,
             'telp' => $request->telp,
             'pic' => $request->pic,
-            'keterangan' => $request->keterangan
+            'keterangan' => $request->keterangan,
+            'tanggal_didaftarkan' => date('d F Y'),
+            'created_by' => $user->id
         ]);
 
         if ($request->pendaftar) {
@@ -70,20 +74,20 @@ class FormMagangController extends Controller
 
         if ($validator->fails()) return response()->json(['message' => 'Mohon isi setidaknya 1 nama siswa'], 422);
 
-        $magang->update(['slot_tersedia' => $magang->slot_tersedia - count($request->pendaftar)]);
+        $user = User::where('username', $request->pendaftar)->first();
 
-        foreach ($request->pendaftar as $pendaftar) {
-            $user = User::where('username', $pendaftar)->first();
+        if (PendaftarMagang::where('user_id', $user->id)->first()) return response()->json(['message' => 'Kamu Sudah Terdaftar 🙃'], 422);
 
-            PendaftarMagang::create([
-                'user_id' => $user->id,
-                'magang_id' => $magang->id,
-                'nama' => $user->name,
-                'username' => $user->username
-            ]);
-        }
+        $magang->update(['slot_tersedia' => $magang->slot_tersedia - 1]);
 
-        return response()->json(['message' => 'Pendaftaran Success'], 200);
+        PendaftarMagang::create([
+            'user_id' => $user->id,
+            'magang_id' => $magang->id,
+            'nama' => $user->name,
+            'username' => $user->username
+        ]);
+
+        return response()->json(['message' => 'Yay, Kamu sudah terdaftar'], 200);
     }
 
     public function destroy($id)

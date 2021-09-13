@@ -28,8 +28,12 @@ class PendaftaranController extends Controller
 
     public function update(Request $request, PendaftarMagang $pendaftaran)
     {
+        $user = User::where('token', $request->token)->first();
+
         $pendaftaran->update([
-            'disetujui' => $request->state
+            'disetujui' => $request->state,
+            'penyetuju_id' => $user->id,
+            'tanggal_disetujui' => date('d F Y')
         ]);
 
         return response()->json(['message' => 'success'], 200);

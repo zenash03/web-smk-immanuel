@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\PendaftarMagang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,8 +54,10 @@ class AuthController extends Controller
     }
 
     public function siswa(Request $request) {
-        $siswa = User::where('role', 'siswa')->join('pendaftar_magangs', 'pendaftar_magangs.user_id', '!=', 'users.id')->get();
+        $courseUserNames = PendaftarMagang::pluck('user_id')->all();
+        $users = User::whereNotIn('id', $courseUserNames)->where('role', 'siswa')->get();
+        $siswa = User::where('role', 'siswa')->join('pendaftar_magangs', 'pendaftar_magangs.user_id', '!=', 'tbsiswa.id')->get();
 
-        return response()->json($siswa, 200);
+        return response()->json($users, 200);
     }
 }
