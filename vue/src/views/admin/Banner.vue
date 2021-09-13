@@ -44,6 +44,10 @@
                                 <i class="fas fa-images"></i> Banner
                             </router-link>
 
+                            <router-link to="/data-magang" class="collapse-item">
+                                <i class="fas fa-images"></i> Data Magang
+                            </router-link>
+
                         </div>
                     </div>
                 </li>
@@ -146,8 +150,8 @@
                                     </div>
                                 </div>
 
-                                <div class="button">
-                                    <label class="switch ml-1 mr-1">
+                                <div class="button d-flex align-items-center">
+                                    <label class="switch m-0 mr-1">
                                         <input type="checkbox" :checked="n.active == 'y'" :id="`toggle-${n.id}`" @change="toggle(n.id)">
                                         <span class="slider round"></span>
                                     </label>

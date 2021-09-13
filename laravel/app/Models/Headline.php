@@ -16,6 +16,6 @@ class Headline extends Model
     {
         $content = Headline::where('id', $this->id)->first()->content;
 
-        return substr($content, 0, rand(90, 130)) . '...';
+        return substr($content, 0, 300) . '...';
     }
 }

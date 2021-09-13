@@ -44,6 +44,10 @@
                                 <i class="fas fa-images"></i> Banner
                             </router-link>
 
+                            <router-link to="/data-magang" class="collapse-item">
+                                <i class="fas fa-images"></i> Data Magang
+                            </router-link>
+                            
                         </div>
                     </div>
                 </li>

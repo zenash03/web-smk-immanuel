@@ -3,52 +3,39 @@
 		<Nav></Nav>
 
 		<div id="transition"></div>
-		<header class="mb-5">
-			<div class="container">
-				<div class="row">
-					<div class="hide-content d-flex flex-column col-lg-4 pt-5 pb-5">
-						<h2 class="header-title">SMK Kristen Immanuel</h2>
 
-						<button type="button" onclick="location.href = '#headline'" class="button-primary">Explore More</button>
-
-						<div class="information">
-							<p>Jl. Letnan Jendral Sutoyo, Parit Tokaya, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78113</p>
-							<p>+62 8952-4435-865</p>
-						</div>
-					</div>
-
-					<div class="hide-content col-lg-8 pt-3 pl-5 pt-5 pb-5">
-						<Slideshow></Slideshow>
-					</div>
-				</div>
-			</div>
+		<header class="fade">
+			<Slideshow></Slideshow>
 		</header>
 
-		<main class="pt-5">
-			<section class="headline" id="headline">
+		<main class="mb-5">
+			<section class="headline padding" id="headline">
 				<div class="container">
-					<div class="row">
-						<div class="hide-content col-lg-4">
-							<h2 class="headline-title fade-out">{{ headline.title }}</h2>
-							<p class="fade-out mb-5">{{ headline.excerpt }}</p>
-
-							<button type="button" onclick="location.href = '#news'" class="fade-out button-primary">Explore More</button>
-						</div>
-
-						<div class="position-relative col-lg-8">
+					<div class="row align-items-center">
+						<div class="col-lg-6">
 							<div class="image-main fade-out">
 								<img :src="headline.image_url" alt="">
 							</div>
+						</div>
+
+						<div class="hide-content col-lg-6 text-left">
+							<h2 class="title fade-out mb-4">{{ headline.title }}</h2>
+							<p class="fade-out mb-5">{{ headline.excerpt }}</p>
+
+							<router-link :to="`/read/prestasi/`" class="read-more-btn fade-out">
+								<span>Read More</span>
+							</router-link>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<section class="news pt-5 mb-5" id="news">
+			<section class="news padding pt-0" id="news">
 				<div class="container">
 					<div class="row">
+						<h2 class="title font-weight-bold text-center pop-out mb-5">Berita Terbaru</h2>
+
 						<div class="col-lg-8">
-						<h2 class="title pop-out">Berita Terbaru</h2>
 							<div class="row">
 								<div v-for="n in news.slice(0, 4)" :key="n.id" class="col-lg-6 mb-2">
 									<div class="news-card zoom-out">
@@ -62,15 +49,7 @@
 											<h5 class="title"><router-link :to="`/read/news/${n.id}`">{{ n.title }}</router-link></h5>
 
 											<div class="details">
-												<div class="author">
-													<i class="far fa-user"></i>
-													<p>{{ n.author }}</p>
-												</div>
-
-												<div class="date">
-													<i class="far fa-clock"></i>
-													<p>{{ n.date }}</p>
-												</div>
+												<p>{{ n.author }} - {{ n.date }}</p>
 											</div>
 										</div>
 									</div>	
@@ -79,89 +58,108 @@
 						</div>
 
 						<div class="col-lg-4">
-							<h2 class="title pop-out text-center">More</h2>
+							<h5 class="title title-more font-weight-bold pop-out text-left mt-3 mb-3">Lainnya</h5>
 
-							<div class="container">
-								<div v-for="n in news.slice(0, 15)" :key="n.id" class="news-list mb-2 fly-up">
-									<i class="fas fa-hashtag"></i>
-									<p><router-link :to="`/read/news/${n.id}`">{{ n.title }}</router-link></p>
-								</div>
+							<div v-for="n in news.slice(0, 15)" :key="n.id" class="news-list mb-2 fly-up">
+								<i class="fas fa-hashtag"></i>
+								<p><router-link :to="`/read/news/${n.id}`">{{ n.title }}</router-link></p>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
 
-			<section class="jurusan pt-5" id="jurusan">
-				<div class="container d-flex">
-					<div class="content">
-						<h2 class="mb-5 fade-out"><span class="line"></span> Jurusan <span class="line"></span></h2>
-
-						<div class="majors">
-							<div class="row">
-								<div class="col-lg-4">
-									<img src="images/slideshow/1.jpeg" class="img-jurusan fade-out">
-									<h5 class="fade-out">Akutansi dan Keuangan Lembaga</h5>
-									<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit alias eaque ratione voluptatum quis libero fuga mollitia totam deleniti sint dolorem modi aliquid rem, accusamus fugit eius nesciunt vero quibusdam.</p>
-								</div>
-
-								<div class="col-lg-4">
-									<img src="images/slideshow/1.jpeg" class="img-jurusan fade-out">
-									<h5 class="fade-out">Teknik Komputer dan Jaringan</h5>
-									<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit alias eaque ratione voluptatum quis libero fuga mollitia totam deleniti sint dolorem modi aliquid rem, accusamus fugit eius nesciunt vero quibusdam.</p>
-								</div>
-								
-								<div class="col-lg-4">
-									<img src="images/slideshow/1.jpeg" class="img-jurusan fade-out">
-									<h5 class="fade-out">Bisnis Daring dan Pemasaran</h5>
-									<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit alias eaque ratione voluptatum quis libero fuga mollitia totam deleniti sint dolorem modi aliquid rem, accusamus fugit eius nesciunt vero quibusdam.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="prestasi pt-5 pb-5" id="prestasi">
+			<section class="jurusan padding" id="jurusan">
 				<div class="container">
-					<h2 class="title text-center mb-5 fly-up">Prestasi</h2>
+					<h2 class="title font-weight-bold text-center mb-5 fade-out">Jurusan</h2>
 
-					<div class="row">
-						<div v-for="p in prestasi" :key="p.id" class="col-lg-6 mb-2">
-							<div class="news-card zoom-out">
-								<div class="img">
-									<img :src="p.image_url" alt="">	
-								</div>	
-
-								<div class="content">
-									<h5 class="title mt-2"><router-link :to="`/read/prestasi/${p.id}`">{{ p.title }}</router-link></h5>
-									<p>{{ p.excerpt }}</p>
-
-									<div class="details">
-										<div class="author">
-											<i class="far fa-user"></i>
-											<p>{{ p.author }}</p>
-										</div>
-
-										<div class="date">
-											<i class="far fa-clock"></i>
-											<p>{{ p.date }}</p>
-										</div>
+					<div class="majors">
+						<div class="row">
+							<div class="col-lg-4 mb-4">
+								<div class="card pop-out">
+									<div class="card-header tkj pop-out">
+										<i class="fas fa-server"></i>
 									</div>
+
+									<div class="card-content">
+										<h5 class="mb-4 pop-out">Teknik Komputer dan Jaringan</h5>
+										<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nisi ipsam dolorum consequatur magnam aut.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 mb-4">
+								<div class="card pop-out">
+									<div class="card-header akl pop-out">
+										<i class="fas fa-calculator"></i>
+									</div>
+
+									<div class="card-content">
+										<h5 class="mb-4 pop-out">Akutansi dan Keuangan Lembaga</h5>
+										<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nisi ipsam dolorum consequatur magnam aut.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 mb-4">
+								<div class="card pop-out">
+									<div class="card-header bdp pop-out">
+										<i class="far fa-lightbulb"></i>
+									</div>
+
+									<div class="card-content">
+										<h5 class="mb-4 pop-out">Bisnis Daring dan Pemasaran</h5>
+										<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nisi ipsam dolorum consequatur magnam aut.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="prestasi" id="prestasi">
+				<div class="container">
+					<h2 class="title font-weight-bold text-center mb-5 fly-up">Prestasi Terbaru</h2>
+
+					<div class="row justify-content-center" v-for="(p, i) in prestasi.slice(0, 2)" :key="p.id">
+						<div v-if="i % 2 == 0" class="prestasi-post fly-up">
+							<div class="news-card left">
+								<div class="content">
+									<h4 class="title mb-4 fly-up"><router-link :to="`/read/prestasi/${p.id}`">{{ p.title }}</router-link></h4>
+									<p class="mb-4 fly-up">{{ p.excerpt }}</p>
+
+									<router-link :to="`/read/prestasi/${p.id}`" class="read-more-btn">
+										<span>Read More</span>
+									</router-link>
+								</div>
+							</div>
+
+							<div class="news-image fly-up">
+								<img :src="p.image_url" alt="">
+							</div>
+						</div>
+
+						<div v-if="i % 2 != 0" class="prestasi-post fly-up">
+							<div class="news-image fly-up">
+								<img :src="p.image_url" alt="">
+							</div>
+
+							<div class="news-card right">
+								<div class="content">
+									<h4 class="title mb-4 fly-up"><router-link :to="`/read/prestasi/${p.id}`">{{ p.title }}</router-link></h4>
+									<p class="mb-4 fly-up">{{ p.excerpt }}</p>
+
+									<router-link :to="`/read/prestasi/${p.id}`" class="read-more-btn">
+										<span>Read More</span>
+									</router-link>
 								</div>
 							</div>	
 						</div>
 					</div>
 				</div>
 			</section>
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ececec" fill-opacity="1" d="M0,256L48,240C96,224,192,192,288,192C384,192,480,224,576,202.7C672,181,768,107,864,106.7C960,107,1056,181,1152,208C1248,235,1344,213,1392,202.7L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
 
-			<section class="ekskul pt-5 pb-5 mb-5" id="ekskul">
-				<div class="container">
-					<h2 class="title mb-5 fly-up">Ekskul</h2>
-
-					<Ekskul class="fade-out"></Ekskul>
-				</div>
+			<section class="ekskul padding" id="ekskul">
+				<Ekskul></Ekskul>
 			</section>
 		</main>
 
@@ -170,6 +168,7 @@
 </template>
 
 <script>
+
 import Nav from '@/components/Nav.vue'
 import Footer from '@/components/Footer.vue'
 import Slideshow from '@/components/Slideshow.vue'
@@ -237,7 +236,7 @@ export default {
 
 			$(window).scroll(function() {
 				let wScroll = $(this).scrollTop();
-
+				
 				// Headline Section
 				if (wScroll > $('.headline').offset().top - 300) {
 					$('.headline .fade-out').each(function(i) {
@@ -298,7 +297,7 @@ export default {
 					});
 				}
 
-				// Prestasi Section
+				// Ekskul Section
 				if (wScroll > $('.ekskul').offset().top - 300) {
 					$('.ekskul .fade-out').each(function(i) {
 						setTimeout(() => {
@@ -312,8 +311,424 @@ export default {
 						}, 100 * i);
 					});
 				}
+
+				// Footer Section
+				if (wScroll > $('.footer').offset().top - 300) {
+					$('.footer .pop-out').each(function(i) {
+						setTimeout(() => {
+							$('.footer .pop-out').eq(i).addClass('fade');
+						}, 100 * i);
+					});
+				}
 			});
-		}, 1200);
+		}, 0);
+	},
+	destroyed() {
+		$(window).off();
 	},
 }
 </script>
+
+<style scoped>
+
+a::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-blue);
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    a:hover::before{
+        left: 0;
+        right: auto;
+        width: 100%;
+    }
+}
+
+/* Transition */
+
+#transition {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    top: 0;
+    transition: .5s ease-in;
+    background-color: var(--primary-blue);
+}
+
+#transition.out {
+    width: 0;
+}
+
+/* Transition Style End */
+
+/* Home Header Style */
+
+header.fade {
+    animation: fade .5s 2s forwards;
+}
+
+/* Home Header Style End */
+
+
+/* Headline Style */
+.headline {
+    height: fit-content;
+}
+
+.headline .read-more-btn {
+	background-color: var(--primary-blue);
+}
+
+.image-main {
+    width: 100%;
+}
+
+/* Headline Style End */
+
+
+/* News Style */
+.news-card img {
+    border-radius: 5px;
+}
+
+.news .img {
+    height: 200px;
+}
+
+.news .title-more {
+	color: var(--primary-blue);
+}
+
+.tag {
+    font-size: 14px;
+    margin: 10px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: fit-content;
+    color: white;
+    padding: 2px 20px;
+    font-weight: bold;
+    border-radius: 100px;
+    background-color: var(--primary-blue);
+}
+
+.details {
+    display: flex;
+    color: gray;
+    align-items: center;
+}
+
+.news-list {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    padding: 5px 0;
+}
+
+.news-list p {
+    font-weight: 600;
+    margin: 0;
+    font-size: .8rem;
+}
+
+.news-list i {
+    margin-right: 1rem;
+    font-size: 2rem;
+    color: var(--primary-blue);
+}
+
+@media only screen and (max-width: 768px) {
+	.news .col-lg-6 {
+		width: 50%;
+		flex: 0 0 50%;
+	}
+}
+
+/* News Style End */
+
+
+/* Jurusan Style */
+.jurusan {
+    background-color: #eff9ff;
+    padding: 100px 0;
+}
+
+.jurusan .majors {
+    text-align: center;
+}
+
+.jurusan .card {
+    width: 100%;
+    height: 430px;
+}
+
+.jurusan .card h5 {
+    width: 80%;
+    font-weight: 600;
+}
+
+.jurusan .card p {
+    width: 95%;
+    font-size: .9rem;
+}
+
+.jurusan .card-header {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: white;
+}
+
+.jurusan .card-header.tkj {
+    background-color: #62b8f4;
+}
+
+.jurusan .card-header.akl {
+    background-color: #75dfbd;
+}
+
+.jurusan .card-header.bdp {
+    background-color: #ffc953;
+}
+
+.jurusan .card-content {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.jurusan .img-jurusan {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+	.jurusan .row {
+		justify-content: center;
+	}
+
+	.jurusan .col-lg-4 {
+		width: 50%;
+		flex: 0 0 50%;
+	}
+}
+
+/* Jurusan Style End*/
+
+
+/* Prestasi Style */
+.prestasi {
+    padding: 100px 0;
+    background-color: white;
+}
+
+.prestasi-post {
+    width: 100%;
+    min-height: 400px;
+	display: flex;
+    padding: 0;
+}
+
+.prestasi .news-image {
+	height: 100%;
+	width: 50%;
+}
+
+.prestasi .news-card {
+    height: 100%;
+	width: 50%;
+    background-color: var(--primary-blue);
+    padding: 4rem 1.7rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.prestasi .news-card .title a {
+    color: white;
+    font-weight: 600;
+    color: white;
+}
+
+.prestasi .left {
+    background-color: var(--primary-blue);
+}
+
+.prestasi .left::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: -25px;
+    border-top: 18px solid transparent;
+    border-left: 25px solid var(--primary-blue);
+    border-bottom: 18px solid transparent;
+	z-index: 100;
+}
+
+.prestasi .right {
+    background-color: var(--primary-yellow);
+}
+
+.prestasi .right::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: -25px;
+    border-top: 18px solid transparent;
+    border-right: 25px solid var(--primary-yellow);
+    border-bottom: 18px solid transparent;
+	z-index: 100;
+}
+
+.prestasi .details {
+    color: white;
+}
+
+.read-more-btn {
+    color: #FFF;
+    transition: all 0.5s;
+    position: relative;
+    padding: .7rem 2rem;
+}
+
+.read-more-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(255,255,255,0.1);
+    transition: all 0.3s;
+}
+
+.read-more-btn:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.read-more-btn:hover::before {
+    opacity: 0 ;
+    transform: scale(0.5,0.5);
+}
+
+.read-more-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border: 1px solid rgba(255,255,255,0.5);
+    transform: scale(1.2,1.2);
+}
+
+.read-more-btn:hover::after {
+    opacity: 1;
+    transform: scale(1,1);
+}
+
+@media only screen and (max-width: 768px) {
+    .prestasi .light::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        border-right: 18px solid transparent;
+        border-left: 18px solid transparent;
+        border-top: 25px solid var(--primary-blue);
+    }
+
+    .prestasi .row {
+        flex-direction: column;
+    }
+
+    .prestasi-post {
+        width: 100%;
+        min-height: fit-content;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .prestasi .light::before {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        border-right: 18px solid transparent;
+        border-left: 18px solid transparent;
+        border-top: 25px solid var(--primary-blue);
+    }
+
+    .prestasi .row {
+        flex-direction: column;
+    }
+
+    .prestasi-post {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+	.jurusan .row {
+		justify-content: center;
+	}
+
+	.jurusan .col-lg-4 {
+		width: 50%;
+		flex: 0 0 50%;
+	}
+}
+
+/* Prestasi Style ENd */
+
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+    .headline .image-main {
+        float: none;
+        width: 100%;
+        max-height: 350px;
+        margin-bottom: 3rem;
+    }
+
+	.headline-title {
+		font-size: 1.5rem;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+    .headline .image-main {
+        float: none;
+        width: 100%;
+        max-height: 350px;
+        margin-bottom: 2rem;
+    }
+}
+
+</style>

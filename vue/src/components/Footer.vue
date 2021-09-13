@@ -1,11 +1,9 @@
 <template>
     <div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,32L34.3,69.3C68.6,107,137,181,206,202.7C274.3,224,343,192,411,149.3C480,107,549,53,617,42.7C685.7,32,754,64,823,117.3C891.4,171,960,245,1029,234.7C1097.1,224,1166,128,1234,90.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"></path></svg>
-
         <footer class="footer">
-            <div class="container">
+            <div class="container pt-5">
                 <div class="row">
-                    <div class="footer-col">
+                    <div class="footer-col pop-out">
                         <h4>Visi</h4>
                         <ul>
                             <li>
@@ -17,7 +15,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="footer-col">
+                    <div class="footer-col pop-out">
                         <h4>Misi</h4>
                         <ul>
                             <li>
@@ -29,7 +27,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="footer-col">
+                    <div class="footer-col pop-out">
                         <h4>SMK Immanuel Pontianak</h4>
                         <ul>
                             <li>
@@ -39,18 +37,39 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="footer-col">
+                    <div class="footer-col pop-out">
                         <div class="footer-logo">
-                            <img src="/images/logo.png" alt="Logo">
+                            <img src="@/assets/images/logo.png" alt="Logo">
                         </div>
                     </div>
                 </div>
             </div>
+
         </footer>
+
+        <footer class="text">Copyright &copy; {{ year }} SMK Immanuel. All rights reserved | Made with ❤ By Erick Chandra.</footer>
     </div>
 </template>
 
+<script>
+export default {
+    data() {
+        return {
+            year: new Date().getFullYear()
+        }
+    },
+}
+</script>
+
 <style scoped>
+
+footer.text {
+    background-color: var(--primary-blue);
+    padding: 1rem 0;
+    text-align: center;
+    color: white;
+}
+
 .footer-col h4 {
     color: white !important;
 }
@@ -61,7 +80,7 @@ ul {
 }
 
 .footer {
-	background-color: #0099ff;
+	background-color: var(--primary-blue-hover);
     padding: 50px 0;
 }
 
@@ -115,24 +134,24 @@ ul {
 }
 
 /*responsive*/
-@media(max-width: 767px) {
+@media(max-width: 768px) {
     .footer-col {
         width: 50%;
         margin-bottom: 30px;
     }
 
-    .footer svg {
-        transform: translateY(-300px);
+    footer.text {
+        font-size: .8rem;
     }
 }
 
-@media(max-width: 574px) {
+@media(max-width: 400px) {
     .footer-col {
         width: 100%;
     }
 
-    .footer svg {
-        transform: translateY(110px) !important;
+    footer.text {
+        font-size: .5rem;
     }
 }
 </style>

@@ -16,7 +16,7 @@ class HeadlineController extends Controller
      */
     public function index()
     {
-        return response()->json(Headline::where('active', 'y')->first(), 200);
+        return response()->json(Headline::where('active', 'y')->orderBy('created_at')->first(), 200);
     }
 
     /**

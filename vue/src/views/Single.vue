@@ -7,7 +7,7 @@
             <nav>
                 <div class="container d-flex justify-content-between">
                     <ul class="nav-links">
-                        <li><router-link to="/">Kembali ke Home</router-link></li>
+                        <li><router-link to="/" class="back">Kembali ke Home</router-link></li>
                     </ul>
                 </div>
             </nav>
@@ -18,25 +18,17 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="thumbnail mb-5">
-                            <h2 class="title">{{ data.title }}</h2>
+                            <h2 class="title mb-4">{{ data.title }}</h2>
 
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="tag">{{ data.tag }}</div>
+                                <!-- <div class="tag">{{ data.tag }}</div> -->
 
-                                <div class="details">
-                                    <div class="author">
-                                        <i class="far fa-user"></i>
-                                        <p>{{ data.author }}</p>
-                                    </div>
-
-                                    <div class="date">
-                                        <i class="far fa-clock"></i>
-                                        <p>{{ data.date }}</p>
-                                    </div>
+                                <div class="details mb-3">
+                                    <p>{{ data.author }} - {{ data.date }}</p>
                                 </div>
                             </div>
 
-                            <img :src="data.image_url" alt="">
+                            <img :src="data.image_url" alt="Image">
 
                             <hr>
                         </div>
@@ -122,8 +114,26 @@ export default {
         this.getAllData();
     },
     mounted() {
-        this.removeTransition();
+        setTimeout(() => {
+			this.removeTransition();
+
+			$(window).scroll(function() {
+				let wScroll = $(this).scrollTop();
+
+				// Footer Section
+				if (wScroll > $('.footer').offset().top - 300) {
+					$('.footer .pop-out').each(function(i) {
+						setTimeout(() => {
+							$('.footer .pop-out').eq(i).addClass('fade');
+						}, 100 * i);
+					});
+				}
+			});
+		}, 0);
     },
+    destroyed() {
+		$(window).off();
+	},
 }
 </script>
 
@@ -185,6 +195,15 @@ nav.nav {
     transform: translateY(-2px);
 }
 
+.content {
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.back {
+    color: white;
+}
+
 /* Responsive */
 @media(max-width: 767px) {
     .logo {
@@ -228,4 +247,24 @@ nav.nav {
 .details, .author, .date {
     height: fit-content;
 }
+
+.news-list {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    padding: 5px 0;
+}
+
+.news-list p {
+    font-weight: 600;
+    margin: 0;
+    font-size: .8rem;
+}
+
+.news-list i {
+    margin-right: 1rem;
+    font-size: 2rem;
+    color: var(--primary-blue);
+}
+
 </style>
