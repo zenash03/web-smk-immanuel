@@ -21,6 +21,10 @@ const routes = [
 		component: () => import('@/views/Prestasi.vue')
 	},
 	{
+		path: '/visi-misi',
+		component: () => import('@/views/VisiMisi.vue')
+	},
+	{
 		path: '/read/:type/:id',
 		component: () => import('@/views/Single.vue')
 	},

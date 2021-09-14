@@ -39,7 +39,7 @@ class NewsController extends Controller
 
         $file = $request->file;
         $name = uniqid() . date('His') . '.' . $file->getClientOriginalExtension();
-        $date = date('l, F Y');
+        $date = date('F d, Y');
         $url = url('upload') . '/' . $name;
         $author = User::where('token', $request->token)->first()->name;
 
@@ -80,7 +80,7 @@ class NewsController extends Controller
     public function update(Request $request, $id)
     {
         $url = News::findOrFail($id)->image_url;
-        $date = date('l, F Y');
+        $date = date('F d, Y');
         $author = User::where('token', $request->token)->first()->name;
 
         if ($request->file) {

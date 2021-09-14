@@ -4,31 +4,28 @@
             <div class="container pt-5">
                 <div class="row">
                     <div class="footer-col pop-out">
-                        <h4>Visi</h4>
-                        <ul>
-                            <li>
-                                Sekolah Kristen berkualitas dalam mendidik anak bangsa dengan nilai-nilai Kristiani. <br> <br>
+                        <h4>Follow Us</h4>
 
-                                A Christian school that provides a quality education for the nation with Christian values. <br> <br>
-
-                                具備高素質的基督教學校, 以基督信仰的價值培育國家子弟。
-                            </li>
+                        <ul class="social">
+                            <li><a href="https://www.instagram.com/smkimmanuelptk/" target="_blank"><i class="fab fa-instagram-square"></i></a></li>
+                            <li><a href="https://www.facebook.com/smkimmptk" target="_blank"><i class="fab fa-facebook-square"></i></a></li>
                         </ul>
                     </div>
+
                     <div class="footer-col pop-out">
-                        <h4>Misi</h4>
-                        <ul>
-                            <li>
-                                Mendidik siswa menjadi manusia yang berkualitas secara akademik, fisik, mental, dan spiritual, serta memiliki kemampuan dan kegemaran belajar seumur hidup sehingga dapat memberi dampak bagi lingkungan sekitar dengan nilai-nilai kristiani. <br> <br>
+                        <h4>Main Menu</h4>
 
-                                To educate students to excel academically, physically, mentally, and spiritually, and to cultivate lifelong love of learning in order to bring about impact to the surroundings with Christian values. <br> <br>
-
-                                栽培子弟成爲品學兼優，身心靈安康，以及終生好學上進，實踐基督信仰的價值啓迪身邊的人。<br> <br>
-                            </li>
+                        <ul class="link">
+                            <li><router-link to="/" class="bold">Home</router-link></li>
+                            <li><router-link to="/news">Berita</router-link></li>
+                            <li><router-link to="/prestasi">Prestasi</router-link></li>
+                            <li><router-link to="/visi-misi">Visi & Misi</router-link></li>
                         </ul>
                     </div>
+
                     <div class="footer-col pop-out">
                         <h4>SMK Immanuel Pontianak</h4>
+
                         <ul>
                             <li>
                                 Jl. Letnan Jendral Sutoyo, Parit Tokaya, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78113
@@ -84,10 +81,6 @@ ul {
     padding: 50px 0;
 }
 
-.footer svg {
-    transform: translateY(-290px);
-}
-
 .footer-col {
    width: 25%;
    padding: 0 15px;
@@ -129,8 +122,23 @@ ul {
 }
 
 .footer-logo img {
-    width: 165px;
-    height: 190px;
+    width: 130px;
+    height: 150;
+}
+
+.link a {
+    color: white;
+    font-weight: 500;
+}
+
+.social {
+    display: flex;
+}
+
+.social li a {
+    margin-right: .5rem;
+    font-size: 2rem;
+    color: white;
 }
 
 /*responsive*/

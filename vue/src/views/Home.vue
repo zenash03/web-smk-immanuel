@@ -82,8 +82,8 @@
 									</div>
 
 									<div class="card-content">
-										<h5 class="mb-4 pop-out" style="color: #396C8F">Teknik Komputer dan Jaringan</h5>
-										<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nisi ipsam dolorum consequatur magnam aut.</p>
+										<h5 class="mb-4 mt-4 pop-out" style="color: #396C8F">Teknik Komputer dan Jaringan</h5>
+										<p class="pop-out">Di jurusan ini kamu akan mempelajari bagaimana menggunakan teknologi komputer secara optimal guna menangani masalah transformasi atau pengolahan data dengan proses logika.</p>
 									</div>
 								</div>
 							</div>
@@ -94,8 +94,8 @@
 									</div>
 
 									<div class="card-content">
-										<h5 class="mb-4 pop-out" style="color: #4F967F">Akutansi dan Keuangan Lembaga</h5>
-										<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nisi ipsam dolorum consequatur magnam aut.</p>
+										<h5 class="mb-4 mt-4 pop-out" style="color: #4F967F">Akutansi dan Keuangan Lembaga</h5>
+										<p class="pop-out">Jurusan ini mempelajari materi terkait metode pencatatan dan penyusunan laporan keuangan yang berguna membantu pemangku kepentingan dalam proses pengambilan keputusan.</p>
 									</div>
 								</div>
 							</div>
@@ -106,8 +106,8 @@
 									</div>
 
 									<div class="card-content">
-										<h5 class="mb-4 pop-out" style="color: #C39A40">Bisnis Daring dan Pemasaran</h5>
-										<p class="pop-out">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nisi ipsam dolorum consequatur magnam aut.</p>
+										<h5 class="mb-4 mt-4 pop-out" style="color: #C39A40">Bisnis Daring dan Pemasaran</h5>
+										<p class="pop-out">Di jurusan ini kamu akan mempelajari bagaimana melakukan pemasaran produk, pembukuan dan pengelolaan keuangan serta hal-hal terkait keberlanjutan dari suatu usaha.</p>
 									</div>
 								</div>
 							</div>
@@ -118,7 +118,7 @@
 
 			<section class="prestasi" id="prestasi">
 				<div class="container">
-					<h2 class="title font-weight-bold text-center mb-5 fly-up">Prestasi Terbaru</h2>
+					<h2 class="title font-weight-bold text-center mb-5 fly-up">Prestasi Kami</h2>
 
 					<div class="row justify-content-center" v-for="(p, i) in prestasi.slice(0, 2)" :key="p.id">
 						<div v-if="i % 2 == 0" class="prestasi-post post-left fly-up">
@@ -313,7 +313,7 @@ export default {
 				}
 
 				// Footer Section
-				if (wScroll > $('.footer').offset().top - 300) {
+				if (wScroll > $('.footer').offset().top - 400) {
 					$('.footer .pop-out').each(function(i) {
 						setTimeout(() => {
 							$('.footer .pop-out').eq(i).addClass('fade');
@@ -387,7 +387,15 @@ header.fade {
 }
 
 .image-main {
+	max-height: 400px;
     width: 100%;
+}
+
+.image-main img {
+	width: 100%;
+	height: 100%;
+	max-height: 400px;
+	object-fit: cover;
 }
 
 @media only screen and (max-width: 768px) {
@@ -486,7 +494,7 @@ header.fade {
 
 .jurusan .card {
     width: 100%;
-    height: 430px;
+    height: 450px;
 }
 
 .jurusan .card h5 {
@@ -495,7 +503,7 @@ header.fade {
 }
 
 .jurusan .card p {
-    width: 95%;
+    width: 90%;
     font-size: .9rem;
 }
 
@@ -523,7 +531,7 @@ header.fade {
 .jurusan .card-content {
     height: 250px;
     display: flex;
-    align-items: center;
+	align-items: center;
     justify-content: center;
     flex-direction: column;
 }
@@ -572,6 +580,10 @@ header.fade {
 .prestasi .news-image {
 	height: 100%;
 	width: 50%;
+}
+
+.prestasi .news-image img {
+	max-height: 400px;
 }
 
 .prestasi .news-card {
@@ -740,6 +752,15 @@ header.fade {
     }
 }
 
-/* Prestasi Style ENd */
+/* Prestasi Style End */
+
+
+/* Eskull Style */
+
+.ekskul {
+	background-color: #eff9ff;
+}
+
+/* Eskull Style End */
 
 </style>

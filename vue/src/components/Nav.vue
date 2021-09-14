@@ -17,10 +17,9 @@
                     <div class="navbar">
                         <ul class="nav-links">
                             <li><router-link to="/" class="bold">Home</router-link></li>
-                            <li><a href="/news">Berita</a></li>
-                            <li><a href="/#jurusan">Jurusan</a></li>
-                            <li><a href="/prestasi">Prestasi</a></li>
-                            <li><a href="/#ekskul">Ekskul</a></li>
+                            <li><router-link to="/news">Berita</router-link></li>
+                            <li><router-link to="/prestasi">Prestasi</router-link></li>
+                            <li><router-link to="/visi-misi">Visi & Misi</router-link></li>
                             <li><router-link to="/login" class="align-self-end">Login</router-link></li>
                         </ul>
                     </div>
@@ -38,10 +37,9 @@
             <div class="navbar navbar-mobile">
                 <ul class="nav-links">
                     <li><router-link to="/" class="bold">Home</router-link></li>
-                    <li><a href="/news">Berita</a></li>
-                    <li><a href="/#jurusan">Jurusan</a></li>
-                    <li><a href="/prestasi">Prestasi</a></li>
-                    <li><a href="/#ekskul">Ekskul</a></li>
+                    <li><router-link to="/news">Berita</router-link></li>
+                    <li><router-link to="/prestasi">Prestasi</router-link></li>
+                    <li><router-link to="/visi-misi">Visi & Misi</router-link></li>
                     <li><router-link to="/login" class="align-self-end">Login</router-link></li>
                 </ul>
             </div>
@@ -110,7 +108,7 @@ nav.nav {
     flex-direction: column;
     padding: 20px 0;
     align-items: center;
-    transform: translateX(-200%);
+    transform: translateX(-350%);
     animation: text .7s 1s forwards;
     color: white;
 }
