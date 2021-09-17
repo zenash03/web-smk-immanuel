@@ -16,18 +16,34 @@ const routes = [
 		}
 	},
 	{
-		path: '/magang/pendaftar',
-		component: () => import('@/views/magang/Pendaftar.vue'),
+		path: '/magang',
+		component: () => import('@/layouts/Dashboard.vue'),
 		meta: {
 			auth: true
-		}
-	},
-	{
-		path: '/magang/daftar-perusahaan',
-		component: () => import('@/views/magang/DaftarPerusahaan.vue'),
-		meta: {
-			auth: true
-		}
+		},
+		children: [
+			{
+				path: 'pendaftar',
+				component: () => import('@/views/magang/Pendaftar.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'daftarkan-perusahaan',
+				component: () => import('@/views/magang/DaftarkanPerusahaan.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'daftar-perusahaan',
+				component: () => import('@/views/magang/DaftarPerusahaan.vue'),
+				meta: {
+					auth: true
+				}
+			}
+		]
 	}
 ]
 

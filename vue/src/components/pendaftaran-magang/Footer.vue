@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div class="container">
-            <b>2020-2021©</b> <span>SMK Immanuel | Made with ❤ By Erick Chandra</span>
+            <b>2020-2021©</b> <span>SMK Immanuel | Made with ❤ by ITClub</span>
         </div>
     </footer>
 </template>
@@ -18,14 +18,14 @@ footer {
 @media screen and (max-width: 768px) {
     footer {
         text-align: center;
-        font-size: 12px;
+        font-size: 10px;
     }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 400px) {
     footer {
         text-align: center;
-        font-size: 10px;
+        font-size: 8px;
     }
 }
 

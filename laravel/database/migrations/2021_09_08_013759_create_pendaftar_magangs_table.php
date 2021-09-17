@@ -19,6 +19,7 @@ class CreatePendaftarMagangsTable extends Migration
             $table->foreignId('magang_id');
             $table->string('nama');
             $table->string('username');
+            $table->string('didaftarkan_oleh')->nullable();
             $table->enum('disetujui', ['y', 'n'])->nullable();
             $table->foreignId('penyetuju_id')->nullable();
             $table->string('tanggal_disetujui')->nullable();

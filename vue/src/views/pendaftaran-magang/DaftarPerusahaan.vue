@@ -1,61 +1,47 @@
 <template>
-    <div class="app">
-        <div class="d-flex" style="width: 100%;">
-            <Sidebar></Sidebar>
+    <div>
+        <div class="alert alert-success" role="alert" v-if="alertSuccess">{{ alertSuccess }}</div>
+        <div class="alert alert-danger" role="alert" v-if="alertDanger">{{ alertDanger }}</div>
 
-            <main>
-                <Header></Header>
+        <h3 class="mb-5">Daftar Perusahaan</h3>
 
-                <div class="content p-5">
-                    <div class="container p-5">
+        <h6 v-if="dataPerusahaan.length == 0" class="tidak-ada">Belum ada data apapun saat ini :( </h6>
 
-                        <div class="alert alert-success" role="alert" v-if="alertSuccess">{{ alertSuccess }}</div>
-                        <div class="alert alert-danger" role="alert" v-if="alertDanger">{{ alertDanger }}</div>
+        <div class="row">
+            <div class="col-lg-4 mb-4" v-for="perusahaan in dataPerusahaan" :key="perusahaan.id">
+                <div class="card">
+                    <h5 class="title">{{ perusahaan.nama_perusahaan }}</h5>
+                    <p class="alamat">{{ perusahaan.alamat }}</p>
 
-                        <h3 class="mb-5">Daftar Perusahaan</h3>
+                    <p class="tersedia text-success" v-if="perusahaan.slot_tersedia != 0">{{ perusahaan.slot_tersedia }} Slot Tersedia</p>
+                    <p class="tersedia text-danger" v-if="perusahaan.slot_tersedia == 0">Tidak Ada Slot Tersedia</p>
 
-                        <h6 v-if="dataPerusahaan.length == 0">Belum ada data apapun saat ini :( </h6>
+                    <template v-if="statusDaftar">
+                        <router-link v-if="perusahaan.slot_tersedia != 0 && (!statusDaftar || statusDaftar.disetujui == 'n')" :to="`/pendaftaran-magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Apply</router-link>
+                        <router-link v-else-if="perusahaan.slot_tersedia <= 0 || statusDaftar.disetujui == 'y' || statusDaftar.disetujui == null" :to="`/pendaftaran-magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Lihat</router-link>
+                    </template>
 
-                        <div class="row">
-                            <div class="col-lg-4 mb-4" v-for="perusahaan in dataPerusahaan" :key="perusahaan.id">
-                                <div class="card">
-                                    <h5 class="title">{{ perusahaan.nama_perusahaan }}</h5>
-                                    <p class="alamat">{{ perusahaan.alamat }}</p>
-
-                                    <p class="tersedia text-success" v-if="perusahaan.slot_tersedia != 0">{{ perusahaan.slot_tersedia }} Slot Tersedia</p>
-                                    <p class="tersedia text-danger" v-if="perusahaan.slot_tersedia == 0">Tidak Ada Slot Tersedia</p>
-
-                                    <router-link v-if="perusahaan.slot_tersedia != 0" :to="`/pendaftaran-magang/dafar/${perusahaan.id}`" class="apply-button bg-primary">Apply</router-link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <template v-else>
+                        <router-link v-if="perusahaan.slot_tersedia != 0 && (!statusDaftar || statusDaftar.disetujui == 'n')" :to="`/pendaftaran-magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Apply</router-link>
+                        <router-link v-else-if="perusahaan.slot_tersedia <= 0" :to="`/pendaftaran-magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Lihat</router-link>
+                    </template>
                 </div>
-
-                <Footer></Footer>
-            </main>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Header from '@/components/pendaftaran-magang/Header.vue'
-import Sidebar from '@/components/pendaftaran-magang/Sidebar.vue'
-import Footer from '@/components/pendaftaran-magang/Footer.vue'
 
 export default {
-    components: {
-        Sidebar,
-        Header,
-        Footer
-    },
     data() {
         return {
             token: localStorage.getItem('token'),
             dataPerusahaan: '',
             alertSuccess: '',
             alertDanger: '',
+            statusDaftar: ''
         }
     },
     methods: {
@@ -67,46 +53,25 @@ export default {
                 .catch(err => {
                     console.log(err.response.data);
                 }); 
+        },
+        getStatus() {
+            axios.get(`pendaftaran/1?token=${this.token}`)
+                .then(res => {
+                    this.statusDaftar = res.data[0];
+                })
+                .catch(err => {
+                    console.log(err.response.data);
+                }); 
         }
     },
     created() {
         this.getData();
+        this.getStatus();
     },
 }
 </script>
 
 <style scoped>
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-.app {
-	font-family: 'Poppins', sans-serif;
-    height: 100%;
-    background-color: #eef0f8;
-}
-
-main {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.content {
-    flex: 1 0 auto;
-}
-
-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.content .container {
-    background-color: white;
-    box-shadow: 0px 0px 28px 0px rgb(82 63 105 / 8%);
-    border-radius: 10px;
-}
 
 .card {
     padding: 1rem;
@@ -137,6 +102,11 @@ img {
     text-overflow: ellipsis;
 }
 
+.tersedia {
+    font-size: 13px;
+}
+
+
 @media screen and (max-width: 768px) {
     .content {
         padding: 2rem !important;
@@ -163,6 +133,10 @@ img {
     h3 {
         font-size: 1.4rem !important;
         margin-bottom: 1.5rem !important;
+    }
+
+    .tidak-ada {
+        font-size: .75rem;
     }
 }
 

@@ -1,53 +1,39 @@
 <template>
-    <div class="app">
-        <div class="d-flex" style="width: 100%;">
-            <Sidebar></Sidebar>
+    <div>
+        <h3 class="mb-5">Data Pendaftar</h3>
 
-            <main>
-                <Header></Header>
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nama Pendaftar</th>
+                        <th scope="col">Nama Perusahaan</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">Izinkan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(d, i) in data" :key="d.id">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ d.nama }}</td>
+                        <td>{{ d.magang.nama_perusahaan }}</td>
+                        <td><button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary">Detail</button></td>
+                        <td>
+                            <div class="toggle-radio">
+                                <input @change="toggle(d.id, 'y')" type="radio" :name="`${d.id}-radio`" :id="`${d.id}-yes`" class="yes" :checked="d.disetujui == 'y'">
+                                <input @change="toggle(d.id, 'n')" type="radio" :name="`${d.id}-radio`" :id="`${d.id}-no`" class="no" :checked="d.disetujui == 'n'">
 
-                <div class="content p-5">
-                    <div class="container p-5">
-                        <h3 class="mb-5">Data Pendaftar</h3>
-
-                        <div class="table-container">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nama Pendaftar</th>
-                                        <th scope="col">Nama Perusahaan</th>
-                                        <th scope="col">Action</th>
-                                        <th scope="col">Izinkan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(d, i) in data" :key="d.id">
-                                        <th scope="row">{{ i + 1 }}</th>
-                                        <td>{{ d.nama }}</td>
-                                        <td>{{ d.magang.nama_perusahaan }}</td>
-                                        <td><button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary">Detail</button></td>
-                                        <td>
-                                            <div class="toggle-radio">
-                                                <input @change="toggle(d.id, 'y')" type="radio" :name="`${d.id}-radio`" :id="`${d.id}-yes`" class="yes" :checked="d.disetujui == 'y'">
-                                                <input @change="toggle(d.id, 'n')" type="radio" :name="`${d.id}-radio`" :id="`${d.id}-no`" class="no" :checked="d.disetujui == 'n'">
-
-                                                <div class="switch">
-                                                    <label :for="`${d.id}-no`" class="l-no">No</label>
-                                                    <span></span>
-                                                    <label :for="`${d.id}-yes`" class="l-yes">Yes</label>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <Footer></Footer>
-            </main>
+                                <div class="switch">
+                                    <label :for="`${d.id}-no`" class="l-no">No</label>
+                                    <span></span>
+                                    <label :for="`${d.id}-yes`" class="l-yes">Yes</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <transition name="fade">
@@ -98,16 +84,8 @@
 
 <script>
 import axios from 'axios'
-import Header from '@/components/Header.vue'
-import Sidebar from '@/components/Sidebar.vue'
-import Footer from '@/components/Footer.vue'
 
 export default {
-    components: {
-        Sidebar,
-        Header,
-        Footer
-    },
     data() {
         return {
             token: localStorage.getItem('token'),
@@ -146,7 +124,7 @@ export default {
 
 .table-container {
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .info {
@@ -216,7 +194,6 @@ export default {
     width: 20px;
     height: 4px;
     background: #fff;
-    display: block;
     transform: rotate(-45deg);
     transition: all 0.2s ease;
 }

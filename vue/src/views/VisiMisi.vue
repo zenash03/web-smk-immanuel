@@ -9,7 +9,7 @@
 				<div class="container">
 					<div class="grid-area">
                         <div class="misi">
-                            <div class="misi-card fly-up    ">
+                            <div class="misi-card fly-up">
                                 <h4 class="title mb-4 fly-up">Misi</h4>
 
                                 <p class="pop-out">
@@ -17,7 +17,11 @@
                                     <br><br>
                                     To educate students to excel academically, physically, mentally, and spiritually, and to cultivate lifelong love of learning in order to bring about impact to the surroundings with Christian values.
                                     <br><br>
-                                    栽培子弟成爲品學兼優，身心靈安康，以及終生好學上進，實踐基督信仰的價值啓迪身邊的人
+                                    栽培子弟成爲品學兼優，身心靈安康，以及終生好學上進，實踐基督信仰的價值啓迪身邊的人。
+                                    <br><br>
+                                    学問的や肉体的や精神的などの見所のある及び一生学び続ける才能がある学生たちを作り出す、そうするとキリスト教の価値観で社会によい影響を与えられる人材になる.
+                                    <br><br>
+                                    학생들이 학문적, 신체적, 정신적, 영적으로 우수한 인간이 되도록 교육하고, 기독교적 가치로 주변 환경에 영향을 미칠 수있도록 평생학습에 대한 능력과 열정을 갖도록 교육한다.
                                 </p>
                             </div>
                         </div>
@@ -32,13 +36,27 @@
                                     A Christian school that provides a quality education for the nation with Christian values.
                                     <br><br>
                                     具備高素質的基督教學校, 以基督信仰的價值培育國家子弟。
+									<br><br>
+									クリスト教の価値観で人材を教育するの優秀な学校になる.
+									<br><br>
+									아이들을 기독교 가치로 교육하는 양질의 기독학교.
                                 </p>
                             </div>
 
                             <div class="motto-card fly-up">
                                 <h4 class="title mb-4 fly-up">Motto</h4>
 
-                                <p class="pop-out">Smart, Wise, Accountable</p>
+                                <p class="pop-out">
+                                	Cerdas, Bijak, Bertanggung Jawab
+                                	<br><br>
+                                	Smart, Wise, Accountable
+                                	<br><br>
+                                	聪明的, 明智的, 负责的
+                                	<br><br>
+                                	頭いい, 賢い, 責任をもつ
+                                	<br><br>
+                                	지능적인, 지혜로운, 책임이있는
+                            	</p>
                             </div>
                         </div>
 					</div>
@@ -114,6 +132,10 @@ export default {
 				}
 			});
 		}, 0);
+
+		setTimeout(() => {
+			scrollTo(0, 0);
+		}, 200);
 	},
 	destroyed() {
 		$(window).off();
@@ -127,6 +149,7 @@ export default {
     background-color: white;
     padding: 1rem;
     border-left: 5px solid var(--primary-blue);
+	height: 100%;
 }
 
 .grid-area {
@@ -156,7 +179,7 @@ export default {
     grid-area: motto-card;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 820px) {
     .padding {
         padding: 50px 0;
     }

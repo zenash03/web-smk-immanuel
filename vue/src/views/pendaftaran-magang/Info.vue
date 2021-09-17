@@ -1,52 +1,32 @@
 <template>
-    <div class="app">
-        <div class="d-flex" style="width: 100%;">
-            <Sidebar></Sidebar>
+    <div>
+        <h3 class="mb-5">Pendaftaran Kamu</h3>
+
+        <h6 v-if="!data[0]" class="belum-daftar">Kamu Belum Mendaftar Magang 😑</h6>
+
+        <div class="row p-0 pb-2 box mb-4" v-for="d in data" :key="d.id">
+            <header>
+                <p v-if="!d.didaftarkan_oleh">Kamu Mendaftar magang di, <router-link :to="`/pendaftaran-magang/daftar/${d.id}`" class="font-weight-bold text-success">{{ d.magang.nama_perusahaan }}</router-link></p>
+                <p v-if="d.didaftarkan_oleh">Kamu Didaftarkan oleh <b>{{ d.didaftarkan_oleh }}</b> di, <router-link :to="`/pendaftaran-magang/daftar/${d.id}`" class="font-weight-bold text-success">{{ d.magang.nama_perusahaan }}</router-link></p>
+            </header>
 
             <main>
-                <Header></Header>
-
-                <div class="content p-5">
-                    <div class="container p-5">
-                        <h3 class="mb-5">Halo, <b>{{ me.name }}</b>!</h3>
-
-                        <h6 v-if="!data">Kamu Belum Mendaftar Magang 😑</h6>
-
-                        <div class="row">
-                            <div class="col-lg-8" v-if="data != ''">
-                                <p>Kamu Mendaftar magang di, <router-link :to="`/pendaftaran-magang/dafar/${data.id}`" class="font-weight-bold text-success">{{ data.magang.nama_perusahaan }}</router-link></p>
-                            </div>
-
-                            <div class="col-lg-8" v-if="data">
-                                <p v-if="data.disetujui == 'y'">Status Dizinkan, <b class="text-success">Disetujui 😊</b></p>
-                                <p v-if="data.disetujui == 'n'">Status Dizinkan, <b class="text-danger">Tidak Di Setujui 😥</b></p>
-                                <p v-if="!data.disetujui">Status Dizinkan, <b class="text-danger">Menunggu Persetujuan 😱</b></p>
-                            </div>
-                        </div>
-
-                        <p class="info m-0 mt-3" v-if="data.disetujui == 'y'">Telah disetujui oleh <b>{{ data.penyetuju.name }}</b> pada tanggal {{ data.tanggal_disetujui }}</p>
-                        <p class="info m-0 mt-3" v-if="data.disetujui == 'n'"><b>{{ data.penyetuju.name }}</b> tidak menyetujui tempat magang anda :(((</p>
-                    </div>
-                </div>
-
-                <Footer></Footer>
+                <p v-if="d.disetujui == 'y'">Status Dizinkan, <b class="text-success">Disetujui 🥳</b></p>
+                <p v-if="d.disetujui == 'n'">Status Dizinkan, <b class="text-danger">Tidak Di Setujui 😢</b></p>
+                <p v-if="!d.disetujui">Status Dizinkan, <b class="text-info">Menunggu Persetujuan 😱</b></p>
             </main>
+
+            <p class="info m-0 mt-3" v-if="d.disetujui == 'y'">Telah disetujui oleh <b>{{ d.penyetuju.name }}</b> pada tanggal {{ d.tanggal_disetujui }}</p>
+            <p class="info m-0 mt-3" v-if="d.disetujui == 'n'"><b>{{ d.penyetuju.name }}</b> tidak menyetujui tempat magang anda :(((</p>
         </div>
+
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Header from '@/components/pendaftaran-magang/Header.vue'
-import Sidebar from '@/components/pendaftaran-magang/Sidebar.vue'
-import Footer from '@/components/pendaftaran-magang/Footer.vue'
 
 export default {
-    components: {
-        Sidebar,
-        Header,
-        Footer
-    },
     data() {
         return {
             token: localStorage.getItem('token'),
@@ -83,40 +63,32 @@ export default {
 
 <style scoped>
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-.app {
-	font-family: 'Poppins', sans-serif;
-    height: 100%;
-    background-color: #eef0f8;
-}
-
-main {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.content {
-    flex: 1 0 auto;
-}
-
-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.content .container {
-    background-color: white;
-    box-shadow: 0px 0px 28px 0px rgb(82 63 105 / 8%);
-    border-radius: 10px;
-}
-
 .info {
     font-style: italic;
     font-size: 14px;
+}
+
+.box {
+    border: 1px solid rgba(0, 0, 0, .05);
+    padding: 1rem 0;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .05);
+    overflow: hidden;
+}
+
+.box header {
+    background-color: #eeeff8;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.box header p, .box main p {
+    margin: 0;
+}
+
+.box main {
+    padding: 1rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -126,6 +98,16 @@ img {
 
     .content .container {
         padding: 2rem !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    header p {
+        font-size: 14px;
+    }
+
+    .info {
+        font-size: 12px;
     }
 }
 
@@ -145,6 +127,10 @@ img {
     h3 {
         font-size: 1.4rem !important;
         margin-bottom: 1.5rem !important;
+    }
+
+    .belum-daftar {
+        font-size: .75rem;
     }
 }
 

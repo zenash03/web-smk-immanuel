@@ -16,7 +16,7 @@
                 <ul>
                     <router-link to="/pendaftaran-magang/info" class="aside-link"><i class="fas fa-info"></i> Info</router-link>
                     <router-link to="/pendaftaran-magang/daftarkan-perusahaan" class="aside-link"><i class="fas fa-folder-plus"></i> Ajukan Perusahaan Baru</router-link>
-                    <router-link to="/pendaftaran-magang/dafar-perusahaan" class="aside-link"><i class="fas fa-list-ul"></i> List Perusahaan</router-link>
+                    <router-link to="/pendaftaran-magang/daftar-perusahaan" class="aside-link"><i class="fas fa-list-ul"></i> List Perusahaan</router-link>
                 </ul>
 
                 <button type="button" class="button-menu" @click="toggleMenu"><span>></span></button>
@@ -120,7 +120,7 @@ header .detail {
     margin-right: 1rem;
 }
 
-.aside main ul a:hover {
+.aside main ul a:hover, .router-link-active {
     background-color: #f5f7fd;
     color: var(--primary-blue-hover);
 }
@@ -151,6 +151,16 @@ img {
 
 .desktop {
     display: block;
+}
+
+@media screen and (max-width: 991px) {
+    .detail h5 {
+        font-size: 1rem;
+    }
+
+    .detail p {
+        font-size: .7rem;
+    }
 }
 
 @media screen and (max-width: 768px) {

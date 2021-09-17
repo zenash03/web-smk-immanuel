@@ -32,39 +32,48 @@ const routes = [
 
 	{
 		path: '/pendaftaran-magang',
-		component: () => import('@/views/pendaftaran-magang/Home.vue'),
+		component: () => import('@/layouts/Dashboard.vue'),
 		meta: {
 			auth: true
-		}
+		},
+		children: [
+			{
+				path: '/',
+				component: () => import('@/views/pendaftaran-magang/Home.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'info',
+				component: () => import('@/views/pendaftaran-magang/Info.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'daftarkan-perusahaan',
+				component: () => import('@/views/pendaftaran-magang/DaftarkanPerusahaan.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'daftar-perusahaan',
+				component: () => import('@/views/pendaftaran-magang/DaftarPerusahaan.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'daftar/:id',
+				component: () => import('@/views/pendaftaran-magang/Daftar.vue'),
+				meta: {
+					auth: true
+				}
+			}
+		]
 	},
-	{
-		path: '/pendaftaran-magang/info',
-		component: () => import('@/views/pendaftaran-magang/Info.vue'),
-		meta: {
-			auth: true
-		}
-	},
-	{
-		path: '/pendaftaran-magang/daftarkan-perusahaan',
-		component: () => import('@/views/pendaftaran-magang/DaftarkanPerusahaan.vue'),
-		meta: {
-			auth: true
-		}
-	},
-	{
-		path: '/pendaftaran-magang/dafar-perusahaan',
-		component: () => import('@/views/pendaftaran-magang/DaftarPerusahaan.vue'),
-		meta: {
-			auth: true
-		}
-	},
-	{
-		path: '/pendaftaran-magang/dafar/:id',
-		component: () => import('@/views/pendaftaran-magang/Daftar.vue'),
-		meta: {
-			auth: true
-		}
-	}
 ]
 
 const router = new VueRouter({

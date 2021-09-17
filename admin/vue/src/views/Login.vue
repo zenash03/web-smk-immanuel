@@ -61,8 +61,11 @@ export default {
 
 <style scoped>
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
 .app {
-	height: 100vh;
+	font-family: 'Poppins', sans-serif;
+	min-height: 100vh;
 	background-color: #e3eaef;
     display: flex;
     align-items: center;
@@ -91,7 +94,6 @@ button {
 
 .form {
 	border-radius: 5px;
-	margin: auto;
 	width: 350px;
 	height: 410px;
 	background-color: white;
@@ -108,6 +110,7 @@ button {
 .card-header h4 {
 	margin: 0;
 	line-height: 50px;
+    font-size: 24px !important;
 }
 
 .form .card-body {
@@ -142,5 +145,6 @@ button {
 .login:hover {
 	background-color: rgba(129, 45, 212, 0.5);
 }
+
 
 </style>

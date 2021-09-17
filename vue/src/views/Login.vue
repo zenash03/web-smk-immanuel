@@ -65,7 +65,7 @@ export default {
 
 .app {
 	font-family: 'Poppins', sans-serif;
-	height: 100vh;
+	min-height: 100vh;
 	background-color: #e3eaef;
     display: flex;
     align-items: center;
@@ -94,7 +94,6 @@ button {
 
 .form {
 	border-radius: 5px;
-	margin: auto;
 	width: 350px;
 	height: 410px;
 	background-color: white;
@@ -111,6 +110,7 @@ button {
 .card-header h4 {
 	margin: 0;
 	line-height: 50px;
+    font-size: 24px !important;
 }
 
 .form .card-body {

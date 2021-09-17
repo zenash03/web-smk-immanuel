@@ -13,6 +13,10 @@ class FormMagang extends Model
     protected $appends = ['creator_name'];
 
     public function getCreatorNameAttribute() {
-        return User::find($this->created_by)->name;
+        if ($this->creator_role == 'admin') {
+            return Admin::find($this->created_by)->name;
+        } else {
+            return User::find($this->created_by)->name;
+        }
     }
 }

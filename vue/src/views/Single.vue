@@ -61,11 +61,6 @@ export default {
             data: ''
         }
     },
-    watch:{
-        $route() {
-            this.getData();
-        }
-    }, 
     methods: {
         getData() {
             axios.get(`${this.$route.params.type}/${this.$route.params.id}`)
@@ -107,7 +102,7 @@ export default {
 				let wScroll = $(this).scrollTop();
 
 				// Footer Section
-				if (wScroll > $('.footer').offset().top - 300) {
+				if (wScroll > $('.footer').offset().top - 500) {
 					$('.footer .pop-out').each(function(i) {
 						setTimeout(() => {
 							$('.footer .pop-out').eq(i).addClass('fade');
@@ -236,10 +231,6 @@ nav.nav {
 
     .social {
         align-self: flex-start;
-    }
-
-    svg {
-        transform: translateY(0);
     }
 }
 

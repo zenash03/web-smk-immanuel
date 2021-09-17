@@ -3,16 +3,16 @@
         <nav>
             <header class="d-flex w-100 pt-3 pb-3">
                 <div class="container d-flex justify-content-between align-items-center">
-                    <div class="d-flex justify-content-start">
+                    <router-link to="/" class="logo-menu d-flex justify-content-start">
                         <div class="logo">
-                            <img src="@/assets/images/logo.png" alt="">
+                            <img src="@/assets/images/logo.png" alt="Logo">
                         </div>
 
                         <div class="identity">
                             <h4 class="title">SMK Immanuel Pontianak</h4>
                             <p class="address">Jl. Letnan Jendral Sutoyo · (0561) 737921</p>
                         </div>
-                    </div>
+                    </router-link>
 
                     <div class="navbar">
                         <ul class="nav-links">
@@ -25,7 +25,7 @@
                     </div>
 
                     <button class="menu" @click="openMenu()">
-                        <svg width="100" height="100" viewBox="0 0 100 100">
+                        <svg width="30" height="30" viewBox="0 0 100 100">
                             <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
                             <path class="line line2" d="M 20,50 H 80" />
                             <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
@@ -92,6 +92,7 @@ nav .identity {
 
 .identity p {
     margin: 0;
+    color: gray;
 }
 
 nav header {
@@ -178,6 +179,40 @@ nav.nav {
 }
 
 /* Responsive */
+
+@media only screen and (max-width: 991px) {
+    .identity {
+        margin-left: .8rem !important;
+        justify-content: center;
+    }
+
+    .identity > * {
+        margin: 0;
+    }
+
+    nav .logo {
+        height: 70px;
+        width: 50px;
+    }
+    
+    h4.title {
+        margin-bottom: .5rem;
+        font-size: 1rem;
+    }
+    
+    p.address {
+        font-size: .6rem;
+    }
+
+    .bold {
+        font-size: .9rem;
+    }
+
+    .nav-links {
+        font-size: .8rem;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     header.pt-3.pb-3 {
         padding: .7rem 0 !important;
@@ -221,8 +256,8 @@ nav.nav {
         overflow: hidden;
         flex-direction: column;
         justify-content: center;
-        transition: .5s;
-        background-color: var(--primary-blue);
+        transition: .3s ease-in-out;
+        background-color: var(--primary-blue-hover);
     }
 
     .navbar-mobile .nav-links {
@@ -232,7 +267,14 @@ nav.nav {
     }
 
     .navbar-mobile .nav-links li {
-        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    .navbar-mobile .nav-links li a {
+        color: white;
     }
 
     .navbar-mobile.opened {
@@ -240,22 +282,24 @@ nav.nav {
     }
 
     .menu {
+        transform: translateY(-200%);
         display: flex !important;
+        animation: text .4s 1s forwards;
     }
 }
 
 @media only screen and (max-width: 375px) {
     header.pt-3.pb-3 {
-        padding: .6rem 0 !important;
+        padding: .7rem 0 !important;
     }
 
     h4.title {
         margin-bottom: .4rem;
-        font-size: .8rem;
+        font-size: .7rem;
     }
     
     p.address {
-        font-size: .5rem;
+        font-size: .45rem;
     }
 
     nav .logo {
@@ -270,6 +314,11 @@ nav.nav {
 
     .menu {
         display: flex !important;
+    }
+
+    .navbar-mobile {
+        left: -200px;
+        width: 200px;
     }
 }
 

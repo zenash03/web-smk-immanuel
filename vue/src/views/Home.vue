@@ -94,7 +94,7 @@
 									</div>
 
 									<div class="card-content">
-										<h5 class="mb-4 mt-4 pop-out" style="color: #4F967F">Akutansi dan Keuangan Lembaga</h5>
+										<h5 class="mb-4 mt-4 pop-out" style="color: #c73f38">Akutansi dan Keuangan Lembaga</h5>
 										<p class="pop-out">Jurusan ini mempelajari materi terkait metode pencatatan dan penyusunan laporan keuangan yang berguna membantu pemangku kepentingan dalam proses pengambilan keputusan.</p>
 									</div>
 								</div>
@@ -221,11 +221,15 @@ export default {
 					this.prestasi = res.data;
 				})
 				.catch(err => {
+					location.reload();
+
 					console.log(err.response.data);
 				})
 		}
 	},
 	created() {
+		scrollTo(0, 0);
+		
 		this.getHeadline();
 		this.getNews();
 		this.getPrestasi();
@@ -238,7 +242,7 @@ export default {
 				let wScroll = $(this).scrollTop();
 				
 				// Headline Section
-				if (wScroll > $('.headline').offset().top - 300) {
+				if (wScroll > $('.headline').offset().top - 500) {
 					$('.headline .fade-out').each(function(i) {
 						setTimeout(() => {
 							$('.headline .fade-out').eq(i).addClass('fade');
@@ -247,7 +251,7 @@ export default {
 				}
 
 				// News Section
-				if (wScroll > $('.news').offset().top - 300) {
+				if (wScroll > $('.news').offset().top - 430) {
 					$('.news .pop-out').each(function(i) {
 						setTimeout(() => {
 							$('.news .pop-out').eq(i).addClass('pop-up');
@@ -268,7 +272,7 @@ export default {
 				}
 
 				// Majors Section
-				if (wScroll > $('.jurusan').offset().top - 300) {
+				if (wScroll > $('.jurusan').offset().top - 430) {
 					$('.jurusan .pop-out').each(function(i) {
 						setTimeout(() => {
 							$('.jurusan .pop-out').eq(i).addClass('pop-up');
@@ -283,7 +287,7 @@ export default {
 				}
 
 				// Prestasi Section
-				if (wScroll > $('.prestasi').offset().top - 300) {
+				if (wScroll > $('.prestasi').offset().top - 430) {
 					$('.prestasi .zoom-out').each(function(i) {
 						setTimeout(() => {
 							$('.prestasi .zoom-out').eq(i).addClass('zoom-in');
@@ -298,7 +302,7 @@ export default {
 				}
 
 				// Ekskul Section
-				if (wScroll > $('.ekskul').offset().top - 300) {
+				if (wScroll > $('.ekskul').offset().top - 430) {
 					$('.ekskul .fade-out').each(function(i) {
 						setTimeout(() => {
 							$('.ekskul .fade-out').eq(i).addClass('fade');
@@ -389,19 +393,40 @@ header.fade {
 .image-main {
 	max-height: 400px;
     width: 100%;
+	background-image: url('../assets/images/pattern.png');
+	background-size: contain;
+	overflow: hidden;
+	border-radius: 5px;
 }
 
 .image-main img {
 	width: 100%;
 	height: 100%;
 	max-height: 400px;
-	object-fit: cover;
+	object-fit: contain;
+}
+
+@media only screen and (max-width: 991px) {
+	.headline h2.title {
+		font-size: 1.5rem;
+	}
+
+	.headline p {
+		font-size: .8rem;
+	}
 }
 
 @media only screen and (max-width: 768px) {
 	.news .col-lg-6 {
 		width: 50%;
 		flex: 0 0 50%;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.headline .row .col-lg-6 {
+		width: 100%;
+		flex: 0 0 100%;
 	}
 }
 
@@ -416,12 +441,15 @@ header.fade {
 
 
 /* News Style */
-.news-card img {
-    border-radius: 5px;
-}
 
 .news .img {
     height: 200px;
+    border-radius: 5px;
+	overflow: hidden;
+}
+
+.news-card img {
+	object-fit: cover;
 }
 
 .news .title-more {
@@ -465,10 +493,28 @@ header.fade {
     color: var(--primary-blue);
 }
 
+@media only screen and (max-width: 991px) {
+	.news .container .col-lg-4 {
+		width: 100%;
+		flex: 0 0 100%;
+	}
+}
+
 @media only screen and (max-width: 768px) {
 	.headline .title {
 		font-size: 2rem;
 		margin-top: 2rem;
+	}
+}
+
+@media only screen and (max-width: 590px) {
+	.news .col-lg-6 {
+		width: 100%;
+		flex: 0 0 100%;
+	}
+
+	.news h5.title {
+		font-size: 1rem;
 	}
 }
 
@@ -521,7 +567,7 @@ header.fade {
 }
 
 .jurusan .card-header.akl {
-    background-color: #75dfbd;
+    background-color: var(--primary-red);
 }
 
 .jurusan .card-header.bdp {
@@ -554,7 +600,17 @@ header.fade {
 	}
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 650px) {
+	.jurusan .card-content h5 {
+		font-size: 1rem;
+	}
+
+	.jurusan .card-content p {
+		font-size: .75rem;
+	}
+}
+
+@media only screen and (max-width: 580px) {
 	.jurusan .col-lg-4 {
 		width: 100%;
 		flex: 0 0 100%;
@@ -583,7 +639,7 @@ header.fade {
 }
 
 .prestasi .news-image img {
-	max-height: 400px;
+	height: 100%;
 }
 
 .prestasi .news-card {

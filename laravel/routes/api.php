@@ -49,14 +49,15 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
     Route::get('banners', [BannerController::class, 'adminView']);
     Route::put('toggle/{id}', [BannerController::class, 'toggle']);
 
-    Route::resource('magang', FormMagangController::class);
+    Route::resource('magang', FormMagangController::class)->except(['store']);
+    Route::post('magang', [FormMagangController::class, 'storeAdmin']);
     Route::resource('pendaftaran', PendaftaranController::class);
 });
 
 // Authenticated Student Route
 Route::group(['middleware' => 'siswa'], function () {
     Route::resource('magang', FormMagangController::class)->except(['destroy']);
-    Route::resource('pendaftaran', PendaftaranController::class)->only(['index', 'show']);
+    Route::resource('pendaftaran', PendaftaranController::class)->only(['index', 'show', 'store']);
 });
 
 

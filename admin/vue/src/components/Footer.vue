@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div class="container">
-            <b>2020-2021©</b> <span>SMK Immanuel | Made with ❤ By Erick Chandra</span>
+            <b>2020-2021©</b> <span>SMK Immanuel | Made with ❤ by ITClub</span>
         </div>
     </footer>
 </template>

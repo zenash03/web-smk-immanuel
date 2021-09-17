@@ -15,6 +15,7 @@
             <main>
                 <ul>
                     <router-link to="/magang/pendaftar" class="aside-link"><i class="fas fa-user-check"></i> Pendaftar Magang</router-link>
+                    <router-link to="/magang/daftarkan-perusahaan" class="aside-link"><i class="fas fa-folder-plus"></i> Ajukan Perusahaan Baru</router-link>
                     <router-link to="/magang/daftar-perusahaan" class="aside-link"><i class="fas fa-list-ul"></i> List Perusahaan</router-link>
                 </ul>
 
@@ -123,7 +124,7 @@ header .detail {
     margin-right: 1rem;
 }
 
-.aside main ul a:hover {
+.aside main ul a:hover, .router-link-active {
     background-color: #f5f7fd;
     color: var(--primary-blue-hover);
 }

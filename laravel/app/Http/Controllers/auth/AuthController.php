@@ -54,9 +54,9 @@ class AuthController extends Controller
     }
 
     public function siswa(Request $request) {
-        $courseUserNames = PendaftarMagang::pluck('user_id')->all();
-        $users = User::whereNotIn('id', $courseUserNames)->where('role', 'siswa')->get();
-        $siswa = User::where('role', 'siswa')->join('pendaftar_magangs', 'pendaftar_magangs.user_id', '!=', 'tbuser.id')->get();
+        $notValidUserId = PendaftarMagang::where('disetujui', 'y')->orWhereNull('disetujui')->get()->pluck('user_id');
+        $users = User::whereNotIn('id', $notValidUserId)->where('role', 'siswa')->where('tingkat', 12)->orderBy('name')->get();
+        // $siswa = User::where('tingkat', 12)->where('role', 'siswa')->join('pendaftar_magangs', 'pendaftar_magangs.user_id', '!=', 'tbuser.id')->get();
 
         return response()->json($users, 200);
     }

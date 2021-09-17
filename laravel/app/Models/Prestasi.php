@@ -14,8 +14,6 @@ class Prestasi extends Model
 
     public function getExcerptAttribute()
     {
-        $content = Prestasi::where('id', $this->id)->first()->content;
-
-        return substr($content, 0, rand(90, 130)) . '...';
+        return substr($this->content, 0, rand(90, 130)) . '...';
     }
 }

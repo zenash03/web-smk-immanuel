@@ -28,7 +28,7 @@
 
                         <ul>
                             <li>
-                                Jl. Letnan Jendral Sutoyo, Parit Tokaya, Kec. Pontianak Sel., Kota Pontianak, Kalimantan Barat 78113
+                                Jl. Letnan Jendral Sutoyo
                                 <br>
                                 +62 8952-4435-865
                             </li>
@@ -44,7 +44,7 @@
 
         </footer>
 
-        <footer class="text">Copyright &copy; {{ year }} SMK Immanuel. All rights reserved | Made with ❤ By Erick Chandra.</footer>
+        <footer class="text">Copyright &copy; {{ year }} SMK Immanuel. All rights reserved | Made with ❤ by ITClub</footer>
     </div>
 </template>
 

@@ -24,6 +24,7 @@ class CreateFormMagangsTable extends Migration
             $table->string('pic');
             $table->text('keterangan')->nullable();
             $table->string('tanggal_didaftarkan');
+            $table->string('creator_role');
             $table->timestamps();
 
             $table->foreign('created_by')->references('id')->on('tbuser');

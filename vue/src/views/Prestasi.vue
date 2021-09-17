@@ -2,8 +2,6 @@
 	<div id="home">
 		<Nav></Nav>
 
-		<div id="transition"></div>
-
 		<main>
 			<section class="news padding pt-0" id="news">
 				<div class="container">
@@ -67,21 +65,19 @@ export default {
 		}
 	},
 	methods: {
-		removeTransition() {
-			const transition = document.getElementById('transition');
-
-			setTimeout(() => {
-				transition.classList.add('out');
-			}, 50);
-		},
 		getPrestasi() {
 			axios.get(`prestasi`)
 				.then(res => {
 					this.prestasi = res.data;
+
+					this.scroll();
 				})
 				.catch(err => {
 					console.log(err.response.data);
 				})
+		},
+		scroll() {
+			scrollTo(0, 5);
 		}
 	},
 	created() {
@@ -89,12 +85,10 @@ export default {
 	},
 	mounted() {
 		setTimeout(() => {
-			this.removeTransition();
-
 			$(window).scroll(function() {
 				let wScroll = $(this).scrollTop();
 				
-				// News Section
+				// Prestasi Section
 				if (wScroll > $('.news').offset().top - 300) {
 					$('.news .pop-out').each(function(i) {
 						setTimeout(() => {
@@ -116,7 +110,7 @@ export default {
 				}
 
 				// Footer Section
-				if (wScroll > $('.footer').offset().top - 300) {
+				if (wScroll > $('.footer').offset().top - 500) {
 					$('.footer .pop-out').each(function(i) {
 						setTimeout(() => {
 							$('.footer .pop-out').eq(i).addClass('fade');
@@ -230,10 +224,28 @@ header.fade {
     color: var(--primary-blue);
 }
 
+@media only screen and (max-width: 991px) {
+	.news .container .col-lg-4 {
+		width: 100%;
+		flex: 0 0 100%;
+	}
+}
+
 @media only screen and (max-width: 768px) {
 	.headline .title {
 		font-size: 2rem;
 		margin-top: 2rem;
+	}
+}
+
+@media only screen and (max-width: 590px) {
+	.news .col-lg-6 {
+		width: 100%;
+		flex: 0 0 100%;
+	}
+
+	.news h5.title {
+		font-size: 1rem;
 	}
 }
 

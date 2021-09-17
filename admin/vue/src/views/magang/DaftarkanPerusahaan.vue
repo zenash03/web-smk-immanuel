@@ -114,12 +114,12 @@ export default {
 
             this.formData.pendaftar = this.formData.pendaftar.slice(0, this.formData.kouta);
 
-            axios.post(`magang?token=${this.token}`, this.formData)
+            axios.post(`admin/magang?token=${this.token}`, this.formData)
                 .then(res => {
                     this.alertSuccess = res.data.message;
                     
                     setTimeout(() => {
-                        this.$router.push('/pendaftaran-magang/info');
+                        this.$router.push('/magang/pendaftar');
                     }, 400);
                 })
                 .catch(err => {

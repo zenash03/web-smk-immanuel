@@ -1,44 +1,32 @@
 <template>
-    <div class="app">
-        <div class="d-flex" style="width: 100%;">
-            <Sidebar></Sidebar>
+    <div>
+        <div class="alert alert-success" v-if="alertMsg">{{ alertMsg }}</div>
 
-            <main>
-                <Header></Header>
+        <h3 class="mb-5">List Perusahaan</h3>
 
-                <div class="content p-5">
-                    <div class="container p-5">
-                        <h3 class="mb-5">List Perusahaan</h3>
-
-                        <div class="table-container">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nama Perusahaan</th>
-                                        <th scope="col">Nama Didaftarkan Oleh</th>
-                                        <th scope="col">Tanggal Di daftarkan</th>
-                                        <th scope="col">Slot Tersedia</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(d, i) in data" :key="d.id">
-                                        <th scope="row">{{ i + 1 }}</th>
-                                        <td>{{ d.nama_perusahaan }}</td>
-                                        <td>{{ d.creator_name }}</td>
-                                        <td>{{ d.tanggal_didaftarkan }}</td>
-                                        <td>{{ d.slot_tersedia }}</td>
-                                        <td><button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary">Detail</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <Footer></Footer>
-            </main>
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nama Perusahaan</th>
+                        <th scope="col">Nama Didaftarkan Oleh</th>
+                        <th scope="col">Tanggal Di daftarkan</th>
+                        <th scope="col">Slot Tersedia</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(d, i) in data" :key="d.id">
+                        <th scope="row">{{ i + 1 }}</th>
+                        <td>{{ d.nama_perusahaan }}</td>
+                        <td>{{ d.creator_name }}</td>
+                        <td>{{ d.tanggal_didaftarkan }}</td>
+                        <td>{{ d.slot_tersedia }}</td>
+                        <td><button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary">Detail</button></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <transition name="fade">
@@ -77,6 +65,7 @@
                     </div>
 
                     <div class="button-group">
+                        <button @click="deleteData(modalData.id)" type="button" class="form-control btn-danger">Delete</button>
                         <button @click="openModal = false, modalData = ''" type="button" class="form-control btn-primary">Close</button>
                     </div>
 
@@ -89,30 +78,35 @@
 
 <script>
 import axios from 'axios'
-import Header from '@/components/Header.vue'
-import Sidebar from '@/components/Sidebar.vue'
-import Footer from '@/components/Footer.vue'
 
 export default {
-    components: {
-        Sidebar,
-        Header,
-        Footer
-    },
     data() {
         return {
             token: localStorage.getItem('token'),
             data: '',
             openModal: false,
-            modalData: ''
+            modalData: '',
+            alertMsg: ''
         }
     },
     methods: {
         getData() {
             axios.get(`admin/magang?token=${this.token}`)
                 .then(res => {
-                    console.log(res.data)
                     this.data = res.data;
+                })
+                .catch(err => {
+                    console.log(err.response.data);
+                }); 
+        },
+        deleteData(id) {
+            axios.delete(`admin/magang/${id}?token=${this.token}`)
+                .then(res => {
+                    this.alertMsg = res.data.message;
+
+                    this.openModal = false;
+                    this.modalData = true;
+                    this.getData();
                 })
                 .catch(err => {
                     console.log(err.response.data);
@@ -129,7 +123,7 @@ export default {
 
 .table-container {
     width: 100%;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 .info {

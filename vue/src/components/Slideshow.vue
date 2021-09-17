@@ -61,7 +61,7 @@ export default {
 
 			if (i > max) i = 0;
 
-			setTimeout(move, 3000);
+			setTimeout(move, 5000);
 		}
 	}
 }

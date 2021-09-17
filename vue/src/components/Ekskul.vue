@@ -133,7 +133,13 @@
 	}
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 600px) {
+	.ekskul-card .icon {
+		width: 35%;
+	}
+}
+
+@media only screen and (max-width: 500px) {
 	.ekskul-card p {
 		font-size: 1rem;
 	}

@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'User Test 1',
             'username' => '1000',
             'password' => bcrypt('1000'),
+            'tingkat' => 12,
             'role' => 'siswa'
         ]);
 
@@ -40,6 +41,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'User Test 2',
             'username' => '2000',
             'password' => bcrypt('2000'),
+            'tingkat' => 12,
             'role' => 'siswa'
         ]);
 
@@ -47,6 +49,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'User Test 3',
             'username' => '3000',
             'password' => bcrypt('3000'),
+            'tingkat' => 12,
             'role' => 'siswa'
         ]);
 
@@ -54,6 +57,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'User Test 4',
             'username' => '4000',
             'password' => bcrypt('4000'),
+            'tingkat' => 12,
             'role' => 'siswa'
         ]);
 
@@ -61,6 +65,15 @@ class DatabaseSeeder extends Seeder
             'name' => 'User Test 5',
             'username' => '5000',
             'password' => bcrypt('5000'),
+            'tingkat' => 12,
+            'role' => 'siswa'
+        ]);
+
+        User::create([
+            'name' => 'User Test 6',
+            'username' => '6000',
+            'password' => bcrypt('6000'),
+            'tingkat' => 11,
             'role' => 'siswa'
         ]);
 

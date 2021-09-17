@@ -141,4 +141,28 @@ a:hover {
     }
 }
 
+
+/* Bootstrap Reset */
+
+@media only screen and (max-width: 991px) {
+    .col-lg-6 {
+        width: 50%;
+        flex: 0 0 50%;
+    }
+
+	.container {
+		max-width: 100% !important;
+		width: 90% !important;
+		margin: auto;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.container {
+		max-width: 100% !important;
+		width: 90% !important;
+		margin: auto;
+	}
+}
+
 </style>

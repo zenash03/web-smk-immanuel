@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('password');
             $table->string('role');
+            $table->integer('tingkat');
             $table->text('token')->nullable();
             $table->timestamps();
         });

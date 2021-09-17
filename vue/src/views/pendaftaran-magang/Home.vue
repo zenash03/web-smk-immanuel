@@ -1,35 +1,11 @@
 <template>
-    <div class="app">
-        <div class="d-flex" style="width: 100%;">
-            <Sidebar></Sidebar>
-
-            <main>
-                <Header></Header>
-
-                <div class="content p-5">
-                    <div class="container p-5">
-                        <h4 class="m-0">Welcome, <b>{{ me.name }}</b></h4>
-                    </div>
-                </div>
-
-                <Footer></Footer>
-            </main>
-        </div>
-    </div>
+    <h4 class="m-0">Welcome, <b>{{ me.name }}</b></h4>
 </template>
 
 <script>
 import axios from 'axios'
-import Header from '@/components/pendaftaran-magang/Header.vue'
-import Sidebar from '@/components/pendaftaran-magang/Sidebar.vue'
-import Footer from '@/components/pendaftaran-magang/Footer.vue'
 
 export default {
-    components: {
-        Sidebar,
-        Header,
-        Footer
-    },
     data() {
         return {
             token: localStorage.getItem('token'),
@@ -54,37 +30,6 @@ export default {
 </script>
 
 <style scoped>
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
-.app {
-	font-family: 'Poppins', sans-serif;
-    height: 100%;
-    background-color: #eef0f8;
-}
-
-main {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.content {
-    flex: 1 0 auto;
-}
-
-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.content .container {
-    background-color: white;
-    box-shadow: 0px 0px 28px 0px rgb(82 63 105 / 8%);
-    border-radius: 10px;
-}
 
 @media screen and (max-width: 768px) {
     .content {
