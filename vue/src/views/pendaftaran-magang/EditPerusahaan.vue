@@ -3,9 +3,10 @@
         <div class="alert alert-success" role="alert" v-if="alertSuccess">{{ alertSuccess }}</div>
         <div class="alert alert-danger" role="alert" v-if="alertDanger">{{ alertDanger }}</div>
 
-        <h3 class="mb-5">Daftarkan Perusahaan</h3>
+        <h3 class="mb-0" v-if="!magang_id">Tampaknya kamu tidak ada mendaftarkan perusahaan 🙂</h3>
+        <h3 class="mb-5" v-if="magang_id">Edit Data Perusahaan</h3>
 
-        <form @submit.prevent="submitData">
+        <form @submit.prevent="submitData" v-if="magang_id">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
@@ -27,7 +28,9 @@
                         <label for="kota">Kota</label>
                         <input type="text" class="form-control" id="kota" v-model="formData.kota">
                     </div>
+                </div>
 
+                <div class="col-lg-6">
                     <div class="form-group">
                         <label for="telp">No Telp Perusahaan</label>
                         <input type="tel" class="form-control" id="telp" v-model="formData.telp">
@@ -42,31 +45,8 @@
                         <label for="keterangan">Keterangan</label>
                         <textarea id="keterangan" class="form-control" v-model="formData.keterangan"></textarea>
                     </div>
-
-                    <div class="form-group">
-                        <label for="">&nbsp;</label>
-                        <button type="submit" class="desktop form-control btn-primary">Submit</button>
-                    </div>
                 </div>
-
-                <div class="col-lg-6">
-                    <div class="form-group" v-for="(i, x) in parseInt(formData.kuota) || 0" :key="i">
-                        <label for="">Pilih Siswa {{ i }}</label>
-                        <select class="form-select" v-model="formData.pendaftar[x]">
-                            <option :value="siswa.username" v-for="siswa in siswas" :key="siswa.username">{{ siswa.name }} - {{ siswa.username }}</option>
-                        </select>
-                    </div>
-
-                    <label for="">&nbsp;</label>
-                    <div class="alert alert-danger" role="alert">
-                        <h4 class="alert-heading">Perhatian! 😑</h4>
-                        <p>Sebelum Mendaftarkan perusahaan, Kamu WAJIB Melihat di list perusahaan dulu. Apakah perusahaannya sudah terdaftar atau tidak. Jika sudah dan slotnya sudah habis, KAMU GA BOLEH MENDAFTARKAN PERUSAANYA LAGI. Jika Masih ada slot, kamu boleh apply disana.</p>
-                        <hr>
-                        <p class="mb-0">Jika ternyata perusahaannya bisa nerima kuota lebih banyak daripada kuota yang terdaftar di list perusahaan. Contoh: Di list Kuotanya cuma 2, Ternyata perusahaan itu nerima 4. Kamu mintalah pendaftar itu untuk mengedit Kuotanya. karena cuma pendaftar yang bisa Edit :v. Nama pendaftar ada dibawah cardnya ex: <i>"Perusahaan ini didaftarkan oleh ..."</i></p>
-                    </div>
-
-                    <button type="submit" class="mobile form-control btn-primary mt-5">Submit</button>
-                </div>
+                <button type="submit" class="btn-edit form-control btn-primary mt-5">Edit</button>
             </div>
         </form>
     </div>
@@ -78,8 +58,9 @@ import axios from 'axios'
 export default {
     data() {
         return {
+            id: this.$route.params.id,
             token: localStorage.getItem('token'),
-            siswas: '',
+            magang_id: '',
             formData: {
                 nama_perusahaan: '',
                 kuota: '',
@@ -87,8 +68,7 @@ export default {
                 kota: '',
                 telp: '',
                 pic: '',
-                keterangan: '',
-                pendaftar: []
+                keterangan: ''
             },
             alertSuccess: '',
             alertDanger: ''
@@ -107,10 +87,19 @@ export default {
         }
     },
     methods: {
-        getSiswa() {
-            axios.get(`auth/siswa?token=${this.token}`)
+        getFormData() {
+            axios.get(`magang/my-list/${this.id}?token=${this.token}`)
                 .then(res => {
-                    this.siswas = res.data;
+                    if (res.data.id) {
+                        this.formData.nama_perusahaan = res.data.nama_perusahaan;
+                        this.formData.kuota = res.data.kuota;
+                        this.formData.alamat = res.data.alamat;
+                        this.formData.kota = res.data.kota;
+                        this.formData.telp = res.data.telp;
+                        this.formData.pic = res.data.pic;
+                        this.formData.keterangan = res.data.keterangan;
+                        this.magang_id = res.data.id;
+                    }
                 })
                 .catch(err => {
                     console.log(err.response.data);
@@ -119,33 +108,28 @@ export default {
                 }); 
         },
         submitData() {
-            const buttonDesktop = document.querySelector('.desktop');
-            const buttonMobile = document.querySelector('.mobile');
+            const buttonEdit = document.querySelector('.btn-edit');
 
-            buttonDesktop.disabled = true;
-            buttonMobile.disabled = true;
+            buttonEdit.disabled = true;
 
-            buttonDesktop.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`;
-            buttonMobile.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`;
+            buttonEdit.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`;
 
-            this.formData.pendaftar = this.formData.pendaftar.slice(0, this.formData.kuota);
-
-            axios.post(`magang?token=${this.token}`, this.formData)
+            axios.put(`magang/${this.magang_id}?token=${this.token}`, this.formData)
                 .then(res => {
+                    scrollTo(0, 0);
+
+                    buttonEdit.disabled = false;
+
+                    buttonEdit.innerHTML = `Edit`;
+
                     this.alertSuccess = res.data.message;
-                    
-                    setTimeout(() => {
-                        this.$router.push('/pendaftaran-magang/info');
-                    }, 400);
                 })
                 .catch(err => {
                     scrollTo(0, 0);
 
-                    buttonDesktop.disabled = false;
-                    buttonMobile.disabled = false;
+                    buttonEdit.disabled = false;
 
-                    buttonDesktop.innerHTML = `Submit`;
-                    buttonMobile.innerHTML = `Submit`;
+                    buttonEdit.innerHTML = `Edit`;
 
                     this.alertDanger = err.response.data.message;
 
@@ -154,7 +138,7 @@ export default {
         }
     },
     created() {
-        this.getSiswa();
+        this.getFormData();
     },
 }
 </script>

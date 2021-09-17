@@ -14,13 +14,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="kouta">Kuota</label>
-                        <input type="number" class="form-control" id="kouta" v-model="formData.kouta" min="1" max="4" placeholder="Max 4">
+                        <label for="kuota">Kuota</label>
+                        <input type="number" class="form-control" id="kuota" v-model="formData.kuota" min="1" max="4" placeholder="Max 4">
                     </div>
 
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
                         <input type="text" class="form-control" id="alamat" v-model="formData.alamat">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="kota">Kota</label>
+                        <input type="text" class="form-control" id="kota" v-model="formData.kota">
                     </div>
 
                     <div class="form-group">
@@ -45,7 +50,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="form-group" v-for="(i, x) in parseInt(formData.kouta) || 0" :key="i">
+                    <div class="form-group" v-for="(i, x) in parseInt(formData.kuota) || 0" :key="i">
                         <label for="">Pilih Siswa {{ i }}</label>
                         <select class="form-select" v-model="formData.pendaftar[x]">
                             <option :value="siswa.username" v-for="siswa in siswas" :key="siswa.username">{{ siswa.name }} - {{ siswa.username }}</option>
@@ -69,8 +74,9 @@ export default {
             siswas: '',
             formData: {
                 nama_perusahaan: '',
-                kouta: '',
+                kuota: '',
                 alamat: '',
+                kota: '',
                 telp: '',
                 pic: '',
                 keterangan: '',
@@ -87,9 +93,9 @@ export default {
         'formData.pic'(value) {
             this.formData.pic = value.replace(/[^\d]/g, '');
         },
-        'formData.kouta'(value) {
-            if (value >= 4) this.formData.kouta = 4;
-            if (value < 0) this.formData.kouta = 1;
+        'formData.kuota'(value) {
+            if (value >= 4) this.formData.kuota = 4;
+            if (value < 0) this.formData.kuota = 1;
         }
     },
     methods: {
@@ -100,6 +106,8 @@ export default {
                 })
                 .catch(err => {
                     console.log(err.response.data);
+
+                    if (err.response.status == 401) this.$router.push('/');
                 }); 
         },
         submitData() {
@@ -112,7 +120,7 @@ export default {
             buttonDesktop.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`;
             buttonMobile.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`;
 
-            this.formData.pendaftar = this.formData.pendaftar.slice(0, this.formData.kouta);
+            this.formData.pendaftar = this.formData.pendaftar.slice(0, this.formData.kuota);
 
             axios.post(`admin/magang?token=${this.token}`, this.formData)
                 .then(res => {
@@ -132,6 +140,8 @@ export default {
                     buttonMobile.innerHTML = `Submit`;
 
                     this.alertDanger = err.response.data.message;
+
+                    if (err.response.status == 401) this.$router.push('/');
                 });
         }
     },

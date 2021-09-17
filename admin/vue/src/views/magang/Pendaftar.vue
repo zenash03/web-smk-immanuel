@@ -1,5 +1,8 @@
 <template>
     <div>
+        <div class="alert alert-success" role="alert" v-if="alertSuccess">{{ alertSuccess }}</div>
+        <div class="alert alert-danger" role="alert" v-if="alertDanger">{{ alertDanger }}</div>
+
         <h3 class="mb-5">Data Pendaftar</h3>
 
         <div class="table-container">
@@ -18,7 +21,10 @@
                         <th scope="row">{{ i + 1 }}</th>
                         <td>{{ d.nama }}</td>
                         <td>{{ d.magang.nama_perusahaan }}</td>
-                        <td><button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary">Detail</button></td>
+                        <td class="d-flex">
+                            <button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary mr-1">Detail</button>
+                            <button @click="deleteData(d.id)" type="button" class="form-control btn-danger ml-1">Delete</button>
+                        </td>
                         <td>
                             <div class="toggle-radio">
                                 <input @change="toggle(d.id, 'y')" type="radio" :name="`${d.id}-radio`" :id="`${d.id}-yes`" class="yes" :checked="d.disetujui == 'y'">
@@ -43,6 +49,11 @@
                         <div class="form-group mb-4">
                             <label for="nama_perusahaan">Nama Perusahaan</label>
                             <p class="font-weight-bold">{{ modalData.magang.nama_perusahaan }}</p>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="kuota">Kuota</label>
+                            <p class="font-weight-bold">{{ modalData.magang.kuota }}</p>
                         </div>
 
                         <div class="form-group mb-4">
@@ -91,7 +102,9 @@ export default {
             token: localStorage.getItem('token'),
             data: '',
             openModal: false,
-            modalData: ''
+            modalData: '',
+            alertSuccess: '',
+            alertDanger: ''
         }
     },
     methods: {
@@ -102,6 +115,20 @@ export default {
                 })
                 .catch(err => {
                     console.log(err.response.data);
+
+                    if (err.response.status == 401) this.$router.push('/');
+                }); 
+        },
+        deleteData(id) {
+            axios.delete(`admin/pendaftaran/${id}?token=${this.token}`)
+                .then(res => {
+                    console.log(res.data)
+                    this.alertSuccess = res.data.message;
+
+                    this.getData();
+                })
+                .catch(err => {
+                    this.alertDanger = err.response.data.message;
                 }); 
         },
         toggle(id, state) {
@@ -111,6 +138,8 @@ export default {
                 })
                 .catch(err => {
                     console.log(err.response.data);
+
+                    if (err.response.status == 401) this.$router.push('/');
                 })
         }
     },

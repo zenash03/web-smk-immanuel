@@ -52,6 +52,8 @@ export default {
                 })
                 .catch(err => {
                     console.log(err.response.data);
+
+                    if (err.response.status == 401) this.$router.push('/login');
                 }); 
         },
         getStatus() {
@@ -61,6 +63,8 @@ export default {
                 })
                 .catch(err => {
                     console.log(err.response.data);
+
+                    if (err.response.status == 401) this.$router.push('/login');
                 }); 
         }
     },

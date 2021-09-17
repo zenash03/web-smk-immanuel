@@ -17,6 +17,7 @@
                     <router-link to="/pendaftaran-magang/info" class="aside-link"><i class="fas fa-info"></i> Info</router-link>
                     <router-link to="/pendaftaran-magang/daftarkan-perusahaan" class="aside-link"><i class="fas fa-folder-plus"></i> Ajukan Perusahaan Baru</router-link>
                     <router-link to="/pendaftaran-magang/daftar-perusahaan" class="aside-link"><i class="fas fa-list-ul"></i> List Perusahaan</router-link>
+                    <router-link to="/pendaftaran-magang/edit-perusahaan" class="aside-link"><i class="fas fa-wrench"></i> Edit Data Perusahaan</router-link>
                 </ul>
 
                 <button type="button" class="button-menu" @click="toggleMenu"><span>></span></button>

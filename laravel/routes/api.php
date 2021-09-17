@@ -56,6 +56,8 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
 
 // Authenticated Student Route
 Route::group(['middleware' => 'siswa'], function () {
+    Route::get('magang/my-list', [FormMagangController::class, 'getByUsername']);
+    Route::get('magang/my-list/{list}', [FormMagangController::class, 'getFormData']);
     Route::resource('magang', FormMagangController::class)->except(['destroy']);
     Route::resource('pendaftaran', PendaftaranController::class)->only(['index', 'show', 'store']);
 });

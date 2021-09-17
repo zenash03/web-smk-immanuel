@@ -17,9 +17,10 @@ class CreateFormMagangsTable extends Migration
             $table->id();
             $table->foreignId('created_by');
             $table->string('nama_perusahaan');
-            $table->integer('kouta');
+            $table->integer('kuota');
             $table->integer('slot_tersedia');
             $table->text('alamat');
+            $table->string('kota');
             $table->string('telp');
             $table->string('pic');
             $table->text('keterangan')->nullable();

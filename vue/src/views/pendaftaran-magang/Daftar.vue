@@ -14,6 +14,11 @@
                     </div>
 
                     <div class="form-group mb-4">
+                        <label for="kuota">Kuota</label>
+                        <p class="font-weight-bold">{{ data.kuota }}</p>
+                    </div>
+
+                    <div class="form-group mb-4">
                         <label for="tersedia">Slot Tersedia</label>
                         <p :class="['font-weight-bold', data.slot_tersedia > 0 ? 'text-success' : 'text-danger' ]">{{ data.slot_tersedia }}</p>
                     </div>
@@ -97,6 +102,8 @@ export default {
                 })
                 .catch(err => {
                     console.log(err.response.data);
+
+                    if (err.response.status == 401) this.$router.push('/login');
                 }); 
         },
         getStatus() {
@@ -115,6 +122,8 @@ export default {
                 })
                 .catch(err => {
                     console.log(err.response.data);
+
+                    if (err.response.status == 401) this.$router.push('/login');
                 }); 
         },
         getData() {
@@ -124,6 +133,8 @@ export default {
                 })
                 .catch(err => {
                     console.log(err.response.data);
+
+                    if (err.response.status == 401) this.$router.push('/login');
                 }); 
         },
         daftar() {
@@ -143,6 +154,8 @@ export default {
                     this.alertSuccess = '';
                     this.openModal = false;
                     this.alertDanger = err.response.data.message;
+
+                    if (err.response.status == 401) this.$router.push('/login');
                 }); 
         }
     },

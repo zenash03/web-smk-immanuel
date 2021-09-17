@@ -39,6 +39,11 @@
                         </div>
 
                         <div class="form-group mb-4">
+                            <label for="kuota">Kuota</label>
+                            <p class="font-weight-bold">{{ modalData.kuota }}</p>
+                        </div>
+
+                        <div class="form-group mb-4">
                             <label for="tersedia">Slot Tersedia</label>
                             <p :class="['font-weight-bold', modalData.slot_tersedia > 0 ? 'text-success' : 'text-danger' ]">{{ modalData.slot_tersedia }}</p>
                         </div>
@@ -97,6 +102,8 @@ export default {
                 })
                 .catch(err => {
                     console.log(err.response.data);
+
+                    if (err.response.status == 401) this.$router.push('/');
                 }); 
         },
         deleteData(id) {
@@ -110,6 +117,8 @@ export default {
                 })
                 .catch(err => {
                     console.log(err.response.data);
+
+                    if (err.response.status == 401) this.$router.push('/');
                 }); 
         }
     },

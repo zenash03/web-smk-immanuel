@@ -30,7 +30,7 @@ class PendaftaranController extends Controller
 
         $terdaftar = PendaftarMagang::where('user_id', $user->id)->first();
 
-        if ($magang->slot_tersedia == 0) return response()->json(['message' => 'Kouta sudah habis 🤣']);
+        if ($magang->slot_tersedia == 0) return response()->json(['message' => 'Kuota sudah habis 🤣']);
         if ($terdaftar && $terdaftar->disetujui != 'n') return response()->json(['message' => 'Kamu sudah terdaftar di tempat lain 🙃'], 422);
 
         $magang->update(['slot_tersedia' => $magang->slot_tersedia - 1]);
@@ -81,6 +81,14 @@ class PendaftaranController extends Controller
 
     public function destroy($id)
     {
-        //
+        $pendaftar = PendaftarMagang::find($id);
+
+        $magang = FormMagang::find($pendaftar->magang_id);
+
+        $magang->update(['slot_tersedia' => $magang->slot_tersedia + 1]);
+
+        $pendaftar->delete();
+
+        return response()->json(['message' => 'Delete Success'], 200);
     }
 }

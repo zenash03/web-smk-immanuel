@@ -59,6 +59,20 @@ const routes = [
 				}
 			},
 			{
+				path: 'edit-perusahaan',
+				component: () => import('@/views/pendaftaran-magang/PerusahaanYangDidaftarkan.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'edit-perusahaan/:id',
+				component: () => import('@/views/pendaftaran-magang/EditPerusahaan.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
 				path: 'daftar-perusahaan',
 				component: () => import('@/views/pendaftaran-magang/DaftarPerusahaan.vue'),
 				meta: {
