@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Models\Banner;
 use App\Models\News;
 use App\Models\Prestasi;
+use App\Models\Tbkelas;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -28,13 +29,160 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin'
         ]);
 
+        // create class
+        Tbkelas::create([
+            'nama_kelas' => 'X TKJ 1',
+            'idguru' => 'FB',
+            'idjurusan' => 1,
+            'tingkat' => 10,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'X TKJ 2',
+            'idguru' => 'DS',
+            'idjurusan' => 1,
+            'tingkat' => 10,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'X TKJ 3',
+            'idguru' => '',
+            'idjurusan' => 1,
+            'tingkat' => 10,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'X AKL 1',
+            'idguru' => 'MR',
+            'idjurusan' => 2,
+            'tingkat' => 10,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'X AKL 2',
+            'idguru' => '',
+            'idjurusan' => 2,
+            'tingkat' => 10,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'X BDP',
+            'idguru' => 'DH',
+            'idjurusan' => 3,
+            'tingkat' => 10,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XI TKJ 1',
+            'idguru' => 'SF',
+            'idjurusan' => 1,
+            'tingkat' => 11,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XI TKJ 2',
+            'idguru' => 'SE',
+            'idjurusan' => 1,
+            'tingkat' => 11,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XI TKJ 3',
+            'idguru' => 'SN',
+            'idjurusan' => 1,
+            'tingkat' => 11,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XI AKL 1',
+            'idguru' => 'VA',
+            'idjurusan' => 2,
+            'tingkat' => 11,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XI AKL 2',
+            'idguru' => 'SP',
+            'idjurusan' => 2,
+            'tingkat' => 11,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XI BDP',
+            'idguru' => 'FA',
+            'idjurusan' => 3,
+            'tingkat' => 11,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XII TKJ 1',
+            'idguru' => 'BS',
+            'idjurusan' => 1,
+            'tingkat' => 12,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XII TKJ 2',
+            'idguru' => 'SY',
+            'idjurusan' => 1,
+            'tingkat' => 12,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XII TKJ 3',
+            'idguru' => 'AR',
+            'idjurusan' => 1,
+            'tingkat' => 12,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XII AKL 1',
+            'idguru' => 'EM',
+            'idjurusan' => 2,
+            'tingkat' => 12,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XII AKL 2',
+            'idguru' => 'NV',
+            'idjurusan' => 2,
+            'tingkat' => 12,
+            'template_ledger' => ''
+        ]);
+
+        Tbkelas::create([
+            'nama_kelas' => 'XII BDP',
+            'idguru' => 'YV',
+            'idjurusan' => 3,
+            'tingkat' => 12,
+            'template_ledger' => ''
+        ]);
+
+
         // create user
         User::create([
             'name' => 'User Test 1',
             'username' => '1000',
             'password' => bcrypt('1000'),
             'tingkat' => 12,
-            'role' => 'siswa'
+            'role' => 'siswa',
+            'kelas_id' => 13
         ]);
 
         User::create([
@@ -42,7 +190,8 @@ class DatabaseSeeder extends Seeder
             'username' => '2000',
             'password' => bcrypt('2000'),
             'tingkat' => 12,
-            'role' => 'siswa'
+            'role' => 'siswa',
+            'kelas_id' => 14
         ]);
 
         User::create([
@@ -50,7 +199,8 @@ class DatabaseSeeder extends Seeder
             'username' => '3000',
             'password' => bcrypt('3000'),
             'tingkat' => 12,
-            'role' => 'siswa'
+            'role' => 'siswa',
+            'kelas_id' => 15
         ]);
 
         User::create([
@@ -58,7 +208,8 @@ class DatabaseSeeder extends Seeder
             'username' => '4000',
             'password' => bcrypt('4000'),
             'tingkat' => 12,
-            'role' => 'siswa'
+            'role' => 'siswa',
+            'kelas_id' => 16
         ]);
 
         User::create([
@@ -66,15 +217,53 @@ class DatabaseSeeder extends Seeder
             'username' => '5000',
             'password' => bcrypt('5000'),
             'tingkat' => 12,
-            'role' => 'siswa'
+            'role' => 'siswa',
+            'kelas_id' => 17
         ]);
 
         User::create([
             'name' => 'User Test 6',
             'username' => '6000',
             'password' => bcrypt('6000'),
-            'tingkat' => 11,
-            'role' => 'siswa'
+            'tingkat' => 12,
+            'role' => 'siswa',
+            'kelas_id' => 18
+        ]);
+
+        User::create([
+            'name' => 'User Test 7',
+            'username' => '7000',
+            'password' => bcrypt('7000'),
+            'tingkat' => 12,
+            'role' => 'siswa',
+            'kelas_id' => 13
+        ]);
+
+        User::create([
+            'name' => 'User Test 8',
+            'username' => '8000',
+            'password' => bcrypt('8000'),
+            'tingkat' => 12,
+            'role' => 'siswa',
+            'kelas_id' => 13
+        ]);
+
+        User::create([
+            'name' => 'User Test 9',
+            'username' => '9000',
+            'password' => bcrypt('9000'),
+            'tingkat' => 12,
+            'role' => 'siswa',
+            'kelas_id' => 14
+        ]);
+
+        User::create([
+            'name' => 'User Test 10',
+            'username' => '10000',
+            'password' => bcrypt('10000'),
+            'tingkat' => 12,
+            'role' => 'siswa',
+            'kelas_id' => 14
         ]);
 
 

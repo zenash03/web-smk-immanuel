@@ -4,6 +4,7 @@ use App\Http\Controllers\auth\AdminAuthController;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\HeadlineController;
+use App\Http\Controllers\magang\FilterController;
 use App\Http\Controllers\magang\FormMagangController;
 use App\Http\Controllers\magang\PendaftaranController;
 use App\Http\Controllers\NewsController;
@@ -27,43 +28,49 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-// Auth Route
+// Auth Endpoint
 Route::group(['prefix' => 'auth'], function () {
+    // Student Auth
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('me', [AuthController::class, 'me']);
     Route::get('siswa', [AuthController::class, 'siswa']);
 
+    // Admin Auth
     Route::post('admin/login', [AdminAuthController::class, 'login']);
     Route::post('admin/logout', [AdminAuthController::class, 'logout']);
     Route::get('admin/me', [AdminAuthController::class, 'me']);
 });
 
-// Authenticated Administrator Route
+// Authenticated Administrator Endpoint
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
+    // Web Content Endpoint
     Route::resource('news', NewsController::class)->only(['store', 'update', 'destroy']);
     Route::resource('prestasi', PrestasiController::class)->only(['store', 'update', 'destroy']);
     Route::resource('headline', HeadlineController::class)->only(['store', 'update', 'destroy']);
     Route::resource('banner', BannerController::class)->only(['store', 'update', 'destroy']);
-
     Route::get('banners', [BannerController::class, 'adminView']);
     Route::put('toggle/{id}', [BannerController::class, 'toggle']);
 
+    // Magang Filter data endpoint
+    Route::get('magang/filter', [FilterController::class, 'index']);
+
+    // Magang Endpoint
     Route::resource('magang', FormMagangController::class)->except(['store']);
     Route::post('magang', [FormMagangController::class, 'storeAdmin']);
     Route::resource('pendaftaran', PendaftaranController::class);
 });
 
-// Authenticated Student Route
+// Authenticated Student Endpoint
 Route::group(['middleware' => 'siswa'], function () {
+    // Magang Endpoint
     Route::get('magang/my-list', [FormMagangController::class, 'getByUsername']);
-    Route::get('magang/my-list/{list}', [FormMagangController::class, 'getFormData']);
     Route::resource('magang', FormMagangController::class)->except(['destroy']);
     Route::resource('pendaftaran', PendaftaranController::class)->only(['index', 'show', 'store']);
 });
 
 
-// Public Route
+// Public Endpoint
 Route::get('news', [NewsController::class, 'index']);
 Route::get('news/{id}', [NewsController::class, 'show']);
 

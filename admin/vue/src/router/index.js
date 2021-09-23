@@ -42,6 +42,20 @@ const routes = [
 				meta: {
 					auth: true
 				}
+			},
+			{
+				path: 'daftar-perusahaan/:id',
+				component: () => import('@/views/magang/EditPerusahaan.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'filter',
+				component: () => import('@/views/magang/Filter.vue'),
+				meta: {
+					auth: true
+				}
 			}
 		]
 	}

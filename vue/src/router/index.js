@@ -85,7 +85,14 @@ const routes = [
 				meta: {
 					auth: true
 				}
-			}
+			},
+			{
+				path: 'download-surat',
+				component: () => import('@/views/pendaftaran-magang/DownloadSurat.vue'),
+				meta: {
+					auth: true
+				}
+			},
 		]
 	},
 ]

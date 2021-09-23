@@ -44,6 +44,11 @@
                         <label for="alamat">Alamat</label>
                         <p class="font-weight-bold">{{ data.alamat }}</p>
                     </div>
+
+                    <div class="form-group mb-4">
+                        <label for="kota">kota</label>
+                        <p class="font-weight-bold">{{ data.kota || '-' }}</p>
+                    </div>
                 </div>
 
                 <div class="form-group">

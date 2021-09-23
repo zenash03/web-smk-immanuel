@@ -72,6 +72,7 @@ main {
     width: 100%;
     display: flex;
     flex-direction: column;
+    overflow-x: auto;
 }
 
 .content {
@@ -106,7 +107,7 @@ img {
 
 @media screen and (max-width: 375px) {
     .content {
-        padding: 1rem !important;
+        padding: 1rem .5rem !important;
     }
 
     .content .container {

@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('tbuser', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('kelas_id');
             $table->string('name');
             $table->string('username');
             $table->string('password');
@@ -22,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->integer('tingkat');
             $table->text('token')->nullable();
             $table->timestamps();
+
+            $table->foreign('kelas_id')->references('idkelas')->on('tbkelas');
         });
     }
 

@@ -16,6 +16,7 @@ class CreatePendaftarMagangsTable extends Migration
         Schema::create('pendaftar_magangs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('kelas_id');
             $table->foreignId('magang_id');
             $table->string('nama');
             $table->string('username');
@@ -26,6 +27,7 @@ class CreatePendaftarMagangsTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('tbuser');
+            $table->foreign('kelas_id')->references('idkelas')->on('tbkelas');
             $table->foreign('penyetuju_id')->references('id')->on('tbadmin');
             $table->foreign('magang_id')->references('id')->on('form_magangs');
         });

@@ -224,6 +224,10 @@ button[type=submit]:disabled {
         font-size: 1.4rem !important;
         margin-bottom: 1.5rem !important;
     }
+
+    .alert.alert-danger p {
+        font-size: 12px;
+    }
 }
 
 </style>

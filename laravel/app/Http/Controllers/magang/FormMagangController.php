@@ -15,7 +15,7 @@ class FormMagangController extends Controller
 {
     public function index()
     {
-        $data = FormMagang::orderByDesc ('slot_tersedia')->get();
+        $data = FormMagang::orderByDesc('slot_tersedia')->get();
 
         return response()->json($data, 200);
     }
@@ -65,6 +65,7 @@ class FormMagangController extends Controller
 
                 PendaftarMagang::create([
                     'user_id' => $candidate->id,
+                    'kelas_id' => $candidate->kelas_id,
                     'magang_id' => $magang->id,
                     'nama' => $candidate->name,
                     'username' => $candidate->username,
@@ -121,6 +122,7 @@ class FormMagangController extends Controller
 
                 PendaftarMagang::create([
                     'user_id' => $candidate->id,
+                    'kelas_id' => $candidate->kelas_id,
                     'magang_id' => $magang->id,
                     'nama' => $candidate->name,
                     'username' => $candidate->username,
@@ -141,12 +143,7 @@ class FormMagangController extends Controller
     {
         $id = User::where('token', $request->token)->first()->id; 
 
-        return response()->json(FormMagang::where('created_by', $id)->get());
-    }
-
-    public function getFormData(Request $request, $id)
-    {
-        return response()->json(FormMagang::where('id', $id)->first());
+        return response()->json(FormMagang::where('created_by', $id)->where('creator_role', 'siswa')->get());
     }
 
     public function update(Request $request, FormMagang $magang)

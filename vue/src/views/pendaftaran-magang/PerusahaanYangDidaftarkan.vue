@@ -22,12 +22,13 @@
                         <td>{{ d.nama_perusahaan }}</td>
                         <td>{{ d.tanggal_didaftarkan }}</td>
                         <td>{{ d.kuota }}</td>
-                        <td class="d-flex">
+                        <td>
                             <router-link :to="`/pendaftaran-magang/edit-perusahaan/${d.id}`" class="form-control btn-primary text-center">Edit</router-link>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <p class="text-center" v-if="data.length < 1">Kamu ga ada daftarin perusahaan nih</p>
         </div>
     </div>
 </template>
@@ -73,6 +74,25 @@ export default {
 .info {
     font-style: italic;
     font-size: 14px;
+}
+
+@media screen and (max-width: 375px) {
+    h4 {
+        font-size: 1.25rem !important;
+    }
+
+    h3 {
+        font-size: 1.4rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    th {
+        font-size: 13px;
+    }
+
+    td {
+        font-size: 12px;
+    }
 }
 
 </style>

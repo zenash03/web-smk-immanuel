@@ -37,6 +37,7 @@ class PendaftaranController extends Controller
 
         PendaftarMagang::create([
             'user_id' => $user->id,
+            'kelas_id' => $user->kelas_id,
             'magang_id' => $magang->id,
             'nama' => $user->name,
             'username' => $user->username
@@ -85,7 +86,9 @@ class PendaftaranController extends Controller
 
         $magang = FormMagang::find($pendaftar->magang_id);
 
-        $magang->update(['slot_tersedia' => $magang->slot_tersedia + 1]);
+        if ($pendaftar->disetujui != 'n') {
+            $magang->update(['slot_tersedia' => $magang->slot_tersedia + 1]);
+        }
 
         $pendaftar->delete();
 

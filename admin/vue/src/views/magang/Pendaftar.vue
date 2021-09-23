@@ -46,34 +46,45 @@
             <div class="info-modal" v-if="openModal">
                 <div class="modal-inner">
                     <div class="mb-5">
-                        <div class="form-group mb-4">
-                            <label for="nama_perusahaan">Nama Perusahaan</label>
-                            <p class="font-weight-bold">{{ modalData.magang.nama_perusahaan }}</p>
-                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group mb-4">
+                                    <label for="nama_perusahaan">Nama Perusahaan</label>
+                                    <p class="font-weight-bold">{{ modalData.magang.nama_perusahaan }}</p>
+                                </div>
 
-                        <div class="form-group mb-4">
-                            <label for="kuota">Kuota</label>
-                            <p class="font-weight-bold">{{ modalData.magang.kuota }}</p>
-                        </div>
+                                <div class="form-group mb-4">
+                                    <label for="kuota">Kuota</label>
+                                    <p class="font-weight-bold">{{ modalData.magang.kuota }}</p>
+                                </div>
 
-                        <div class="form-group mb-4">
-                            <label for="tersedia">Slot Tersedia</label>
-                            <p :class="['font-weight-bold', modalData.magang.slot_tersedia > 0 ? 'text-success' : 'text-danger' ]">{{ modalData.magang.slot_tersedia }}</p>
-                        </div>
+                                <div class="form-group mb-4">
+                                    <label for="tersedia">Slot Tersedia</label>
+                                    <p :class="['font-weight-bold', modalData.magang.slot_tersedia > 0 ? 'text-success' : 'text-danger' ]">{{ modalData.magang.slot_tersedia }}</p>
+                                </div>
 
-                        <div class="form-group mb-4">
-                            <label for="keterangan">Keterangan</label>
-                            <p class="font-weight-bold">{{ modalData.magang.keterangan }}</p>
-                        </div>
+                                <div class="form-group mb-4">
+                                    <label for="kota">Kota</label>
+                                    <p class="font-weight-bold">{{ modalData.magang.kota }}</p>
+                                </div>
+                            </div>
 
-                        <div class="form-group mb-4">
-                            <label for="telp">No Telp</label>
-                            <p class="font-weight-bold">{{ modalData.magang.telp }}</p>
-                        </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-4">
+                                    <label for="keterangan">Keterangan</label>
+                                    <p class="font-weight-bold">{{ modalData.magang.keterangan }}</p>
+                                </div>
 
-                        <div class="form-group mb-4">
-                            <label for="pic">PIC</label>
-                            <p class="font-weight-bold">{{ modalData.magang.pic }}</p>
+                                <div class="form-group mb-4">
+                                    <label for="telp">No Telp</label>
+                                    <p class="font-weight-bold">{{ modalData.magang.telp }}</p>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="pic">PIC</label>
+                                    <p class="font-weight-bold">{{ modalData.magang.pic }}</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group mb-4">
@@ -175,6 +186,8 @@ export default {
 }
 
 .modal-inner {
+    max-width: 85%;
+    max-height: 95%;
     background-color: white;
     padding: 2rem;
     border-radius: 10px;

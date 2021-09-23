@@ -17,6 +17,7 @@
                     <router-link to="/magang/pendaftar" class="aside-link"><i class="fas fa-user-check"></i> Pendaftar Magang</router-link>
                     <router-link to="/magang/daftarkan-perusahaan" class="aside-link"><i class="fas fa-folder-plus"></i> Ajukan Perusahaan Baru</router-link>
                     <router-link to="/magang/daftar-perusahaan" class="aside-link"><i class="fas fa-list-ul"></i> List Perusahaan</router-link>
+                    <router-link to="/magang/filter" class="aside-link"><i class="fas fa-filter"></i> Filter Data</router-link>
                 </ul>
 
                 <button type="button" class="button-menu" @click="toggleMenu"><span>></span></button>

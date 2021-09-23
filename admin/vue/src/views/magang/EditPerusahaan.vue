@@ -88,8 +88,9 @@ export default {
     },
     methods: {
         getFormData() {
-            axios.get(`magang/${this.id}?token=${this.token}`)
+            axios.get(`admin/magang/${this.id}?token=${this.token}`)
                 .then(res => {
+                    console.log(res.data)
                     if (res.data.id) {
                         this.formData.nama_perusahaan = res.data.nama_perusahaan;
                         this.formData.kuota = res.data.kuota;
@@ -104,7 +105,7 @@ export default {
                 .catch(err => {
                     console.log(err.response.data);
 
-                    if (err.response.status == 401) this.$router.push('/login');
+                    if (err.response.status == 401) this.$router.push('/');
                 }); 
         },
         submitData() {
@@ -114,7 +115,7 @@ export default {
 
             buttonEdit.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`;
 
-            axios.put(`magang/${this.magang_id}?token=${this.token}`, this.formData)
+            axios.put(`admin/magang/${this.magang_id}?token=${this.token}`, this.formData)
                 .then(res => {
                     scrollTo(0, 0);
 
@@ -133,7 +134,7 @@ export default {
 
                     this.alertDanger = err.response.data.message;
 
-                    if (err.response.status == 401) this.$router.push('/login');
+                    if (err.response.status == 401) this.$router.push('/');
                 });
         }
     },

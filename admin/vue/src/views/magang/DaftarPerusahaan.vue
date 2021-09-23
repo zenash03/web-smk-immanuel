@@ -10,7 +10,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nama Perusahaan</th>
-                        <th scope="col">Nama Didaftarkan Oleh</th>
+                        <th scope="col">Didaftarkan Oleh</th>
                         <th scope="col">Tanggal Di daftarkan</th>
                         <th scope="col">Slot Tersedia</th>
                         <th scope="col">Action</th>
@@ -23,7 +23,10 @@
                         <td>{{ d.creator_name }}</td>
                         <td>{{ d.tanggal_didaftarkan }}</td>
                         <td>{{ d.slot_tersedia }}</td>
-                        <td><button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary">Detail</button></td>
+                        <td>
+                            <router-link :to="`/magang/daftar-perusahaan/${d.id}`" class="form-control btn-warning text-center text-decoration-none">Edit</router-link>
+                            <button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary">Detail</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -33,34 +36,45 @@
             <div class="info-modal" v-if="openModal">
                 <div class="modal-inner">
                     <div class="mb-5">
-                        <div class="form-group mb-4">
-                            <label for="nama_perusahaan">Nama Perusahaan</label>
-                            <p class="font-weight-bold">{{ modalData.nama_perusahaan }}</p>
-                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group mb-4">
+                                    <label for="nama_perusahaan">Nama Perusahaan</label>
+                                    <p class="font-weight-bold">{{ modalData.nama_perusahaan }}</p>
+                                </div>
 
-                        <div class="form-group mb-4">
-                            <label for="kuota">Kuota</label>
-                            <p class="font-weight-bold">{{ modalData.kuota }}</p>
-                        </div>
+                                <div class="form-group mb-4">
+                                    <label for="kuota">Kuota</label>
+                                    <p class="font-weight-bold">{{ modalData.kuota }}</p>
+                                </div>
 
-                        <div class="form-group mb-4">
-                            <label for="tersedia">Slot Tersedia</label>
-                            <p :class="['font-weight-bold', modalData.slot_tersedia > 0 ? 'text-success' : 'text-danger' ]">{{ modalData.slot_tersedia }}</p>
-                        </div>
+                                <div class="form-group mb-4">
+                                    <label for="tersedia">Slot Tersedia</label>
+                                    <p :class="['font-weight-bold', modalData.slot_tersedia > 0 ? 'text-success' : 'text-danger' ]">{{ modalData.slot_tersedia }}</p>
+                                </div>
 
-                        <div class="form-group mb-4">
-                            <label for="keterangan">Keterangan</label>
-                            <p class="font-weight-bold">{{ modalData.keterangan }}</p>
-                        </div>
+                                <div class="form-group mb-4">
+                                    <label for="kota">Kota</label>
+                                    <p class="font-weight-bold">{{ modalData.kota || '-' }}</p>
+                                </div>
+                            </div>
 
-                        <div class="form-group mb-4">
-                            <label for="telp">No Telp</label>
-                            <p class="font-weight-bold">{{ modalData.telp }}</p>
-                        </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-4">
+                                    <label for="keterangan">Keterangan</label>
+                                    <p class="font-weight-bold">{{ modalData.keterangan }}</p>
+                                </div>
 
-                        <div class="form-group mb-4">
-                            <label for="pic">PIC</label>
-                            <p class="font-weight-bold">{{ modalData.pic }}</p>
+                                <div class="form-group mb-4">
+                                    <label for="telp">No Telp</label>
+                                    <p class="font-weight-bold">{{ modalData.telp }}</p>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="pic">PIC</label>
+                                    <p class="font-weight-bold">{{ modalData.pic }}</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group mb-4">
@@ -154,6 +168,8 @@ export default {
 }
 
 .modal-inner {
+    max-width: 85%;
+    max-height: 95%;
     background-color: white;
     padding: 2rem;
     border-radius: 10px;
