@@ -54,6 +54,7 @@ Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
 
     // Magang Filter data endpoint
     Route::get('magang/filter', [FilterController::class, 'index']);
+    Route::get('magang/filter/key', [FilterController::class, 'showByKey']);
 
     // Magang Endpoint
     Route::resource('magang', FormMagangController::class)->except(['store']);

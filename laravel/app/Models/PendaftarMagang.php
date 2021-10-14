@@ -10,6 +10,11 @@ class PendaftarMagang extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $appends = ['kelas'];
+
+    public function getKelasAttribute() {
+        return Tbkelas::where('idkelas', $this->kelas_id)->first()->nama_kelas;
+    }
 
     public function penyetuju() {
         return $this->belongsTo(Admin::class, 'penyetuju_id');

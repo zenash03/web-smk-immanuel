@@ -13,4 +13,10 @@ class User extends Authenticatable
     protected $table = 'tbuser';
     protected $guarded = [];
     protected $hidden = ['token', 'password', 'role', 'created_at', 'updated_at'];
+    protected $appends = ['kelas'];
+
+    public function getKelasAttribute()
+    {
+        return Tbkelas::where('idkelas', $this->kelas_id)->first()->nama_kelas;
+    }
 }

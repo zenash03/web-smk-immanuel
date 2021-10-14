@@ -10,8 +10,11 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nama Pendaftar</th>
-                        <th scope="col">Nama Perusahaan</th>
+                        <th scope="col">Pendaftar</th>
+                        <th scope="col">Nis</th>
+                        <th scope="col">Kelas</th>
+                        <th scope="col">Waktu</th>
+                        <th scope="col">Perusahaan</th>
                         <th scope="col">Action</th>
                         <th scope="col">Izinkan</th>
                     </tr>
@@ -20,6 +23,9 @@
                     <tr v-for="(d, i) in data" :key="d.id">
                         <th scope="row">{{ i + 1 }}</th>
                         <td>{{ d.nama }}</td>
+                        <td>{{ d.username }}</td>
+                        <td>{{ d.kelas }}</td>
+                        <td>{{ d.magang.tanggal_didaftarkan }}, {{ getTime(d.created_at) }}</td>
                         <td>{{ d.magang.nama_perusahaan }}</td>
                         <td class="d-flex">
                             <button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary mr-1">Detail</button>
@@ -152,6 +158,14 @@ export default {
 
                     if (err.response.status == 401) this.$router.push('/');
                 })
+        },
+        getTime(time) {
+            let date = new Date(time);
+
+            return `${this.formatTime(date.getHours())}:${this.formatTime(date.getMinutes())}`; 
+        },
+        formatTime(time) {
+            return time < 10 ? `0${time}` : time;
         }
     },
     created() {

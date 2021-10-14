@@ -24,7 +24,7 @@
                         <td>{{ d.tanggal_didaftarkan }}</td>
                         <td>{{ d.slot_tersedia }}</td>
                         <td>
-                            <router-link :to="`/magang/daftar-perusahaan/${d.id}`" class="form-control btn-warning text-center text-decoration-none">Edit</router-link>
+                            <router-link :to="`/magang/daftar-perusahaan/${d.id}`" class="form-control btn-warning text-center text-decoration-none mb-1">Edit</router-link>
                             <button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary">Detail</button>
                         </td>
                     </tr>

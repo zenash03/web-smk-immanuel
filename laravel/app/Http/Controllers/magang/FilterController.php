@@ -28,14 +28,30 @@ class FilterController extends Controller
             array_push($result, $newData);
         }
 
-        $registered = [
-            'name' => 'Semua Kelas',
-            'jumlah_siswa' => User::where('tingkat', 12)->count(),
-            'jumlah_pendaftar' => PendaftarMagang::groupBy('user_id')->selectRaw('count(*) as total, user_id')->get()->count()
-        ];
+        // $registered = [
+        //     'name' => 'Semua Kelas',
+        //     'jumlah_siswa' => User::where('tingkat', 12)->count(),
+        //     'jumlah_pendaftar' => PendaftarMagang::groupBy('user_id')->selectRaw('count(*) as total, user_id')->get()->count()
+        // ];
 
-        array_push($result, $registered);
+        // array_push($result, $registered);
 
         return $result;
     }
+
+    public function showByKey(Request $request)
+    {
+        $classId = Tbkelas::where('nama_kelas', $request->key)->first()->idkelas;
+        $result = [];
+
+        $registered = PendaftarMagang::with('magang')->where('kelas_id', $classId)->get();
+        $registeredUserId = $registered->pluck('user_id');
+
+        $unregistered = User::where('kelas_id', $classId)->whereNotIn('id', $registeredUserId)->get();
+
+        $result['registered'] = $registered;
+        $result['unregistered'] = $unregistered;
+
+        return $result;
+    } 
 }
