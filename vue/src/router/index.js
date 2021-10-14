@@ -93,6 +93,13 @@ const routes = [
 					auth: true
 				}
 			},
+			{
+				path: 'kartu-pelajar',
+				component: () => import('@/views/pendaftaran-magang/KartuPelajar.vue'),
+				meta: {
+					auth: true
+				}
+			}
 		]
 	},
 ]
