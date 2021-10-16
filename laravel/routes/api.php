@@ -68,6 +68,12 @@ Route::group(['middleware' => 'siswa'], function () {
     Route::get('magang/my-list', [FormMagangController::class, 'getByUsername']);
     Route::resource('magang', FormMagangController::class)->except(['destroy']);
     Route::resource('pendaftaran', PendaftaranController::class)->only(['index', 'show', 'store']);
+
+    // For Download Student Card
+    Route::group(['prefix' => 'card'], function () {
+        Route::get('color', [AuthController::class, 'downloadColorCard']);
+        Route::get('grayscale', [AuthController::class, 'downloadGrayscaleCard']);
+    });
 });
 
 

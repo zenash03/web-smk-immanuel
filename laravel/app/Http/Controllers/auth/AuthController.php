@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+// use Image;
 
 class AuthController extends Controller
 {
@@ -59,5 +60,26 @@ class AuthController extends Controller
         // $siswa = User::where('tingkat', 12)->where('role', 'siswa')->join('pendaftar_magangs', 'pendaftar_magangs.user_id', '!=', 'tbuser.id')->get();
 
         return response()->json($users, 200);
+    }
+
+    public function downloadColorCard(Request $request) {
+        $user = User::where('token', $request->token)->first();
+        $name = 'card_' . $user->username . '.jpg';
+        $path = public_path('kartu_pelajar');
+        $url = $path . '/' . $name;
+
+        return response()->download($url, $name, ['Content-Type: image/jpeg', 'Cache-Control: no-cache']);
+    }
+
+    public function downloadGrayscaleCard(Request $request) {
+        $user = User::where('token', $request->token)->first();
+        $name = 'card_' . $user->username . '.jpg';
+        $path = public_path('kartu_pelajar');
+        $url = $path . '/' . $name;
+        
+        $newName = 'card_gray_' . $user->username . '.jpg';
+        $image = \Image::make($url)->greyscale()->save($path . '/' . $newName);
+
+        return response()->download($path . '/' . $newName, $newName, ['Content-Type: image/jpeg'])->deleteFileAfterSend(true);
     }
 }
