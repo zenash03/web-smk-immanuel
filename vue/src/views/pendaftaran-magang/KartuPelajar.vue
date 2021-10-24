@@ -2,12 +2,12 @@
     <div>
         <div class="row">
             <div class="col-lg-6">
-                <img :src="url" alt="Kartu Pelajar" class="student-card">
+                <img :src="url" alt="Kartu Pelajar" class="student-card" @error="imageError">
                 <button type="button" class="btn btn-primary form-control mt-2" @click="downloadColor">Download</button>
             </div>
 
             <div class="col-lg-6">
-                <img :src="url" alt="Kartu Pelajar" class="student-card card-gray">
+                <img :src="url" alt="Kartu Pelajar" class="student-card card-gray" @error="imageError">
                 <button type="button" class="btn btn-primary form-control mt-2" @click="downloadGrayscale">Download</button>
             </div>
         </div>
@@ -22,7 +22,7 @@ export default {
         return {
             token: localStorage.getItem('token'),
             me: '',
-            baseUrl: 'http://localhost:8000/',
+            baseUrl: 'https://smkimmanuel.sch.id/api/',
             url: ''
         }
     },
@@ -35,7 +35,7 @@ export default {
                     this.generateUrl();
                 })
                 .catch(err => {
-                    console.log(err.response.data.message);
+                    console.log(err.response.data);
                 }); 
         },
         generateUrl() {
@@ -44,6 +44,11 @@ export default {
             this.url = url;
 
             this.draw();
+        },
+        imageError() {
+            let url = `${this.baseUrl}kartu_pelajar/nocard.jpg`;
+
+            this.url = url;
         },
         downloadColor() {
             window.open(`${this.API_URL}card/color?token=${this.token}`);

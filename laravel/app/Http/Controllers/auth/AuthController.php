@@ -7,6 +7,7 @@ use App\Models\PendaftarMagang;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 // use Image;
 
@@ -68,6 +69,10 @@ class AuthController extends Controller
         $path = public_path('kartu_pelajar');
         $url = $path . '/' . $name;
 
+        if (!Storage::exists($url)) {
+            $url = $path . '/' . 'nocard.jpg';
+        }
+
         return response()->download($url, $name, ['Content-Type: image/jpeg', 'Cache-Control: no-cache']);
     }
 
@@ -76,6 +81,10 @@ class AuthController extends Controller
         $name = 'card_' . $user->username . '.jpg';
         $path = public_path('kartu_pelajar');
         $url = $path . '/' . $name;
+
+        if (!Storage::exists($url)) {
+            $url = $path . '/' . 'nocard.jpg';
+        }
         
         $newName = 'card_gray_' . $user->username . '.jpg';
         $image = \Image::make($url)->greyscale()->save($path . '/' . $newName);
