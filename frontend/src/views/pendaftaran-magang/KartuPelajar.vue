@@ -35,11 +35,11 @@ export default {
                     this.generateUrl();
                 })
                 .catch(err => {
-                    console.log(err.response.data);
+                    // console.log(err.response.data);
                 }); 
         },
         generateUrl() {
-            let url = `${this.baseUrl}kartu_pelajar/card_${this.me.username}.jpg`;
+            let url = `${this.baseUrl}kartu_pelajar/card_${this.me.nis}.jpg`;
 
             this.url = url;
 

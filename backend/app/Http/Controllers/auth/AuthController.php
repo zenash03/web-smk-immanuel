@@ -65,7 +65,7 @@ class AuthController extends Controller
 
     public function downloadColorCard(Request $request) {
         $user = User::where('token', $request->token)->first();
-        $name = 'card_' . $user->username . '.jpg';
+        $name = 'card_' . $user->nis . '.jpg';
         $path = public_path('kartu_pelajar');
         $url = $path . '/' . $name;
 
@@ -78,7 +78,7 @@ class AuthController extends Controller
 
     public function downloadGrayscaleCard(Request $request) {
         $user = User::where('token', $request->token)->first();
-        $name = 'card_' . $user->username . '.jpg';
+        $name = 'card_' . $user->nis . '.jpg';
         $path = public_path('kartu_pelajar');
         $url = $path . '/' . $name;
 
@@ -86,7 +86,7 @@ class AuthController extends Controller
             $url = $path . '/' . 'nocard.jpg';
         }
         
-        $newName = 'card_gray_' . $user->username . '.jpg';
+        $newName = 'card_gray_' . $user->nis . '.jpg';
         $image = \Image::make($url)->greyscale()->save($path . '/' . $newName);
 
         return response()->download($path . '/' . $newName, $newName, ['Content-Type: image/jpeg'])->deleteFileAfterSend(true);

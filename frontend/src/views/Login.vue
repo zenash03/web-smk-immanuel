@@ -11,7 +11,7 @@
 
                     <div class="card-body">
                         <div class="input-grup">
-                            <label for="username">Username</label>	
+                            <label for="username">Email</label>	
                             <input v-model="formData.username" type="text" name="username" id="username" class="input" autocomplete="off" required>
                         </div>
             

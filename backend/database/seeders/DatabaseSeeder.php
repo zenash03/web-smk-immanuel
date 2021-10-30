@@ -178,7 +178,8 @@ class DatabaseSeeder extends Seeder
         // create user
         User::create([
             'name' => 'User Test 1',
-            'username' => '1000',
+            'nis' => '1000',
+            'username' => 'user.1000@ski.sch.id',
             'password' => bcrypt('1000'),
             'tingkat' => 12,
             'role' => 'siswa',
@@ -187,7 +188,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'User Test 2',
-            'username' => '2000',
+            'nis' => '2000',
+            'username' => 'user.2000@ski.sch.id',
             'password' => bcrypt('2000'),
             'tingkat' => 12,
             'role' => 'siswa',
@@ -196,7 +198,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'User Test 3',
-            'username' => '3000',
+            'nis' => '3000',
+            'username' => 'user.3000@ski.sch.id',
             'password' => bcrypt('3000'),
             'tingkat' => 12,
             'role' => 'siswa',
@@ -205,7 +208,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'User Test 4',
-            'username' => '4000',
+            'nis' => '4000',
+            'username' => 'user.4000@ski.sch.id',
             'password' => bcrypt('4000'),
             'tingkat' => 12,
             'role' => 'siswa',
@@ -214,7 +218,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'User Test 5',
-            'username' => '5000',
+            'nis' => '5000',
+            'username' => 'user.5000@ski.sch.id',
             'password' => bcrypt('5000'),
             'tingkat' => 12,
             'role' => 'siswa',
@@ -223,7 +228,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'User Test 6',
-            'username' => '6000',
+            'nis' => '6000',
+            'username' => 'user.6000@ski.sch.id',
             'password' => bcrypt('6000'),
             'tingkat' => 12,
             'role' => 'siswa',
@@ -232,7 +238,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'User Test 7',
-            'username' => '7000',
+            'nis' => '7000',
+            'username' => 'user.7000@ski.sch.id',
             'password' => bcrypt('7000'),
             'tingkat' => 12,
             'role' => 'siswa',
@@ -241,7 +248,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'User Test 8',
-            'username' => '8000',
+            'nis' => '8000',
+            'username' => 'user.8000@ski.sch.id',
             'password' => bcrypt('8000'),
             'tingkat' => 12,
             'role' => 'siswa',
@@ -250,7 +258,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'User Test 9',
-            'username' => '9000',
+            'nis' => '9000',
+            'username' => 'user.9000@ski.sch.id',
             'password' => bcrypt('9000'),
             'tingkat' => 12,
             'role' => 'siswa',
@@ -259,7 +268,8 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'User Test 10',
-            'username' => '10000',
+            'nis' => '10000',
+            'username' => 'user.10000@ski.sch.id',
             'password' => bcrypt('10000'),
             'tingkat' => 12,
             'role' => 'siswa',

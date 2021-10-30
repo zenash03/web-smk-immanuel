@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('tbuser', function (Blueprint $table) {
             $table->id();
             $table->foreignId('kelas_id');
+            $table->integer('nis');
             $table->string('name');
             $table->string('username');
             $table->string('password');
