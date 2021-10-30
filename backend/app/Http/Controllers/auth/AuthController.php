@@ -69,10 +69,10 @@ class AuthController extends Controller
         $path = public_path('kartu_pelajar');
         $url = $path . '/' . $name;
 
-        if (!Storage::exists($url)) {
+        if (file_exists(public_path($url))) {
             $url = $path . '/' . 'nocard.jpg';
         }
-
+        
         return response()->download($url, $name, ['Content-Type: image/jpeg', 'Cache-Control: no-cache']);
     }
 
@@ -82,7 +82,7 @@ class AuthController extends Controller
         $path = public_path('kartu_pelajar');
         $url = $path . '/' . $name;
 
-        if (!Storage::exists($url)) {
+        if (file_exists(public_path($url))) {
             $url = $path . '/' . 'nocard.jpg';
         }
         
