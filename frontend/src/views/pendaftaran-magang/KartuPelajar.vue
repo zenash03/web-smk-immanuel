@@ -22,7 +22,8 @@ export default {
         return {
             token: localStorage.getItem('token'),
             me: '',
-            baseUrl: 'https://smkimmanuel.sch.id/api/',
+            // baseUrl: 'https://smkimmanuel.sch.id/api/',
+            baseUrl: 'http://localhost:8000/',
             url: ''
         }
     },
