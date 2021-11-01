@@ -39,63 +39,63 @@ const routes = [
 		children: [
 			{
 				path: '/',
-				component: () => import('@/views/pendaftaran-magang/Home.vue'),
+				component: () => import('@/views/dashboard/Home.vue'),
 				meta: {
 					auth: true
 				}
 			},
 			{
 				path: 'info',
-				component: () => import('@/views/pendaftaran-magang/Info.vue'),
+				component: () => import('@/views/dashboard/Info.vue'),
 				meta: {
 					auth: true
 				}
 			},
 			{
 				path: 'daftarkan-perusahaan',
-				component: () => import('@/views/pendaftaran-magang/DaftarkanPerusahaan.vue'),
+				component: () => import('@/views/dashboard/DaftarkanPerusahaan.vue'),
 				meta: {
 					auth: true
 				}
 			},
 			{
 				path: 'edit-perusahaan',
-				component: () => import('@/views/pendaftaran-magang/PerusahaanYangDidaftarkan.vue'),
+				component: () => import('@/views/dashboard/PerusahaanYangDidaftarkan.vue'),
 				meta: {
 					auth: true
 				}
 			},
 			{
 				path: 'edit-perusahaan/:id',
-				component: () => import('@/views/pendaftaran-magang/EditPerusahaan.vue'),
+				component: () => import('@/views/dashboard/EditPerusahaan.vue'),
 				meta: {
 					auth: true
 				}
 			},
 			{
 				path: 'daftar-perusahaan',
-				component: () => import('@/views/pendaftaran-magang/DaftarPerusahaan.vue'),
+				component: () => import('@/views/dashboard/DaftarPerusahaan.vue'),
 				meta: {
 					auth: true
 				}
 			},
 			{
 				path: 'daftar/:id',
-				component: () => import('@/views/pendaftaran-magang/Daftar.vue'),
+				component: () => import('@/views/dashboard/Daftar.vue'),
 				meta: {
 					auth: true
 				}
 			},
 			{
 				path: 'download-surat',
-				component: () => import('@/views/pendaftaran-magang/DownloadSurat.vue'),
+				component: () => import('@/views/dashboard/DownloadSurat.vue'),
 				meta: {
 					auth: true
 				}
 			},
 			{
 				path: 'kartu-pelajar',
-				component: () => import('@/views/pendaftaran-magang/KartuPelajar.vue'),
+				component: () => import('@/views/dashboard/KartuPelajar.vue'),
 				meta: {
 					auth: true
 				}
