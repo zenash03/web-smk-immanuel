@@ -40,14 +40,14 @@ export default {
                 }); 
         },
         generateUrl() {
-            let url = `${this.baseUrl}kartu_pelajar/card_${this.me.nis}.jpg`;
+            let url = `${this.baseUrl}storage/kartu_pelajar/card_${this.me.nis}.jpg`;
 
             this.url = url;
 
             this.draw();
         },
         imageError() {
-            let url = `${this.baseUrl}kartu_pelajar/nocard.jpg`;
+            let url = `${this.baseUrl}storage/kartu_pelajar/nocard.jpg`;
 
             this.url = url;
         },
