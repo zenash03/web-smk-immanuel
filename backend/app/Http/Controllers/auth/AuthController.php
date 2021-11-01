@@ -66,7 +66,7 @@ class AuthController extends Controller
     public function downloadColorCard(Request $request) {
         $user = User::where('token', $request->token)->first();
         $name = 'card_' . $user->nis . '.jpg';
-        $path = public_path('kartu_pelajar');
+        $path = public_path('storage/kartu_pelajar');
         $url = $path . '/' . $name;
 
         if (file_exists(public_path($url))) {
@@ -79,7 +79,7 @@ class AuthController extends Controller
     public function downloadGrayscaleCard(Request $request) {
         $user = User::where('token', $request->token)->first();
         $name = 'card_' . $user->nis . '.jpg';
-        $path = public_path('kartu_pelajar');
+        $path = public_path('storage/kartu_pelajar');
         $url = $path . '/' . $name;
 
         if (file_exists(public_path($url))) {
