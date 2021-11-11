@@ -1,35 +1,15 @@
 <template>
     <div class="app">
-        <div class="d-flex" style="width: 100%;">
-            <Sidebar></Sidebar>
+        <router-view v-if="me.tingkat == '12'" />
 
-            <main>
-                <Header></Header>
-
-                <div class="content p-5">
-                    <div class="container p-5">
-                        <router-view/>
-                    </div>
-                </div>
-
-                <Footer></Footer>
-            </main>
-        </div>
+        <h5 class="info-title" v-if="me.tingkat != '12'">Halo, <b>{{ me.name }}</b>. Tunggu kamu uda kelas 12 ya baru bisa akses ^^</h5>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Header from '@/components/pendaftaran-magang/Header.vue'
-import Sidebar from '@/components/pendaftaran-magang/Sidebar.vue'
-import Footer from '@/components/pendaftaran-magang/Footer.vue'
 
 export default {
-    components: {
-        Sidebar,
-        Header,
-        Footer
-    },
     data() {
         return {
             token: localStorage.getItem('token'),

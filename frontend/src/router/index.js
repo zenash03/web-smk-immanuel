@@ -31,7 +31,7 @@ const routes = [
 
 
 	{
-		path: '/pendaftaran-magang',
+		path: '/dashboard',
 		component: () => import('@/layouts/Dashboard.vue'),
 		meta: {
 			auth: true
@@ -45,53 +45,62 @@ const routes = [
 				}
 			},
 			{
-				path: 'info',
-				component: () => import('@/views/dashboard/Info.vue'),
+				path: 'magang',
+				component: () => import('@/layouts/Magang.vue'),
 				meta: {
 					auth: true
-				}
-			},
-			{
-				path: 'daftarkan-perusahaan',
-				component: () => import('@/views/dashboard/DaftarkanPerusahaan.vue'),
-				meta: {
-					auth: true
-				}
-			},
-			{
-				path: 'edit-perusahaan',
-				component: () => import('@/views/dashboard/PerusahaanYangDidaftarkan.vue'),
-				meta: {
-					auth: true
-				}
-			},
-			{
-				path: 'edit-perusahaan/:id',
-				component: () => import('@/views/dashboard/EditPerusahaan.vue'),
-				meta: {
-					auth: true
-				}
-			},
-			{
-				path: 'daftar-perusahaan',
-				component: () => import('@/views/dashboard/DaftarPerusahaan.vue'),
-				meta: {
-					auth: true
-				}
-			},
-			{
-				path: 'daftar/:id',
-				component: () => import('@/views/dashboard/Daftar.vue'),
-				meta: {
-					auth: true
-				}
-			},
-			{
-				path: 'download-surat',
-				component: () => import('@/views/dashboard/DownloadSurat.vue'),
-				meta: {
-					auth: true
-				}
+				},
+				children: [
+					{
+						path: 'info',
+						component: () => import('@/views/dashboard/Info.vue'),
+						meta: {
+							auth: true
+						}
+					},
+					{
+						path: 'daftarkan-perusahaan',
+						component: () => import('@/views/dashboard/DaftarkanPerusahaan.vue'),
+						meta: {
+							auth: true
+						}
+					},
+					{
+						path: 'edit-perusahaan',
+						component: () => import('@/views/dashboard/PerusahaanYangDidaftarkan.vue'),
+						meta: {
+							auth: true
+						}
+					},
+					{
+						path: 'edit-perusahaan/:id',
+						component: () => import('@/views/dashboard/EditPerusahaan.vue'),
+						meta: {
+							auth: true
+						}
+					},
+					{
+						path: 'daftar-perusahaan',
+						component: () => import('@/views/dashboard/DaftarPerusahaan.vue'),
+						meta: {
+							auth: true
+						}
+					},
+					{
+						path: 'daftar/:id',
+						component: () => import('@/views/dashboard/Daftar.vue'),
+						meta: {
+							auth: true
+						}
+					},
+					{
+						path: 'download-surat',
+						component: () => import('@/views/dashboard/DownloadSurat.vue'),
+						meta: {
+							auth: true
+						}
+					}
+				]
 			},
 			{
 				path: 'kartu-pelajar',

@@ -18,15 +18,15 @@
                         <a @click="toggleSubmenu" class="aside-link has-sub"><i class="fas fa-briefcase"></i> Magang</a>
 
                         <ul class="submenu" ref="magang">
-                            <router-link to="/pendaftaran-magang/info" class="aside-link"><i class="fas fa-info"></i> Info Magang</router-link>
-                            <router-link to="/pendaftaran-magang/daftarkan-perusahaan" class="aside-link"><i class="fas fa-folder-plus"></i> Ajukan Perusahaan Baru</router-link>
-                            <router-link to="/pendaftaran-magang/daftar-perusahaan" class="aside-link"><i class="fas fa-list-ul"></i> List Perusahaan</router-link>
-                            <router-link to="/pendaftaran-magang/edit-perusahaan" class="aside-link"><i class="fas fa-wrench"></i> Edit Data Perusahaan</router-link>
+                            <router-link to="/dashboard/magang/info" class="aside-link"><i class="fas fa-info"></i> Info Magang</router-link>
+                            <router-link to="/dashboard/magang/daftarkan-perusahaan" class="aside-link"><i class="fas fa-folder-plus"></i> Ajukan Perusahaan Baru</router-link>
+                            <router-link to="/dashboard/magang/daftar-perusahaan" class="aside-link"><i class="fas fa-list-ul"></i> List Perusahaan</router-link>
+                            <router-link to="/dashboard/magang/edit-perusahaan" class="aside-link"><i class="fas fa-wrench"></i> Edit Data Perusahaan</router-link>
                         </ul>
                     </li>
 
                     <li class="mb-1">
-                        <router-link to="/pendaftaran-magang/kartu-pelajar" class="aside-link"><i class="fas fa-id-card"></i> Kartu Pelajar</router-link>
+                        <router-link to="/dashboard/kartu-pelajar" class="aside-link"><i class="fas fa-id-card"></i> Kartu Pelajar</router-link>
                     </li>
                 </ul>
 
