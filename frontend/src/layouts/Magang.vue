@@ -1,5 +1,5 @@
 <template>
-    <div class="app">
+    <div>
         <router-view v-if="me.tingkat == '12'" />
 
         <h5 class="info-title" v-if="me.tingkat != '12'">Halo, <b>{{ me.name }}</b>. Tunggu kamu uda kelas 12 ya baru bisa akses ^^</h5>

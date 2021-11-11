@@ -49,7 +49,7 @@ export default {
                 .then(res => {
                     localStorage.setItem('token', res.data);
 
-                    this.$router.push('/pendaftaran-magang')
+                    this.$router.push('/dashboard')
                 })
                 .catch(err => {
                     this.alert = err.response.data.message;
