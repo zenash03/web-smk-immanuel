@@ -23,7 +23,7 @@
                         <td>{{ d.tanggal_didaftarkan }}</td>
                         <td>{{ d.kuota }}</td>
                         <td>
-                            <router-link :to="`/pendaftaran-magang/edit-perusahaan/${d.id}`" class="form-control btn-primary text-center">Edit</router-link>
+                            <router-link :to="`/dashboard/magang/edit-perusahaan/${d.id}`" class="form-control btn-primary text-center">Edit</router-link>
                         </td>
                     </tr>
                 </tbody>

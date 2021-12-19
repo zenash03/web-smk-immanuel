@@ -135,7 +135,7 @@ export default {
                     this.alertSuccess = res.data.message;
                     
                     setTimeout(() => {
-                        this.$router.push('/pendaftaran-magang/info');
+                        this.$router.push('/dashboard/magang/info');
                     }, 400);
                 })
                 .catch(err => {

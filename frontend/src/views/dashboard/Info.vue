@@ -6,8 +6,8 @@
 
         <div class="row p-0 pb-2 box mb-4" v-for="d in data" :key="d.id">
             <header>
-                <p v-if="!d.didaftarkan_oleh">Kamu Mendaftar magang di, <router-link :to="`/pendaftaran-magang/daftar/${d.magang.id}`" class="font-weight-bold text-success">{{ d.magang.nama_perusahaan }}</router-link></p>
-                <p v-if="d.didaftarkan_oleh">Kamu Didaftarkan oleh <b>{{ d.didaftarkan_oleh }}</b> di, <router-link :to="`/pendaftaran-magang/daftar/${d.magang.id}`" class="font-weight-bold text-success">{{ d.magang.nama_perusahaan }}</router-link></p>
+                <p v-if="!d.didaftarkan_oleh">Kamu Mendaftar magang di, <router-link :to="`/dashboard/magang/daftar/${d.magang.id}`" class="font-weight-bold text-success">{{ d.magang.nama_perusahaan }}</router-link></p>
+                <p v-if="d.didaftarkan_oleh">Kamu Didaftarkan oleh <b>{{ d.didaftarkan_oleh }}</b> di, <router-link :to="`/magang/daftar/${d.magang.id}`" class="font-weight-bold text-success">{{ d.magang.nama_perusahaan }}</router-link></p>
             </header>
 
             <main>

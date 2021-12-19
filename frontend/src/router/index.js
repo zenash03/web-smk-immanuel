@@ -92,13 +92,6 @@ const routes = [
 						meta: {
 							auth: true
 						}
-					},
-					{
-						path: 'download-surat',
-						component: () => import('@/views/dashboard/DownloadSurat.vue'),
-						meta: {
-							auth: true
-						}
 					}
 				]
 			},

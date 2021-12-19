@@ -17,13 +17,13 @@
                     <p class="tersedia text-danger" v-if="perusahaan.slot_tersedia == 0">Tidak Ada Slot Tersedia</p>
 
                     <template v-if="statusDaftar">
-                        <router-link v-if="perusahaan.slot_tersedia != 0 && (!statusDaftar || statusDaftar.disetujui == 'n')" :to="`/pendaftaran-magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Apply</router-link>
-                        <router-link v-else-if="perusahaan.slot_tersedia <= 0 || statusDaftar.disetujui == 'y' || statusDaftar.disetujui == null" :to="`/pendaftaran-magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Lihat</router-link>
+                        <router-link v-if="perusahaan.slot_tersedia != 0 && (!statusDaftar || statusDaftar.disetujui == 'n')" :to="`/dashboard/magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Apply</router-link>
+                        <router-link v-else-if="perusahaan.slot_tersedia <= 0 || statusDaftar.disetujui == 'y' || statusDaftar.disetujui == null" :to="`/dashboard/magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Lihat</router-link>
                     </template>
 
                     <template v-else>
-                        <router-link v-if="perusahaan.slot_tersedia != 0 && (!statusDaftar || statusDaftar.disetujui == 'n')" :to="`/pendaftaran-magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Apply</router-link>
-                        <router-link v-else-if="perusahaan.slot_tersedia <= 0" :to="`/pendaftaran-magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Lihat</router-link>
+                        <router-link v-if="perusahaan.slot_tersedia != 0 && (!statusDaftar || statusDaftar.disetujui == 'n')" :to="`/dashboard/magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Apply</router-link>
+                        <router-link v-else-if="perusahaan.slot_tersedia <= 0" :to="`/dashboard/magang/daftar/${perusahaan.id}`" class="apply-button bg-primary">Lihat</router-link>
                     </template>
                 </div>
             </div>
