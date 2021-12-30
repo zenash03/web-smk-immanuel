@@ -8,7 +8,7 @@ use App\Http\Controllers\magang\FilterController;
 use App\Http\Controllers\magang\FormMagangController;
 use App\Http\Controllers\magang\PendaftaranController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\PrestasiController;
+use App\Http\Controllers\AchievmentsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,8 +46,8 @@ Route::group(['prefix' => 'auth'], function () {
 Route::group(['middleware' => 'admin', 'prefix' => 'admin'], function () {
     // Web Content Endpoint
     Route::resource('news', NewsController::class)->only(['store', 'update', 'destroy']);
-    Route::resource('prestasi', PrestasiController::class)->only(['store', 'update', 'destroy']);
-    Route::resource('headline', HeadlineController::class)->only(['store', 'update', 'destroy']);
+    Route::resource('achievements', AchievmentsController::class)->only(['store', 'update', 'destroy']);
+    Route::resource('headline', HeadlineController::class)->only(['update']);
     Route::resource('banner', BannerController::class)->only(['store', 'update', 'destroy']);
     Route::get('banners', [BannerController::class, 'adminView']);
     Route::put('toggle/{id}', [BannerController::class, 'toggle']);
@@ -81,8 +81,8 @@ Route::group(['middleware' => 'siswa'], function () {
 Route::get('news', [NewsController::class, 'index']);
 Route::get('news/{id}', [NewsController::class, 'show']);
 
-Route::get('prestasi', [PrestasiController::class, 'index']);
-Route::get('prestasi/{id}', [PrestasiController::class, 'show']);
+Route::get('achievements', [AchievmentsController::class, 'index']);
+Route::get('achievements/{id}', [AchievmentsController::class, 'show']);
 
 Route::get('headline', [HeadlineController::class, 'index']);
 Route::get('headline/{id}', [HeadlineController::class, 'show']);

@@ -13,13 +13,13 @@
 								<div v-for="n in prestasi" :key="n.id" class="col-lg-6 mb-2">
 									<div class="news-card zoom-out">
 										<div class="img">
-											<img :src="n.image_url" alt="">	
+											<img :src="n.image" alt="">	
 										</div>	
 
 										<div class="content">
 											<div class="tag">{{ n.tag }}</div>
 
-											<h5 class="title"><router-link :to="`/read/prestasi/${n.id}`">{{ n.title }}</router-link></h5>
+											<h5 class="title"><router-link :to="`/read/achievements/${n.id}`">{{ n.title }}</router-link></h5>
 
 											<div class="details">
 												<p>{{ n.author }} - {{ n.date }}</p>
@@ -35,7 +35,7 @@
 
 							<div v-for="n in prestasi" :key="n.id" class="news-list mb-2 fly-up">
 								<i class="fas fa-hashtag"></i>
-								<p><router-link :to="`/read/prestasi/${n.id}`">{{ n.title }}</router-link></p>
+								<p><router-link :to="`/read/achievements/${n.id}`">{{ n.title }}</router-link></p>
 							</div>
 						</div>
 					</div>
@@ -66,7 +66,7 @@ export default {
 	},
 	methods: {
 		getPrestasi() {
-			axios.get(`prestasi`)
+			axios.get(`achievements`)
 				.then(res => {
 					this.prestasi = res.data;
 

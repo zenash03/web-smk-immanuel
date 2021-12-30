@@ -14,7 +14,7 @@
 					<div class="row align-items-center">
 						<div class="col-lg-6">
 							<div class="image-main fade-out">
-								<img :src="headline.image_url" alt="">
+								<img :src="headline.image" alt="">
 							</div>
 						</div>
 
@@ -40,7 +40,7 @@
 								<div v-for="n in news.slice(0, 4)" :key="n.id" class="col-lg-6 mb-2">
 									<div class="news-card zoom-out">
 										<div class="img">
-											<img :src="n.image_url" alt="">	
+											<img :src="n.image" alt="">	
 										</div>	
 
 										<div class="content">
@@ -124,31 +124,31 @@
 						<div v-if="i % 2 == 0" class="prestasi-post post-left fly-up">
 							<div class="news-card left">
 								<div class="content">
-									<h4 class="title mb-4 fly-up"><router-link :to="`/read/prestasi/${p.id}`">{{ p.title }}</router-link></h4>
+									<h4 class="title mb-4 fly-up"><router-link :to="`/read/achievements/${p.id}`">{{ p.title }}</router-link></h4>
 									<p class="mb-4 fly-up">{{ p.excerpt }}</p>
 
-									<router-link :to="`/read/prestasi/${p.id}`" class="read-more-btn">
+									<router-link :to="`/read/achievements/${p.id}`" class="read-more-btn">
 										<span>Read More</span>
 									</router-link>
 								</div>
 							</div>
 
 							<div class="news-image fly-up">
-								<img :src="p.image_url" alt="">
+								<img :src="p.image" alt="">
 							</div>
 						</div>
 
 						<div v-if="i % 2 != 0" class="prestasi-post post-right fly-up">
 							<div class="news-image fly-up">
-								<img :src="p.image_url" alt="">
+								<img :src="p.image" alt="">
 							</div>
 
 							<div class="news-card right">
 								<div class="content">
-									<h4 class="title mb-4 fly-up"><router-link :to="`/read/prestasi/${p.id}`">{{ p.title }}</router-link></h4>
+									<h4 class="title mb-4 fly-up"><router-link :to="`/read/achievements/${p.id}`">{{ p.title }}</router-link></h4>
 									<p class="mb-4 fly-up">{{ p.excerpt }}</p>
 
-									<router-link :to="`/read/prestasi/${p.id}`" class="read-more-btn">
+									<router-link :to="`/read/achievements/${p.id}`" class="read-more-btn">
 										<span>Read More</span>
 									</router-link>
 								</div>
@@ -216,7 +216,7 @@ export default {
 				})
 		},
 		getPrestasi() {
-			axios.get(`prestasi`)
+			axios.get(`achievements`)
 				.then(res => {
 					this.prestasi = res.data;
 				})

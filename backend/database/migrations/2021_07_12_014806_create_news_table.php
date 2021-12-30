@@ -21,7 +21,7 @@ class CreateNewsTable extends Migration
             $table->text('image_url');
             $table->string('tag');
             $table->string('date');
-            $table->enum('headline', ['y'], ['n']);
+            $table->enum('headline', ['Y', 'N']);
             $table->timestamps();
         });
     }

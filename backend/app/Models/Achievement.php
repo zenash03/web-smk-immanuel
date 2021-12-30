@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class Achievement extends Model
 {
     use HasFactory;
-
+    
     protected $guarded = [];
-    protected $appends = ['image'];
+    protected $appends = ['excerpt', 'image'];
 
     public function getImageAttribute() {
         if (app()->isLocal()) {
@@ -18,5 +18,10 @@ class News extends Model
         } else {
             return url('/') . '/api/storage/' . $this->image_url;
         }
+    }
+
+    public function getExcerptAttribute()
+    {
+        return substr($this->content, 0, rand(90, 130)) . '...';
     }
 }

@@ -13,7 +13,7 @@
 								<div v-for="n in news" :key="n.id" class="col-lg-6 mb-2">
 									<div class="news-card zoom-out">
 										<div class="img">
-											<img :src="n.image_url" alt="">	
+											<img :src="n.image" alt="">	
 										</div>	
 
 										<div class="content">

@@ -17,7 +17,7 @@
                                 </div>
                             </div>
 
-                            <img :src="data.image_url" alt="Image">
+                            <img :src="data.image" alt="Image">
 
                             <hr>
                         </div>

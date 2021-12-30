@@ -29,7 +29,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nama Pendaftar</th>
-                        <th scope="col">Nis</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Kelas</th>
                         <th scope="col">Waktu</th>
                         <th scope="col">Nama Perusahaan</th>
@@ -72,7 +72,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Nis</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Kelas</th>
                     </tr>
                 </thead>

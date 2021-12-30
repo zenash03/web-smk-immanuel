@@ -11,7 +11,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Pendaftar</th>
-                        <th scope="col">Nis</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Kelas</th>
                         <th scope="col">Waktu</th>
                         <th scope="col">Perusahaan</th>
@@ -27,9 +27,9 @@
                         <td>{{ d.kelas }}</td>
                         <td>{{ d.magang.tanggal_didaftarkan }}, {{ getTime(d.created_at) }}</td>
                         <td>{{ d.magang.nama_perusahaan }}</td>
-                        <td class="d-flex">
-                            <button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary mr-1">Detail</button>
-                            <button @click="deleteData(d.id)" type="button" class="form-control btn-danger ml-1">Delete</button>
+                        <td>
+                            <button @click="modalData = d, openModal = true" type="button" class="form-control btn-primary mb-1">Detail</button>
+                            <button @click="deleteData(d.id)" type="button" class="form-control btn-danger">Delete</button>
                         </td>
                         <td>
                             <div class="toggle-radio">
@@ -176,9 +176,13 @@ export default {
 
 <style scoped>
 
+.content {
+    width: 50% !important;
+}
+
 .table-container {
     width: 100%;
-    overflow-x: auto;
+    overflow-x: auto !important;
 }
 
 .info {

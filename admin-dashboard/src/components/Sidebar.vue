@@ -14,10 +14,25 @@
 
             <main>
                 <ul>
-                    <router-link to="/magang/pendaftar" class="aside-link"><i class="fas fa-user-check"></i> Pendaftar Magang</router-link>
-                    <router-link to="/magang/daftarkan-perusahaan" class="aside-link"><i class="fas fa-folder-plus"></i> Ajukan Perusahaan Baru</router-link>
-                    <router-link to="/magang/daftar-perusahaan" class="aside-link"><i class="fas fa-list-ul"></i> List Perusahaan</router-link>
-                    <router-link to="/magang/filter" class="aside-link"><i class="fas fa-filter"></i> Filter Data</router-link>
+                    <li class="mb-1">
+                        <a @click="toggleSubmenu('magang')" class="aside-link has-sub"><i class="fas fa-briefcase"></i> Magang</a>
+
+                        <ul class="submenu" ref="magang">
+                            <router-link to="/magang/pendaftar" class="aside-link"><i class="fas fa-user-check"></i> Pendaftar Magang</router-link>
+                            <router-link to="/magang/daftarkan-perusahaan" class="aside-link"><i class="fas fa-folder-plus"></i> Ajukan Perusahaan Baru</router-link>
+                            <router-link to="/magang/daftar-perusahaan" class="aside-link"><i class="fas fa-list-ul"></i> List Perusahaan</router-link>
+                            <router-link to="/magang/filter" class="aside-link"><i class="fas fa-filter"></i> Filter Data</router-link>
+                        </ul>
+                    </li>
+
+                    <li class="mb-1">
+                        <a @click="toggleSubmenu('content')" class="aside-link has-sub"><i class="fas fa-folder-plus"></i> Content</a>
+
+                        <ul class="submenu" ref="content">
+                            <router-link to="/content/news" class="aside-link"><i class="far fa-newspaper"></i> News</router-link>
+                            <router-link to="/content/achievements" class="aside-link"><i class="fas fa-trophy"></i> Achievements</router-link>
+                        </ul>
+                    </li>
                 </ul>
 
                 <button type="button" class="button-menu" @click="toggleMenu"><span>></span></button>
@@ -36,8 +51,11 @@ export default {
     methods: {
         toggleMenu() {
             this.$refs.aside.classList.toggle('show');
+        },
+        toggleSubmenu(ref) {
+            this.$refs[ref].classList.toggle('open');
         }
-    },
+    }
 }
 </script>
 
@@ -57,13 +75,10 @@ header .detail {
     margin-left: 1rem;    
 }
 
-.title {
-    color: black;
-}
-
 .detail h5 {
     font-weight: 500;
     margin-bottom: 5px;  
+    color: black;
 }
 
 .detail p {
@@ -102,20 +117,8 @@ header .detail {
     flex-direction: column;
 }
 
-.aside-link {
-    min-width: 100% !important;
-    padding: 1em 2em;
-    transition: .4s;
-    cursor: pointer;
-    color: black;
-}
-
-.aside-link:hover {
-    text-decoration: none;
-}
-
-.aside main ul a {
-    transition: .4s;
+.aside main ul li {
+    width: 100%;
 }
 
 .aside main ul a i {
@@ -127,7 +130,21 @@ header .detail {
 
 .aside main ul a:hover, .router-link-active {
     background-color: #f5f7fd;
-    color: var(--primary-blue-hover);
+    color: var(--primary-blue-hover) !important;
+}
+
+.aside-link {
+    display: block;
+    min-width: 100% !important;
+    font-size: 14px;
+    padding: 1em 2em;
+    transition: .4s;
+    cursor: pointer;
+    color: black;
+}
+
+.aside-link:hover {
+    text-decoration: none;
 }
 
 img {
@@ -156,6 +173,41 @@ img {
 
 .desktop {
     display: block;
+}
+
+.has-sub {
+    position: relative;
+}
+
+.has-sub::after {
+    color: #ccc;
+    content: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><path style="fill:none;stroke:gray;stroke-width:1" d="m6 9 6 6 6-6"/></svg>');
+    display: block;
+    position: absolute;
+    right: 30px;
+    top: 55%;
+    transform: translateY(-50%);
+}
+
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 5% !important;
+    transition: .5s;
+}
+
+.submenu.open {
+    max-height: 500px;
+}
+
+@media screen and (max-width: 991px) {
+    .detail h5 {
+        font-size: 1rem;
+    }
+
+    .detail p {
+        font-size: .7rem;
+    }
 }
 
 @media screen and (max-width: 768px) {

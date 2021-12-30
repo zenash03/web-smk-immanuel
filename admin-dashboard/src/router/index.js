@@ -58,6 +58,57 @@ const routes = [
 				}
 			}
 		]
+	},
+	{
+		path: '/content',
+		component: () => import('@/layouts/Dashboard.vue'),
+		meta: {
+			auth: true
+		},
+		children: [
+			{
+				path: 'news',
+				component: () => import('@/views/content/news/News.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'news/add',
+				component: () => import('@/views/content/news/Add.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'news/edit/:id',
+				component: () => import('@/views/content/news/Edit.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'achievements',
+				component: () => import('@/views/content/achievements/Achievements.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'achievements/add',
+				component: () => import('@/views/content/achievements/Add.vue'),
+				meta: {
+					auth: true
+				}
+			},
+			{
+				path: 'achievements/edit/:id',
+				component: () => import('@/views/content/achievements/Edit.vue'),
+				meta: {
+					auth: true
+				}
+			},
+		]
 	}
 ]
 

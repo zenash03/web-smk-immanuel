@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Achievement;
 use App\Models\Admin;
 use App\Models\Banner;
 use App\Models\News;
-use App\Models\Prestasi;
 use App\Models\Tbkelas;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -276,24 +276,24 @@ class DatabaseSeeder extends Seeder
             'kelas_id' => 14
         ]);
 
-
+        
         // Create Prestasi
-        Prestasi::create([
+        Achievement::create([
             'title' => 'Prestasi Siswa/i SMK Kristen Immanuel Pontianak pada “KUIS KIHAJAR 2019” tingkat Provinsi',
             'content' => 'Selamat kepada Mina Amelia yang berhasil meraih Juara 3 dalam lomba “Kuis Kihajar Tingkat Nasional jenjang SMK/MAK”. Kuis ini bertujuan untuk menumbuhkembangkan budaya belajar serta menghasilkan karya inovatif siswa Indonesia dengan memanfaatkan Teknologi.',
             'author' => 'Admin',
-            'image_url' => 'http://localhost:8000/upload/60ec24fsaf34gssfd.jpg',
+            'image_url' => 'images/60ec24fsaf34gssfd.jpg',
             'tag' => 'Prestasi',
             'date' => 'November 17, 2019'
         ]);
 
-        Prestasi::create([
+        Achievement::create([
             'title' => 'Prestasi Siswa SMK, Hengki Sanjaya dan Luki Centuri dalam World Skill Kazan 2019',
             'content' => 'Selamat kepada Hengki Sanjaya yang telah mewakili INDONESIA meraih Silver Medal di World Skill Kazan 2019 untuk IT Software Solution for Business. Dari pengumuman hasil World Skill di bidang ini terlihat Jia-He Tu (Taipei) meraih emas dengan 754 poin, Hengki Sanjaya (Indonesia) meraih perak dengan 751 poin, dan Mahyar Jabari (Iran) meraih perunggu dengan 742 poin. Tidak hanya itu, Luki Centuri juga telah mewakili Indonesia dalam World Skill Kazan 2019 untuk kategori Web Technologies dan mendapatkan Medallion Of Excellence.
             
             Hengki dan Luki sudah membesarkan nama SMK Kristen Immanuel dan bahkan Indonesia ke mata dunia internasional, dan membuktikan SMK Kristen Immanuel bisa memberikan fasilitas untuk mengembangkan diri ke tingkat internasional.',
             'author' => 'Admin',
-            'image_url' => 'http://localhost:8000/upload/60ec3d6f5dadf23rg3f.jpg',
+            'image_url' => 'images/60ec3d6f5dadf23rg3f.jpg',
             'tag' => 'Prestasi',
             'date' => 'August 28, 2019'
         ]);
@@ -306,7 +306,7 @@ class DatabaseSeeder extends Seeder
            
 Berikutnya vaksinasi untuk kelas 10 dan 11 pada tanggal 16 September 2021.',
             'author' => 'Admin',
-            'image_url' => 'http://localhost:8000/upload/60ec3d14fdff5dab45h30f.jpg',
+            'image_url' => 'images/60ec3d14fdff5dab45h30f.jpg',
             'tag' => 'Berita',
             'date' => 'September 9, 2021',
             'headline' => 'y'
@@ -317,7 +317,7 @@ Berikutnya vaksinasi untuk kelas 10 dan 11 pada tanggal 16 September 2021.',
             'title' => 'Pelatihan IHT Kepada guru-guru SMK Immanuel Pontianak',
             'content' => 'Guru-guru SMK Kristen Immanuel Pontianak telah mengikuti pelatihan IHT (In House Training) untuk Kurikulum SMK Pusat Keunggulan yang dilakukan pada tanggal 3-13 Agustus 2021.',
             'author' => 'Admin',
-            'image_url' => 'http://localhost:8000/upload/60ec3d14g3iofqef.jpg',
+            'image_url' => 'images/60ec3d14g3iofqef.jpg',
             'tag' => 'Berita',
             'date' => 'August 14, 2021'
         ]);
@@ -334,7 +334,7 @@ Ayo segera bergabung bersama kami.
             
             Nomor Contact SMK (bisa via whatsapp): 089524435865',
             'author' => 'Admin',
-            'image_url' => 'http://localhost:8000/upload/60ec3d2db7e6c130133.jpg',
+            'image_url' => 'images/60ec3d2db7e6c130133.jpg',
             'tag' => 'Berita',
             'date' => 'February 27, 2021'
         ]); 
@@ -344,7 +344,7 @@ Ayo segera bergabung bersama kami.
             'title' => 'HUT ke-33 SMK Immanuel Pontianak',
             'content' => 'Anugerah Tuhan ditengah Pandemi itulah tema ultah SMK Kristen Immanuel Pontianak ke 33 tanggal 5 Februari 2021, dan kado ultah dari Tuhan adalah SMK IMMANUEL dipercaya Direktorat untuk dikembangkan menjadi SMK PUSAT KEUNGGULAN (Center of Excellence ) Sektor Hospitality. Segala kemuliaan hanya bagi Tuhan.',
             'author' => 'Admin',
-            'image_url' => 'http://localhost:8000/upload/60ec29aja9fh2fna23s.jpg',
+            'image_url' => 'images/60ec29aja9fh2fna23s.jpg',
             'tag' => 'Berita',
             'date' => 'February 7, 2021'
         ]); 

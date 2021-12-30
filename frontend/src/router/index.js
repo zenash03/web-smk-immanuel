@@ -17,7 +17,7 @@ const routes = [
 		component: () => import('@/views/Berita.vue')
 	},
 	{
-		path: '/prestasi',
+		path: '/achievements',
 		component: () => import('@/views/Prestasi.vue')
 	},
 	{

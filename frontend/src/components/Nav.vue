@@ -18,7 +18,7 @@
                         <ul class="nav-links">
                             <li><router-link to="/" class="bold">Home</router-link></li>
                             <li><router-link to="/news">Berita</router-link></li>
-                            <li><router-link to="/prestasi">Prestasi</router-link></li>
+                            <li><router-link to="/achievements">Prestasi</router-link></li>
                             <li><router-link to="/visi-misi">Visi & Misi</router-link></li>
                             <li><router-link to="/login" class="align-self-end">Login</router-link></li>
                         </ul>
