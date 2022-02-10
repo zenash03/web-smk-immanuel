@@ -29,7 +29,7 @@
 | NPM                        | v6.14.13 |
 
 ## 💪🏻 Contributing
-- Fork it ( https://github.com/erickchann/immanuel-digital-corner/fork )
+- Fork it ( https://github.com/erickchann/web-smk-immanuel/fork )
 - Create your feature branch (git checkout -b my-new-feature)
 - Commit your changes (git commit -am 'Add some feature')
 - Push to the branch (git push origin my-new-feature)
