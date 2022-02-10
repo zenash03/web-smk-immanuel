@@ -30,7 +30,7 @@
                             <li>
                                 Jl. Letnan Jendral Sutoyo
                                 <br>
-                                +62 8952-4435-865
+                                0895-2443-5865
                             </li>
                         </ul>
                     </div>
