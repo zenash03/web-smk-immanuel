@@ -11,15 +11,19 @@
         </a>
       </aside>
 
-      <main class="flex-1">
+      <main class="flex-1 flex flex-col">
         <div class="h-24 px-16 flex items-center justify-end text-dark-50 bg-white">
-          <p class="text-h7 font-h7">Hai, <b>Jeki Gates</b></p>
+          <p class="text-h7 font-h7">Hai, <span class="font-bold">Jeki Gates</span></p>
         </div>
 
         <div class="px-16 py-16">
           <div class="px-16 py-16 text-dark-50 bg-white rounded-lg">
-            <p class="text-h7 font-h7">Welcome, <b>Jeki Gates</b></p>
+            <p class="text-h7 font-h7">Welcome, <span class="font-bold">Jeki Gates</span></p>
           </div>
+        </div>
+
+        <div class="h-24 px-16 flex items-center justify-end text-dark-50 bg-white mt-auto">
+          <p class="text-body font-body"><span class="font-bold">2021-2022</span> SMK IMMANUEL | Made with by IT CLUB</p>
         </div>
       </main>
     </div>
