@@ -10,6 +10,12 @@
           </div>
         </a>
       </aside>
+
+      <main class="flex-1">
+        <div class="h-24 px-16 flex items-center justify-end text-dark-50 bg-white">
+          <p class="text-h7 font-h7">Hai, <b>Jeki Gates</b></p>
+        </div>
+      </main>
     </div>
   </div>
 </template>
