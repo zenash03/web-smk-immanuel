@@ -2,73 +2,73 @@
     <div class="bg-light-75">
         <div class="w-full min-h-screen text-dark-100 flex">
             <aside class="sidebar border-r border-dark-25">
-                <a href="" class="h-24 px-4 flex items-center justify-between border-b border-dark-25">
+                <router-link to="" class="h-24 px-4 flex items-center justify-between border-b border-dark-25">
                     <img src="../assets/img/logo.png" alt="" class="w-14" />
                     <div>
                         <p class="text-h7 font-h1">SMK Immanuel</p>
                         <p class="text-caption">Smart, Wise, Accountable</p>
                     </div>
-                </a>
+                </router-link>
 
                 <nav class="sidebar-nav text-dark-100 text-body">
                     <ul class="menu">
                         <li>
-                            <a role="button" class="dropdown" @click="toggleSubmenu($event)">
+                            <a role="button" class="dropdown">
                                 <span class="icon"><font-awesome-icon icon="fa-solid fa-briefcase" /></span>
                                 <span class="text">Magang</span>
                                 <span class="arrow"><font-awesome-icon icon="fa-solid fa-angle-down" /></span>
                             </a>
                             <ul class="submenu">
                                 <li>
-                                    <a href=""
+                                    <router-link to=""
                                         ><span class="icon"><font-awesome-icon icon="fa-solid fa-info" /></span>
                                         <span class="text">Info Magang</span>
-                                    </a>
+                                    </router-link>
                                 </li>
                                 <li>
-                                    <a href=""
+                                    <router-link to=""
                                         ><span class="icon"><font-awesome-icon icon="fa-solid fa-folder-plus" /></span>
                                         <span class="text">Ajukan Perusahaan Baru</span>
-                                    </a>
+                                    </router-link>
                                 </li>
                                 <li>
-                                    <a href=""
+                                    <router-link to=""
                                         ><span class="icon"><font-awesome-icon icon="fa-solid fa-list-ul" /></span>
                                         <span class="text">List Perusahaan</span>
-                                    </a>
+                                    </router-link>
                                 </li>
                                 <li>
-                                    <a href=""
+                                    <router-link to=""
                                         ><span class="icon"><font-awesome-icon icon="fa-solid fa-wrench" /></span>
                                         <span class="text">Edit Data Perusahaan</span>
-                                    </a>
+                                    </router-link>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="">
+                            <router-link to="">
                                 <span class="icon"><font-awesome-icon icon="fa-solid fa-id-card" /></span>
                                 <span class="text">Kartu Pelajar</span>
-                            </a>
+                            </router-link>
                         </li>
                         <li>
-                            <a role="button" class="dropdown" @click="toggleSubmenu($event)">
+                            <a role="button" class="dropdown">
                                 <span class="icon"><font-awesome-icon icon="fa-solid fa-calendar" /></span>
                                 <span class="text">Event</span>
                                 <span class="arrow"><font-awesome-icon icon="fa-solid fa-angle-down" /></span>
                             </a>
                             <ul class="submenu">
                                 <li>
-                                    <a href=""
+                                    <router-link to=""
                                         ><span class="icon"><font-awesome-icon icon="fa-solid fa-calendar-days" /></span>
                                         <span class="text">List Event</span>
-                                    </a>
+                                    </router-link>
                                 </li>
                                 <li>
-                                    <a href=""
+                                    <router-link to=""
                                         ><span class="icon"><font-awesome-icon icon="fa-solid fa-calendar-plus" /></span>
                                         <span class="text">Buat Event</span>
-                                    </a>
+                                    </router-link>
                                 </li>
                             </ul>
                         </li>
@@ -78,16 +78,16 @@
 
             <main class="flex-1 flex flex-col">
                 <div class="h-24 px-16 flex items-center justify-end text-dark-50 bg-white">
-                    <p class="text-h7 font-h7">Hai, <span class="font-bold">Jeki Gates</span></p>
+                    <p class="text-subline font-subline">Hai, <span class="font-bold">Jeki Gates</span></p>
                 </div>
 
                 <div class="px-16 py-16">
-                    <div class="px-16 py-16 text-dark-50 bg-white rounded-lg">
+                    <div class="px-8 py-8 text-dark-50 bg-white rounded-lg">
                         <p class="text-h7 font-h7">Welcome, <span class="font-bold">Jeki Gates</span></p>
                     </div>
                 </div>
 
-                <div class="h-24 px-16 flex items-center justify-end text-dark-50 bg-white mt-auto">
+                <div class="h-16 px-16 flex items-center justify-end text-dark-50 bg-white mt-auto">
                     <p class="font-body"><span class="font-bold">2021-2022</span> SMK IMMANUEL | Made with by IT CLUB</p>
                 </div>
             </main>
@@ -99,9 +99,36 @@
 export default {
     name: "EventView",
     methods: {
+        toggleLink(e) {
+            e.preventDefault();
+            e.target.closest("a").classList.toggle("text-primary-light-blue");
+        },
         toggleSubmenu(e) {
             e.target.closest("li").querySelector(".submenu").classList.toggle("show");
         },
+    },
+    mounted() {
+        var navBtns = document.querySelectorAll(".sidebar li a");
+
+        navBtns.forEach(function (navBtn) {
+            if (navBtn.classList.contains("dropdown")) {
+                navBtn.addEventListener("click", function (e) {
+                    e.target.closest("li").querySelector(".submenu").classList.toggle("show");
+                });
+            } else {
+                navBtn.addEventListener("click", function (e) {
+                    var navActiveBtn = document.querySelector(".sidebar .menu .text-primary-light-blue");
+
+                    if (navActiveBtn != null) {
+                        navActiveBtn.closest("li").classList.remove("bg-light-100");
+                        navActiveBtn.classList.remove("text-primary-light-blue");
+                    }
+
+                    e.target.closest("li").classList.toggle("bg-light-100");
+                    e.target.closest("a").classList.toggle("text-primary-light-blue");
+                });
+            }
+        });
     },
 };
 </script>
@@ -124,6 +151,7 @@ export default {
     padding: 0.75rem 0;
     display: flex;
     align-items: center;
+    transition: 0.3s ease;
 }
 
 .sidebar .sidebar-nav a .icon {
