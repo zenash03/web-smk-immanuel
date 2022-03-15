@@ -5,6 +5,12 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/",
+    component: function () {
+      return import("../views/Index.vue");
+    },
+  },
+  {
     path: "/dashboard",
     component: function () {
       return import("../components/Dashboard.vue");
@@ -13,7 +19,7 @@ const routes = [
       {
         path: "",
         component: function () {
-          return import("../views/Index.vue");
+          return import("../views/Dashboard.vue");
         },
       },
       {

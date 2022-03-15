@@ -3,7 +3,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  metaInfo: {
+    title: "Event List",
+  },
+};
 </script>
 
 <style></style>

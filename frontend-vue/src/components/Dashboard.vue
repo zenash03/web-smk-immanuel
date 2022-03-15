@@ -1,16 +1,14 @@
 <template>
-  <div class="bg-light-75">
-    <div class="w-full min-h-screen text-dark-100 flex">
-      <Sidebar></Sidebar>
+  <div class="w-full min-h-screen text-dark-100 bg-light-75 flex">
+    <Sidebar></Sidebar>
 
-      <main class="flex-1 flex flex-col">
-        <Header></Header>
+    <main class="flex-1 flex flex-col">
+      <Header></Header>
 
-        <router-view></router-view>
+      <router-view></router-view>
 
-        <Footer></Footer>
-      </main>
-    </div>
+      <Footer></Footer>
+    </main>
   </div>
 </template>
 

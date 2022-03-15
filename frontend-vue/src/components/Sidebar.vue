@@ -3,7 +3,7 @@
     <div class="h-24 px-4 flex items-center justify-between border-b border-dark-25">
       <img src="../assets/img/logo.png" alt="" class="w-14" />
       <div>
-        <p class="text-h7 font-h1">SMK Immanuel</p>
+        <p class="text-h7 font-semibold">SMK Immanuel</p>
         <p class="text-caption">Smart, Wise, Accountable</p>
       </div>
     </div>
