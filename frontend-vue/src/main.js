@@ -8,13 +8,24 @@ import "./assets/css/tailwind.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import specific icons */
-import { faClipboard } from "@fortawesome/free-solid-svg-icons";
+import {
+    faCalendar,
+    faCalendarDays,
+    faCalendarPlus,
+    faAngleDown,
+    faIdCard,
+    faBriefcase,
+    faInfo,
+    faFolderPlus,
+    faListUl,
+    faWrench,
+} from "@fortawesome/free-solid-svg-icons";
 
 /* import font awesome icon component */
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 /* add icons to the library */
-library.add(faClipboard);
+library.add(faCalendar, faCalendarDays, faCalendarPlus, faAngleDown, faIdCard, faBriefcase, faInfo, faFolderPlus, faListUl, faWrench);
 
 /* add font awesome icon component */
 Vue.component("font-awesome-icon", FontAwesomeIcon);
