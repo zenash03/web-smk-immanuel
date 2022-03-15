@@ -1,13 +1,11 @@
 <template>
-    <div class="h-16 px-16 flex items-center justify-end text-dark-50 bg-white mt-auto">
-        <p class="font-body"><span class="font-bold">2021-2022</span> SMK IMMANUEL | Made with by IT CLUB</p>
-    </div>
+  <div class="h-16 px-16 flex items-center justify-end text-dark-50 bg-white mt-auto">
+    <p class="font-body"><span class="font-bold">2021-2022</span> SMK IMMANUEL | Made with by IT CLUB</p>
+  </div>
 </template>
 
 <script>
-export default {
-    name: "Footer",
-};
+export default {};
 </script>
 
 <style></style>

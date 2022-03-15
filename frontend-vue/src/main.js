@@ -9,16 +9,16 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import specific icons */
 import {
-    faCalendar,
-    faCalendarDays,
-    faCalendarPlus,
-    faAngleDown,
-    faIdCard,
-    faBriefcase,
-    faInfo,
-    faFolderPlus,
-    faListUl,
-    faWrench,
+  faCalendar,
+  faCalendarDays,
+  faCalendarPlus,
+  faAngleDown,
+  faIdCard,
+  faBriefcase,
+  faInfo,
+  faFolderPlus,
+  faListUl,
+  faWrench,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* import font awesome icon component */
@@ -33,9 +33,9 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 new Vue({
-    router,
-    store,
-    render: function (h) {
-        return h(App);
-    },
+  router,
+  store,
+  render: function (h) {
+    return h(App);
+  },
 }).$mount("#app");

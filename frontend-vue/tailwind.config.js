@@ -52,9 +52,6 @@ module.exports = {
         h2: 400,
         h1: 500,
       },
-      width: {
-        72: "18rem",
-      },
     },
   },
   plugins: [],
