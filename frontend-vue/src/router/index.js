@@ -4,19 +4,19 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 const routes = [
-  {
-    path: "/",
-    name: "event",
-    component: function () {
-      return import("../views/EventView.vue");
+    {
+        path: "/",
+        name: "event",
+        component: function () {
+            return import("../views/Event.vue");
+        },
     },
-  },
 ];
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes,
+    mode: "history",
+    base: process.env.BASE_URL,
+    routes,
 });
 
 export default router;
