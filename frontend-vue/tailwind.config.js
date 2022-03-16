@@ -4,7 +4,7 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          "dark-blue": "#00A0E3",
+          blue: "#00A0E3",
           red: "#FE6961",
           yellow: "#FEC953",
           "light-blue": "#72BFF5",
@@ -29,26 +29,16 @@ module.exports = {
         },
       },
       fontSize: {
-        caption: ["0.8rem", { lineHeight: "1.4rem" }],
-        body: ["1rem", { lineHeight: "1.75rem" }],
-        subline: ["1.25rem", { lineHeight: "2.1875rem" }],
-        h7: ["1.563rem", { lineHeight: "2.03125rem" }],
-        h6: ["1.953rem", { lineHeight: "2.5390625rem" }],
-        h5: ["2.441rem", { lineHeight: "3.173625rem" }],
-        h4: ["3.052rem", { lineHeight: "3.9674375rem" }],
-        h3: ["3.815rem", { lineHeight: "4.9625rem" }],
-        h2: ["4.768rem", { lineHeight: "6.2rem" }],
-        h1: ["5.96rem", { lineHeight: "7.75rem" }],
-        sm : ['0.8rem', {lineHeight : '1.4rem'}],
-        base : ['1rem', {lineHeight : '1.75rem'}],
-        md : ['1.25rem', {lineHeight : '2.1875rem'}],
-        lg : ['1.563rem', {lineHeight : '2.0312rem'}],
-        xl : ['1.953rem', {lineHeight : '2.53rem'}],
-        '2xl' : ['2.44rem', {lineHeight : '3.1rem'}],
-        '3xl' : ['3.052rem', {lineHeight : '3.9rem'}],
-        '4xl' : ['3.815rem', {lineHeight : '4.9625rem'}],
-        '5xl' : ['4.768rem', {lineHeight : '6.2rem'}],
-        '6xl' : ['5.96rem', {lineHeight : '7.75rem'}],
+        sm: ["0.8rem", { lineHeight: "1.4rem" }], // caption
+        base: ["1rem", { lineHeight: "1.75rem" }], // body
+        md: ["1.25rem", { lineHeight: "2.1875rem" }], // subline
+        lg: ["1.563rem", { lineHeight: "2.0312rem" }], // h7
+        xl: ["1.953rem", { lineHeight: "2.53rem" }], // h6
+        "2xl": ["2.44rem", { lineHeight: "3.1rem" }], // h5
+        "3xl": ["3.052rem", { lineHeight: "3.9rem" }], // h4
+        "4xl": ["3.815rem", { lineHeight: "4.9625rem" }], // h3
+        "5xl": ["4.768rem", { lineHeight: "6.2rem" }], // h2
+        "6xl": ["5.96rem", { lineHeight: "7.75rem" }], // h1
       },
     },
   },

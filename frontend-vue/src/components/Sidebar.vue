@@ -1,14 +1,14 @@
 <template>
   <aside class="sidebar border-r border-dark-25">
     <div class="h-24 px-4 flex items-center justify-between border-b border-dark-25">
-      <img src="../assets/img/logo.png" alt="" class="w-14" />
+      <img src="@/assets/img/logo.png" alt="" class="w-14" />
       <div>
-        <p class="text-h7 font-semibold">SMK Immanuel</p>
-        <p class="text-caption">Smart, Wise, Accountable</p>
+        <p class="text-lg fond-medium">SMK Immanuel</p>
+        <p class="text-sm">Smart, Wise, Accountable</p>
       </div>
     </div>
 
-    <nav class="sidebar-nav text-dark-100 text-body">
+    <nav class="sidebar-nav text-dark-100 text-base">
       <ul class="menu">
         <li>
           <a role="button" class="dropdown">
