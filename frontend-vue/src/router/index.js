@@ -40,6 +40,10 @@ const routes = [
               return import("../views/event/Create.vue");
             },
           },
+          {
+            path : 'detail',
+            component: () => import("../views/event/Detail.vue")
+          }
         ],
       },
     ],
