@@ -37,6 +37,7 @@ import ChartDoughnut from "@/components/chart/Doughnut.vue";
 
 export default {
   components: { ChartDoughnut },
+  
 };
 </script>
 
