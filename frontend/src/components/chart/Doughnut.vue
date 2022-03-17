@@ -8,15 +8,21 @@ export default {
       labels: ["10 TKJ 1", "11 TKJ 1"],
       datasets: [
         {
-          label: "My First Dataset",
-          data: [150, 400],
-          backgroundColor: ["rgb(255, 205, 86)", "rgb(255, 99, 132)"],
+          label: "Dataset",
+          data: [150, 450],
+          backgroundColor: ["#FEC953", "#FE6961"],
           hoverOffset: 4,
         },
       ],
     },
     options: {
       cutoutPercentage: 80,
+      scales: {
+        myScale: {
+          type: "logarithmic",
+          position: "right", // `axis` is determined by the position as `'y'`
+        },
+      },
     },
   }),
 

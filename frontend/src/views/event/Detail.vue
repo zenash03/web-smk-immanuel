@@ -25,7 +25,7 @@
       <div class="col-span-2 grid grid-flow-row auto-rows-max gap-y-3">
         <p class="text-lg font-extrabold text-primary-blue">Participants From</p>
         <p class="text-base font-medium text-primary-blue">6 classes</p>
-        <chart-doughnut width="400" height="100"></chart-doughnut>
+        <chart-doughnut class="w-48"></chart-doughnut>
         <button class="bg-state-blue text-light-100 rounded-md p-4 self-end hover:shadow-lg hover:ease-in-out duration-200">Join Now!!</button>
       </div>
     </div>
@@ -37,7 +37,6 @@ import ChartDoughnut from "@/components/chart/Doughnut.vue";
 
 export default {
   components: { ChartDoughnut },
-  
 };
 </script>
 
