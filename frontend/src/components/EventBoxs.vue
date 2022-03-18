@@ -41,7 +41,7 @@
 <script>
 import axios from 'axios';
 export default {
-        name : 'EventsBoxs',
+  name : 'EventsBoxs',
   methods: {
     getEventData() {
       const getEvents = async () => {
