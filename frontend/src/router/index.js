@@ -6,42 +6,36 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    component: function () {
-      return import("../views/Index.vue");
-    },
+    name: 'event.index',
+    component: () => import("../views/Index.vue"),
   },
   {
     path: "/dashboard",
-    component: function () {
-      return import("../components/Dashboard.vue");
-    },
+    component: () => import("../components/Dashboard.vue"),
     children: [
       {
         path: "",
-        component: function () {
-          return import("../views/Dashboard.vue");
-        },
+        name: 'event.dashboard',
+        component: () => import("../views/Dashboard.vue")
       },
       {
         path: "event",
-        component: function () {
-          return import("../views/event/Index.vue");
-        },
+        name: 'event.dashboardIndex',
+        component: () => import("../views/event/Index.vue"),
         children: [
           {
             path: "list",
-            component: function () {
-              return import("../views/event/List.vue");
-            },
+            name: 'event.list',
+            component: () => import("../views/event/List.vue")
           },
           {
             path: "create",
-            component: function () {
-              return import("../views/event/Create.vue");
-            },
+            name: 'event.create',
+            component: () => import("../views/event/Create.vue")
           },
           {
-            path : 'detail',
+            path : 'detail/:id',
+            name: 'event.detail',
             component: () => import("../views/event/Detail.vue")
           }
         ],

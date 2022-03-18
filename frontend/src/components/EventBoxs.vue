@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-2 gap-y-10">
-    <router-link to="/dashboard/event/detail" class="max-w-md bg-white rounded-lg border border-gray-200 shadow-md" v-for="event in events" :key="event.id">
+    <router-link :to="{name : 'event.detail', params: {id: event.id}}" class="max-w-md bg-white rounded-lg border border-gray-200 shadow-md" v-for="event in events" :key="event.id">
     <img class="rounded-t-lg" :src="urlImage + event.image" alt="" />
         <div class="p-5 grid grid-cols-8">
             <div class="grid col-span-2 bg-primary-light-blue place-items-center text-light-100 rounded-lg p-1">

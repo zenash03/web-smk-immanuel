@@ -36,7 +36,11 @@
 import ChartDoughnut from "@/components/chart/Doughnut.vue";
 
 export default {
+  name : 'Detail',
   components: { ChartDoughnut },
+  created() {
+    console.log(this.route.params.id)
+  },
 };
 </script>
 
