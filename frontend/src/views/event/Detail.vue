@@ -9,7 +9,7 @@
           <img class="w-12 h-12 border-2 rounded-full object-contain" alt="" :src="urlImage + event.image" />
           <div class="grid ml-4">
             <p class="text-md font-medium">{{ event.user }}</p>
-            <p class="text-sm text-dark-50">15 January 2022, 4:00 - 15:00</p>
+            <p class="text-sm text-dark-50">{{ `${event.date}, ${event.start_time} - ${event.end_time}` }}</p>
           </div>
         </div>
         <div class="block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md row-span-2">
@@ -31,6 +31,7 @@
 <script>
 import axios from 'axios';
 import ChartDoughnut from "@/components/chart/Doughnut.vue";
+import moment from 'moment';
 
 export default {
   name : 'Detail',
@@ -53,15 +54,17 @@ export default {
       getEvents();
     },
     fetchData(data){
-      const date = new Date(data.start_time)
-      console.log(date) 
+      const date = moment(data.start_time).format('DD MMMM YYYY')
+      const startTimeFormat = moment(data.start_time).format('hh:mm')
+      const endTimeFormat = moment(data.end_time).format('hh:mm');
       const obj = {
         'id':  data.id,
         'name': data.name,
         'image': data.image,
         'description': data.description,
-        'start_time': data.start_time,
-        'end_time': data.end_time,
+        'date' : date,
+        'start_time': startTimeFormat,
+        'end_time': endTimeFormat,
         'participants' : data.participants,
         'user' : data.user.name,
       }
@@ -71,7 +74,6 @@ export default {
   data : () => ({
     URL: `http://localhost:8000/api/event_organizer/`,
     event : {},
-    months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
     urlImage: "http://localhost:8000/storage/",
   }),
   created() {

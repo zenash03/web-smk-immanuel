@@ -4,8 +4,8 @@
     <img class="rounded-t-lg" :src="urlImage + event.image" alt="" />
         <div class="p-5 grid grid-cols-8">
             <div class="grid col-span-2 bg-primary-light-blue place-items-center text-light-100 rounded-lg p-1">
-                <p class="text-sm">{{ months[event.start_time.split(" ")[0].split("-")[1] - 1] }}</p>
-                <p class="text-md">{{ event.start_time.split(" ")[0].split("-")[2] }}</p>
+                <p class="text-sm">{{ getMonthFormat(event.start_time) }}</p>
+                <p class="text-md">{{ getDayFormat(event.start_time) }}</p>
             </div>
             <div class="grid content-between col-span-6 ml-3">
             <p class="text-base font-bold">{{ event.name }}</p>
@@ -40,6 +40,8 @@
 
 <script>
 import axios from 'axios';
+import moment from 'moment';
+
 export default {
   name : 'EventsBoxs',
   methods: {
@@ -58,11 +60,16 @@ export default {
       }
       getEvents();
     },
+    getMonthFormat(date){
+      return moment(date).format('MMM')
+    },
+    getDayFormat(date){
+      return moment(date).format('D')
+    }
   },
   data : () => ({
     URL: "http://localhost:8000/api/event_organizer/",
     events: [],
-    months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
     urlImage: "http://localhost:8000/storage/",
   }),
   created() {
